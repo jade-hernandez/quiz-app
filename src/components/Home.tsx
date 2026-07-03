@@ -1,26 +1,35 @@
+import { jsQuestions } from "../data/quiz-questions-js";
+import { reactQuestions } from "../data/quiz-questions-react";
+import type { QuizId } from "../types";
 import { QuizCard } from "./QuizCard";
 import type { QuizCardProps } from "./QuizCard";
 
-type QuizCardData = Omit<QuizCardProps, "onClick">;
+type QuizCardData = Omit<QuizCardProps, "onClick"> & { id: QuizId };
+
+type HomeProps = {
+  onSelectQuiz: (id: QuizId) => void;
+};
 
 const quizCards: QuizCardData[] = [
   {
+    id: "javascript",
     emoji: "🚀",
     title: "Quiz JavaScript",
-    questionCount: 53,
+    questionCount: jsQuestions.length,
     description: "Les fondamentaux, les fonctions, les objets, et plus encore.",
     color: "amber",
   },
   {
+    id: "react",
     emoji: "⚛️",
     title: "Quiz React",
-    questionCount: 32,
+    questionCount: reactQuestions.length,
     description: "Les fondamentaux, les composants, les hooks, et plus encore.",
     color: "blue",
   },
 ];
 
-function Home() {
+function Home({ onSelectQuiz }: HomeProps) {
   return (
     <div className="flex flex-col gap-7">
       <div className="flex flex-col gap-1">
@@ -36,8 +45,8 @@ function Home() {
         </p>
       </div>
 
-      {quizCards.map((card) => (
-        <QuizCard key={card.title} {...card} onClick={() => {}} />
+      {quizCards.map(({ id, ...card }) => (
+        <QuizCard key={id} {...card} onClick={() => onSelectQuiz(id)} />
       ))}
     </div>
   );
