@@ -67,6 +67,11 @@ function Quiz({ quiz, onExit, onFinish }: QuizProps) {
       <p className="mt-4 mb-4 text-sm font-medium text-neutral-900">
         {currentQuestion.question}
       </p>
+      {currentQuestion.code && (
+        <div className="mb-4 overflow-x-auto rounded-xl bg-neutral-100 p-4 font-mono text-xs whitespace-pre">
+          {currentQuestion.code}
+        </div>
+      )}
 
       <div className="flex flex-col gap-2">
         {currentQuestion.options.map((option, index) => (
