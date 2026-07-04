@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Home } from "./components/Home";
 import { Quiz } from "./components/Quiz";
+import { ScoreScreen } from "./components/ScoreScreen";
 import { quizzes } from "./data/quizzes";
 import type { QuizId } from "./types";
 
@@ -38,19 +39,11 @@ function App() {
           />
         )}
         {screen === "score" && activeQuiz && finalScore !== null && (
-          <div className="flex flex-col items-center gap-4">
-            <h2 className="text-2xl font-bold text-neutral-900">Résultat</h2>
-            <p className="text-lg text-neutral-700">
-              Tu as obtenu un score de {finalScore} sur{" "}
-              {activeQuiz.questions.length}.
-            </p>
-            <button
-              onClick={handleGoHome}
-              className="rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
-            >
-              Retour à l'accueil
-            </button>
-          </div>
+          <ScoreScreen
+            score={finalScore}
+            totalQuestions={activeQuiz.questions.length}
+            onExit={handleGoHome}
+          />
         )}
       </div>
     </div>
