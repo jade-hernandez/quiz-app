@@ -79,9 +79,10 @@ function Quiz({ quiz, onExit, onFinish }: QuizProps) {
             key={option}
             onClick={() => handleSelectOption(index)}
             disabled={selectedOption !== null}
-            className={`rounded-xl border p-3 text-left text-sm hover:border-neutral-400 ${getButtonColor(
-              index,
-            )}`}
+            className={cn(
+              "rounded-xl border p-3 text-left text-sm hover:border-neutral-400",
+              getButtonColor(index),
+            )}
           >
             {option}
           </button>
