@@ -2,12 +2,12 @@ import type { QuizId, QuizQuestion } from "../types";
 import { jsQuestions } from "./quiz-questions-js";
 import { reactQuestions } from "./quiz-questions-react";
 
-type Quiz = {
+type QuizData = {
   title: string;
   questions: QuizQuestion[];
 };
 
-const quizzes: Record<QuizId, Quiz> = {
+const quizzes: Record<QuizId, QuizData> = {
   javascript: {
     title: "Quiz JavaScript",
     questions: jsQuestions,
@@ -19,4 +19,4 @@ const quizzes: Record<QuizId, Quiz> = {
 };
 
 export { quizzes };
-export type { Quiz };
+export type { QuizData };
