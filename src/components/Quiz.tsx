@@ -1,6 +1,8 @@
 import { useState } from "react";
 import type { QuizData } from "../data/quizzes";
 import { cn } from "../utils/utils";
+import { QuizOption } from "./QuizOption";
+import { Button } from "./Button";
 
 type QuizProps = {
   quiz: QuizData;
@@ -33,25 +35,23 @@ function Quiz({ quiz, onExit, onFinish }: QuizProps) {
     }
   }
 
-  function getButtonColor(index: number) {
+  function getOptionState(index: number) {
     const isCorrectAnswer = index === currentQuestion.answerIndex;
     const isSelected = index === selectedOption;
 
     if (selectedOption === null) {
-      return "border-neutral-200";
+      return "idle";
     }
 
     if (isCorrectAnswer) {
-      return "border-green-500 bg-green-100";
+      return "correct";
     }
     if (isSelected && !isCorrectAnswer) {
-      return "border-red-500 bg-red-100";
+      return "incorrect";
     }
 
-    return "border-neutral-200";
+    return "idle";
   }
-
-  // console.log("Score:", score, "Current Index:", currentIndex);
 
   return (
     <div>
@@ -75,17 +75,13 @@ function Quiz({ quiz, onExit, onFinish }: QuizProps) {
 
       <div className="flex flex-col gap-2">
         {currentQuestion.options.map((option, index) => (
-          <button
+          <QuizOption
             key={option}
-            onClick={() => handleSelectOption(index)}
+            label={option}
+            state={getOptionState(index)}
             disabled={selectedOption !== null}
-            className={cn(
-              "rounded-xl border p-3 text-left text-sm hover:border-neutral-400",
-              getButtonColor(index),
-            )}
-          >
-            {option}
-          </button>
+            onClick={() => handleSelectOption(index)}
+          />
         ))}
         {hasAnswered && (
           <div
@@ -101,18 +97,14 @@ function Quiz({ quiz, onExit, onFinish }: QuizProps) {
           </div>
         )}
         {hasAnswered && (
-          <button
-            onClick={handleNext}
-            className="mt-4 rounded-xl bg-neutral-900 px-5 py-2.5 text-sm font-semibold text-white"
-          >
+          <Button onClick={handleNext} className="mt-4">
             {currentIndex < quiz.questions.length - 1
               ? "Question suivante"
               : "Voir les résultats"}
-          </button>
+          </Button>
         )}
       </div>
     </div>
   );
 }
-
 export { Quiz };
