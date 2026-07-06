@@ -1,3 +1,5 @@
+import { Button } from "./Button";
+
 type ScoreScreenProps = {
   score: number;
   totalQuestions: number;
@@ -11,12 +13,9 @@ function ScoreScreen({ score, totalQuestions, onExit }: ScoreScreenProps) {
       <p className="text-lg text-neutral-700">
         Tu as obtenu un score de {score} sur {totalQuestions}.
       </p>
-      <button
-        onClick={onExit}
-        className="rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
-      >
+      <Button onClick={onExit} className="mt-4">
         Retour à l'accueil
-      </button>
+      </Button>
     </div>
   );
 }
