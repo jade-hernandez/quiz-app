@@ -31,22 +31,24 @@ const quizCards: QuizCardData[] = [
 
 function Home({ onSelectQuiz }: HomeProps) {
   return (
-    <div className="flex flex-col gap-7">
-      <div className="flex flex-col gap-1">
-        <p className="text-xs font-semibold tracking-wide text-neutral-400 uppercase">
+    <div className='flex flex-col gap-7'>
+      <div className='flex flex-col gap-1'>
+        <p className='text-xs font-semibold tracking-wide text-neutral-400 uppercase'>
           Salle de révision
         </p>
-        <h1 className="font-display text-2xl font-bold text-neutral-900">
-          Choisis ton quiz
-        </h1>
-        <p className="max-w-prose text-sm text-neutral-500">
-          Deux parcours complets pour tester ce que tu maîtrises déjà — et
-          repérer ce qu'il reste à revoir.
+        <h1 className='font-display text-2xl font-bold text-neutral-900'>Choisis ton quiz</h1>
+        <p className='max-w-prose text-sm text-neutral-500'>
+          Deux parcours complets pour tester ce que tu maîtrises déjà — et repérer ce qu'il reste à
+          revoir.
         </p>
       </div>
 
       {quizCards.map(({ id, ...card }) => (
-        <QuizCard key={id} {...card} onClick={() => onSelectQuiz(id)} />
+        <QuizCard
+          key={id}
+          {...card}
+          onClick={() => onSelectQuiz(id)}
+        />
       ))}
     </div>
   );

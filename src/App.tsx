@@ -28,8 +28,8 @@ function App() {
   const activeQuiz = activeQuizId ? quizzes[activeQuizId] : null;
 
   return (
-    <div className="flex min-h-screen items-start justify-center bg-neutral-50 px-4 py-8">
-      <div className="w-full max-w-xl rounded-2xl bg-white p-8 shadow-sm">
+    <div className='flex min-h-screen items-start justify-center bg-neutral-50 px-4 py-8'>
+      <div className='w-full max-w-xl rounded-2xl bg-white p-8 shadow-sm'>
         {screen === "home" && <Home onSelectQuiz={handleSelectQuiz} />}
         {screen === "quiz" && activeQuiz && (
           <Quiz

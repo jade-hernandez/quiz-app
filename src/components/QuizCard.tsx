@@ -10,39 +10,30 @@ type QuizCardProps = {
 const colorStyles = {
   amber: {
     title: "font-display text-lg font-bold text-amber-600",
-    cta: "text-sm font-semibold text-amber-600",
+    cta: "text-sm font-semibold text-amber-600 cursor-pointer",
   },
   blue: {
     title: "font-display text-lg font-bold text-blue-600",
-    cta: "text-sm font-semibold text-blue-600",
+    cta: "text-sm font-semibold text-blue-600 cursor-pointer",
   },
 };
 
-function QuizCard({
-  emoji,
-  title,
-  questionCount,
-  description,
-  color,
-  onClick,
-}: QuizCardProps) {
+function QuizCard({ emoji, title, questionCount, description, color, onClick }: QuizCardProps) {
   const styles = colorStyles[color];
 
   return (
     <button
       onClick={onClick}
-      className="flex flex-col gap-4 rounded-2xl border border-neutral-200 p-5 text-left transition-colors hover:border-neutral-400"
+      className='flex flex-col gap-4 rounded-2xl border border-neutral-200 p-5 text-left transition-colors hover:border-neutral-400'
     >
-      <div className="flex items-center justify-between">
-        <span className="text-2xl">{emoji}</span>
-        <span className="text-xs font-medium text-neutral-400">
-          {questionCount} questions
-        </span>
+      <div className='flex items-center justify-between'>
+        <span className='text-2xl'>{emoji}</span>
+        <span className='text-xs font-medium text-neutral-400'>{questionCount} questions</span>
       </div>
 
-      <div className="flex flex-col gap-1">
+      <div className='flex flex-col gap-1'>
         <div className={styles.title}>{title}</div>
-        <p className="text-sm text-neutral-500">{description}</p>
+        <p className='text-sm text-neutral-500'>{description}</p>
       </div>
 
       <span className={styles.cta}>Commencer →</span>

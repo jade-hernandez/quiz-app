@@ -21,7 +21,7 @@ function Quiz({ quiz, onExit, onFinish }: QuizProps) {
 
   function handleNext() {
     if (currentIndex < quiz.questions.length - 1) {
-      setCurrentIndex((previousIndex) => previousIndex + 1);
+      setCurrentIndex(previousIndex => previousIndex + 1);
       setSelectedOption(null);
     } else {
       onFinish(score);
@@ -31,7 +31,7 @@ function Quiz({ quiz, onExit, onFinish }: QuizProps) {
   function handleSelectOption(index: number) {
     setSelectedOption(index);
     if (index === currentQuestion.answerIndex) {
-      setScore((previousScore) => previousScore + 1);
+      setScore(previousScore => previousScore + 1);
     }
   }
 
@@ -57,23 +57,21 @@ function Quiz({ quiz, onExit, onFinish }: QuizProps) {
     <div>
       <button
         onClick={onExit}
-        className="mb-4 text-sm text-neutral-500 hover:text-neutral-900"
+        className='mb-4 text-sm text-neutral-500 hover:text-neutral-900'
       >
         ← Retour à l'accueil
       </button>
 
-      <h1 className="font-display text-lg font-bold">{quiz.title}</h1>
+      <h1 className='font-display text-lg font-bold'>{quiz.title}</h1>
 
-      <p className="mt-4 mb-4 text-sm font-medium text-neutral-900">
-        {currentQuestion.question}
-      </p>
+      <p className='mt-4 mb-4 text-sm font-medium text-neutral-900'>{currentQuestion.question}</p>
       {currentQuestion.code && (
-        <div className="mb-4 overflow-x-auto rounded-xl bg-neutral-100 p-4 font-mono text-xs whitespace-pre">
+        <div className='mb-4 overflow-x-auto rounded-xl bg-neutral-100 p-4 font-mono text-xs whitespace-pre'>
           {currentQuestion.code}
         </div>
       )}
 
-      <div className="flex flex-col gap-2">
+      <div className='flex flex-col gap-2'>
         {currentQuestion.options.map((option, index) => (
           <QuizOption
             key={option}
@@ -97,10 +95,11 @@ function Quiz({ quiz, onExit, onFinish }: QuizProps) {
           </div>
         )}
         {hasAnswered && (
-          <Button onClick={handleNext} className="mt-4">
-            {currentIndex < quiz.questions.length - 1
-              ? "Question suivante"
-              : "Voir les résultats"}
+          <Button
+            onClick={handleNext}
+            className='mt-4'
+          >
+            {currentIndex < quiz.questions.length - 1 ? "Question suivante" : "Voir les résultats"}
           </Button>
         )}
       </div>
