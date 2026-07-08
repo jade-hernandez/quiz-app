@@ -5,8 +5,7 @@ const reactQuestions: QuizQuestion[] = [
   {
     sectionId: 1,
     sectionLabel: "React",
-    question:
-      "Quelle est la différence entre une bibliothèque et un framework ?",
+    question: "Quelle est la différence entre une bibliothèque et un framework ?",
     options: [
       "Une bibliothèque est gratuite, un framework est payant",
       "Avec une bibliothèque tu appelles son code, avec un framework c'est lui qui appelle ton code",
@@ -36,8 +35,7 @@ const reactQuestions: QuizQuestion[] = [
   {
     sectionId: 1,
     sectionLabel: "React",
-    question:
-      "Laquelle de ces affirmations sur React et les SPAs est correcte ?",
+    question: "Laquelle de ces affirmations sur React et les SPAs est correcte ?",
     options: [
       "React est une SPA",
       "React permet de construire des SPAs mais n'est pas une SPA lui-même",
@@ -53,8 +51,7 @@ const reactQuestions: QuizQuestion[] = [
   {
     sectionId: 2,
     sectionLabel: "Composants",
-    question:
-      "Pourquoi le nom d'un composant React doit commencer par une majuscule ?",
+    question: "Pourquoi le nom d'un composant React doit commencer par une majuscule ?",
     options: [
       "Convention de style sans impact",
       "React l'utilise pour distinguer ses composants des balises HTML natives",
@@ -101,12 +98,7 @@ const reactQuestions: QuizQuestion[] = [
     sectionId: 3,
     sectionLabel: "JSX",
     question: "En quoi Babel transforme-t-il le JSX ?",
-    options: [
-      "En HTML pur",
-      "En appels React.createElement()",
-      "En JSON",
-      "En CSS-in-JS",
-    ],
+    options: ["En HTML pur", "En appels React.createElement()", "En JSON", "En CSS-in-JS"],
     answerIndex: 1,
     explanation:
       "Babel transforme chaque balise JSX en React.createElement(type, props, enfants). C'est pour ça qu'on appelle JSX du sucre syntaxique.",
@@ -126,8 +118,7 @@ const reactQuestions: QuizQuestion[] = [
   {
     sectionId: 3,
     sectionLabel: "JSX",
-    question:
-      "Quel est l'avantage de <> </> par rapport à une <div> englobante ?",
+    question: "Quel est l'avantage de <> </> par rapport à une <div> englobante ?",
     options: [
       "C'est plus rapide à écrire",
       "Le Fragment n'ajoute aucun nœud au DOM réel",
@@ -173,8 +164,7 @@ const reactQuestions: QuizQuestion[] = [
   {
     sectionId: 4,
     sectionLabel: "Props",
-    question:
-      "Comment un enfant peut-il déclencher une modification de données dans le parent ?",
+    question: "Comment un enfant peut-il déclencher une modification de données dans le parent ?",
     options: [
       "En modifiant directement la prop",
       "En appelant une fonction passée en prop par le parent",
@@ -201,8 +191,7 @@ const reactQuestions: QuizQuestion[] = [
   {
     sectionId: 5,
     sectionLabel: "State",
-    question:
-      "Que se passe-t-il si on modifie le state directement sans passer par le setter ?",
+    question: "Que se passe-t-il si on modifie le state directement sans passer par le setter ?",
     options: [
       "React met quand même l'UI à jour",
       "La variable change mais React n'est pas notifié — interface figée",
@@ -245,8 +234,7 @@ const reactQuestions: QuizQuestion[] = [
   {
     sectionId: 6,
     sectionLabel: "useEffect",
-    question:
-      "Quand s'exécute un useEffect avec un tableau de dépendances vide [] ?",
+    question: "Quand s'exécute un useEffect avec un tableau de dépendances vide [] ?",
     options: [
       "À chaque rendu",
       "Une seule fois au montage du composant",
@@ -293,8 +281,7 @@ const reactQuestions: QuizQuestion[] = [
   {
     sectionId: 7,
     sectionLabel: "Listes & Clés",
-    question:
-      "Pourquoi React a-t-il besoin de la prop key sur les éléments d'une liste ?",
+    question: "Pourquoi React a-t-il besoin de la prop key sur les éléments d'une liste ?",
     options: [
       "Pour appliquer des styles différents",
       "Pour identifier précisément chaque élément lors de la réconciliation",
@@ -389,12 +376,7 @@ const reactQuestions: QuizQuestion[] = [
     sectionId: 9,
     sectionLabel: "useRef",
     question: "Que retourne exactement useRef(null) ?",
-    options: [
-      "null",
-      "undefined",
-      "Un objet { current: null }",
-      "Un tableau [null, setNull]",
-    ],
+    options: ["null", "undefined", "Un objet { current: null }", "Un tableau [null, setNull]"],
     answerIndex: 2,
     explanation:
       "useRef retourne toujours un objet avec une seule propriété : current. Sa valeur initiale est l'argument passé à useRef — ici null.",

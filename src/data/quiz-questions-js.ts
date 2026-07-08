@@ -8,8 +8,7 @@ const jsQuestions: QuizQuestion[] = [
     question: "Combien y a-t-il de types primitifs en JavaScript ?",
     options: ["5", "6", "7", "8"],
     answerIndex: 2,
-    explanation:
-      "Les 7 primitives : string, number, boolean, null, undefined, symbol, bigint.",
+    explanation: "Les 7 primitives : string, number, boolean, null, undefined, symbol, bigint.",
   },
   {
     sectionId: 1,
@@ -184,12 +183,7 @@ const jsQuestions: QuizQuestion[] = [
     sectionLabel: "Opérateurs",
     question: "Que retourne ce code ?",
     code: "0 ?? 'défaut'\nfalse ?? 'défaut'",
-    options: [
-      "'défaut' et 'défaut'",
-      "0 et false",
-      "'défaut' et false",
-      "0 et 'défaut'",
-    ],
+    options: ["'défaut' et 'défaut'", "0 et false", "'défaut' et false", "0 et 'défaut'"],
     answerIndex: 1,
     explanation:
       "?? ne se déclenche que sur null et undefined. 0 et false ne sont ni l'un ni l'autre → retourne 0 et false.",
@@ -244,12 +238,7 @@ const jsQuestions: QuizQuestion[] = [
     sectionLabel: "Conditions",
     question: "Que retourne ce code ?",
     code: 'const jour = "lundi";\nswitch (jour) {\n  case "lundi":\n    console.log("A");\n  case "mardi":\n    console.log("B");\n  default:\n    console.log("C");\n}',
-    options: [
-      '"A" uniquement',
-      '"A" et "B"',
-      '"A", "B" et "C"',
-      '"C" uniquement',
-    ],
+    options: ['"A" uniquement', '"A" et "B"', '"A", "B" et "C"', '"C" uniquement'],
     answerIndex: 2,
     explanation:
       "Pas de break → fallthrough ! JS exécute 'lundi' puis continue sur 'mardi' et default. Les 3 messages sont affichés.",
@@ -266,8 +255,7 @@ const jsQuestions: QuizQuestion[] = [
   {
     sectionId: 4,
     sectionLabel: "Conditions",
-    question:
-      "Pourquoi ne peut-on pas utiliser if...else directement dans le JSX React ?",
+    question: "Pourquoi ne peut-on pas utiliser if...else directement dans le JSX React ?",
     options: [
       "React ne supporte pas if...else",
       "if...else est une instruction qui ne retourne rien — JSX a besoin d'expressions",
@@ -281,8 +269,7 @@ const jsQuestions: QuizQuestion[] = [
   {
     sectionId: 4,
     sectionLabel: "Conditions",
-    question:
-      "Que se passe-t-il dans le DOM React avec ce code quand count = 0 ?",
+    question: "Que se passe-t-il dans le DOM React avec ce code quand count = 0 ?",
     code: "{count && <p>{count}</p>}",
     options: [
       "Rien n'est affiché",
@@ -352,12 +339,7 @@ const jsQuestions: QuizQuestion[] = [
     sectionLabel: "Boucles",
     question: "Que retourne ce code ?",
     code: "let i = 10;\ndo {\n  console.log('exécuté');\n} while (i < 5);",
-    options: [
-      "Rien",
-      "'exécuté' — une fois",
-      "Boucle infinie",
-      "ReferenceError",
-    ],
+    options: ["Rien", "'exécuté' — une fois", "Boucle infinie", "ReferenceError"],
     answerIndex: 1,
     explanation:
       "do...while s'exécute toujours au moins une fois avant de vérifier la condition. Même si i = 10 > 5, le bloc s'exécute une fois.",
@@ -538,15 +520,9 @@ const jsQuestions: QuizQuestion[] = [
     sectionLabel: "Tableaux",
     question: "Que retourne ce code ?",
     code: "const numbers = [1, 5, 8, 9, 3];\nnumbers.some(n => n > 8);\nnumbers.every(n => n < 10);",
-    options: [
-      "false et false",
-      "true et false",
-      "true et true",
-      "false et true",
-    ],
+    options: ["false et false", "true et false", "true et true", "false et true"],
     answerIndex: 2,
-    explanation:
-      "some(n > 8) → 9 > 8 ✅ → true. every(n < 10) → tous < 10 ✅ → true.",
+    explanation: "some(n > 8) → 9 > 8 ✅ → true. every(n < 10) → tous < 10 ✅ → true.",
   },
   // SECTION 8 — OBJETS
   {
@@ -632,12 +608,7 @@ const jsQuestions: QuizQuestion[] = [
     sectionLabel: "Objets",
     question: "Que retourne ce code ?",
     code: "const fruits = ['pomme', 'banane', 'cerise'];\nconst [first, ...rest] = fruits;\nconsole.log(rest);",
-    options: [
-      '"banane"',
-      '["banane", "cerise"]',
-      '["pomme", "banane", "cerise"]',
-      "undefined",
-    ],
+    options: ['"banane"', '["banane", "cerise"]', '["pomme", "banane", "cerise"]', "undefined"],
     answerIndex: 1,
     explanation:
       "...rest récupère tous les éléments restants après first. first = 'pomme', rest = ['banane', 'cerise'].",
