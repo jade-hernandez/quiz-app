@@ -77,7 +77,7 @@ function Quiz({ quiz, onExit, onFinish }: QuizProps) {
             key={option}
             label={option}
             state={getOptionState(index)}
-            disabled={selectedOption !== null}
+            disabled={hasAnswered}
             onClick={() => handleSelectOption(index)}
           />
         ))}
