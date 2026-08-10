@@ -2,8 +2,7 @@ import type { QuizQuestion } from "../../types";
 
 const reactStateQuestions: QuizQuestion[] = [
   {
-    sectionId: 5,
-    sectionLabel: "State",
+    sectionId: "react-5",
     question: "Que se passe-t-il si on modifie le state directement sans passer par le setter ?",
     options: [
       "La variable change mais React n'est pas notifié — interface figée",
@@ -16,8 +15,7 @@ const reactStateQuestions: QuizQuestion[] = [
       "C'est le setter qui notifie React du changement et déclenche le re-rendu. Sans lui, la variable change en mémoire mais l'interface reste figée.",
   },
   {
-    sectionId: 5,
-    sectionLabel: "State",
+    sectionId: "react-5",
     question: "Que vaut count après ce clic ?",
     code: "const [count, setCount] = useState(0);\nfunction handleClick() {\n  setCount(count + 1);\n  setCount(count + 1);\n  setCount(count + 1);\n}",
     options: ["3", "0", "1", "2"],
@@ -26,8 +24,7 @@ const reactStateQuestions: QuizQuestion[] = [
       "Les 3 appels lisent la même snapshot count = 0. Chacun calcule 0+1 = 1. Pour obtenir 3, il faut la forme fonctionnelle : setCount(prev => prev + 1).",
   },
   {
-    sectionId: 5,
-    sectionLabel: "State",
+    sectionId: "react-5",
     question: "Quelle est la bonne façon de mettre à jour uniquement l'âge ?",
     code: "const [user, setUser] = useState({ nom: 'Jade', age: 28 });",
     options: [
@@ -41,8 +38,7 @@ const reactStateQuestions: QuizQuestion[] = [
       "Le spread crée un nouvel objet avec toutes les propriétés existantes + l'âge écrasé. Nouvelle référence = React détecte le changement.",
   },
   {
-    sectionId: 5,
-    sectionLabel: "State",
+    sectionId: "react-5",
     question: "Quelle est la différence fondamentale entre state et props ?",
     options: [
       "Les props peuvent être modifiées par l'enfant, le state ne peut pas",
@@ -55,8 +51,7 @@ const reactStateQuestions: QuizQuestion[] = [
       "Le state est la mémoire interne d'un composant, qu'il contrôle avec son setter. Les props sont fournies de l'extérieur (par le parent) et le composant ne doit jamais essayer de les modifier lui-même.",
   },
   {
-    sectionId: 5,
-    sectionLabel: "State",
+    sectionId: "react-5",
     question: "Qu'est-ce que le 'lifting state up' (faire remonter l'état) ?",
     options: [
       "Une technique pour supprimer un state devenu inutile",
@@ -69,8 +64,7 @@ const reactStateQuestions: QuizQuestion[] = [
       "Quand deux composants ont besoin de refléter la même donnée, on déplace le state vers leur parent commun, qui le transmet ensuite aux deux enfants via des props (et une fonction pour le modifier).",
   },
   {
-    sectionId: 5,
-    sectionLabel: "State",
+    sectionId: "react-5",
     question:
       "Quel est l'avantage de regrouper des states liés dans un seul objet plutôt que d'utiliser plusieurs `useState` séparés ?",
     code: "// Option A\nconst [name, setName] = useState('');\nconst [age, setAge] = useState(0);\n\n// Option B\nconst [user, setUser] = useState({ name: '', age: 0 });",
@@ -85,8 +79,7 @@ const reactStateQuestions: QuizQuestion[] = [
       "Les deux approches sont valables. Regrouper en objet a du sens si les valeurs sont liées et changent souvent ensemble, mais oblige à faire `setUser({ ...user, age: 29 })` pour ne modifier qu'un champ. Séparer les `useState` évite ce spread, au prix de plusieurs déclarations.",
   },
   {
-    sectionId: 5,
-    sectionLabel: "State",
+    sectionId: "react-5",
     question:
       "Pourquoi préfère-t-on parfois `useState(() => calculCouteux())` à `useState(calculCouteux())` ?",
     options: [
@@ -100,8 +93,7 @@ const reactStateQuestions: QuizQuestion[] = [
       "`useState(calculCouteux())` exécute `calculCouteux()` à CHAQUE rendu, même si le résultat n'est utilisé qu'au premier. `useState(() => calculCouteux())` (lazy initial state) ne l'exécute qu'une seule fois, au montage initial.",
   },
   {
-    sectionId: 5,
-    sectionLabel: "State",
+    sectionId: "react-5",
     question: "Que retourne ce code juste après l'appel de `setCount` ?",
     code: "const [count, setCount] = useState(0);\nfunction handleClick() {\n  setCount(5);\n  console.log(count);\n}",
     options: [
@@ -115,8 +107,7 @@ const reactStateQuestions: QuizQuestion[] = [
       "`setCount` planifie une mise à jour pour le PROCHAIN rendu ; elle ne modifie pas la variable `count` du rendu en cours. `console.log(count)` juste après affichera toujours l'ancienne valeur (0), le nouveau `count` (5) n'apparaîtra qu'au rendu suivant.",
   },
   {
-    sectionId: 5,
-    sectionLabel: "State",
+    sectionId: "react-5",
     question: "Pourquoi ce code ne déclenche-t-il pas de re-rendu ?",
     code: "const [items, setItems] = useState([1, 2, 3]);\nfunction addItem() {\n  items.push(4);\n  setItems(items);\n}",
     options: [
@@ -130,8 +121,7 @@ const reactStateQuestions: QuizQuestion[] = [
       "`push()` modifie le tableau en place — la référence ne change pas. React compare les références pour décider s'il doit re-rendre ; comme `items` est toujours le même objet en mémoire, aucun re-rendu n'est déclenché. Il faut créer un nouveau tableau : `setItems([...items, 4])`.",
   },
   {
-    sectionId: 5,
-    sectionLabel: "State",
+    sectionId: "react-5",
     question:
       "Sur quel critère React décide-t-il si une mise à jour de state doit déclencher un re-rendu ?",
     options: [

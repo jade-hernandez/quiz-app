@@ -2,8 +2,7 @@ import type { QuizQuestion } from "../../types";
 
 const reactPropsQuestions: QuizQuestion[] = [
   {
-    sectionId: 4,
-    sectionLabel: "Props",
+    sectionId: "react-4",
     question: "Dans quel sens circulent les props ?",
     options: [
       "De l'enfant vers le parent",
@@ -16,8 +15,7 @@ const reactPropsQuestions: QuizQuestion[] = [
       "Les props suivent un flux unidirectionnel : toujours du parent vers l'enfant. C'est ce qui rend l'app prévisible et facile à déboguer.",
   },
   {
-    sectionId: 4,
-    sectionLabel: "Props",
+    sectionId: "react-4",
     question: "Comment un enfant peut-il déclencher une modification de données dans le parent ?",
     options: [
       "En modifiant directement la prop",
@@ -30,8 +28,7 @@ const reactPropsQuestions: QuizQuestion[] = [
       "Le parent passe une fonction en prop. L'enfant l'appelle. Le parent met à jour son state. React re-rend avec les nouvelles props.",
   },
   {
-    sectionId: 4,
-    sectionLabel: "Props",
+    sectionId: "react-4",
     question: "Que vaut la prop age ici ?",
     code: '<Bouton age="28" />',
     options: ['La string "28"', "Le nombre 28", "undefined", "NaN"],
@@ -40,8 +37,7 @@ const reactPropsQuestions: QuizQuestion[] = [
       "Les guillemets produisent une string. Pour passer un nombre, il faut les accolades : age={28}.",
   },
   {
-    sectionId: 4,
-    sectionLabel: "Props",
+    sectionId: "react-4",
     question: "Un composant enfant peut-il modifier directement une prop qu'il a reçue ?",
     code: "function Greeting({ name }) {\n  name = 'Modifié';\n  return <p>{name}</p>;\n}",
     options: [
@@ -55,8 +51,7 @@ const reactPropsQuestions: QuizQuestion[] = [
       "Les props sont en lecture seule (read-only) du point de vue de l'enfant. Réassigner la variable locale `name` fonctionne comme n'importe quelle variable JS, mais ça n'a aucun effet sur la vraie source de la donnée chez le parent.",
   },
   {
-    sectionId: 4,
-    sectionLabel: "Props",
+    sectionId: "react-4",
     question: "Que vaut `size` ici si le parent ne passe pas cette prop ?",
     code: "function Avatar({ size = 'medium' }) {\n  return <img className={size} />;\n}",
     options: ["undefined", "'medium'", "null", "TypeError"],
@@ -65,8 +60,7 @@ const reactPropsQuestions: QuizQuestion[] = [
       "Comme pour une variable classique, on peut donner une valeur par défaut à une prop directement dans la déstructuration des paramètres. Si `size` n'est pas fournie, `'medium'` est utilisée.",
   },
   {
-    sectionId: 4,
-    sectionLabel: "Props",
+    sectionId: "react-4",
     question: "`children` est-elle une prop comme les autres ?",
     options: [
       "Non, c'est un mot-clé réservé du langage JavaScript",
@@ -79,8 +73,7 @@ const reactPropsQuestions: QuizQuestion[] = [
       "`children` fonctionne exactement comme n'importe quelle autre prop (on peut la lire, la passer plus loin), à la différence qu'elle est remplie implicitement par React à partir du contenu placé entre les balises d'ouverture et de fermeture.",
   },
   {
-    sectionId: 4,
-    sectionLabel: "Props",
+    sectionId: "react-4",
     question: "Qu'est-ce que le 'prop drilling' ?",
     options: [
       "Le fait de faire transiter une prop à travers plusieurs composants intermédiaires qui n'en ont pas besoin eux-mêmes",
@@ -93,8 +86,7 @@ const reactPropsQuestions: QuizQuestion[] = [
       "Le prop drilling arrive quand une donnée doit passer par plusieurs niveaux de composants intermédiaires (qui ne l'utilisent pas, juste pour la retransmettre) avant d'atteindre le composant qui en a réellement besoin. `useContext` est une des solutions pour éviter ça.",
   },
   {
-    sectionId: 4,
-    sectionLabel: "Props",
+    sectionId: "react-4",
     question:
       "Comment typer les props d'un composant avec TypeScript, selon la convention la plus courante ?",
     code: "type ButtonProps = {\n  label: string;\n  onClick: () => void;\n};",
@@ -109,8 +101,7 @@ const reactPropsQuestions: QuizQuestion[] = [
       "On décrit la forme des props avec un `type` ou une `interface`, puis on l'utilise dans la signature : `function Button({ label, onClick }: ButtonProps)`. TypeScript vérifie alors que chaque utilisation du composant respecte cette forme.",
   },
   {
-    sectionId: 4,
-    sectionLabel: "Props",
+    sectionId: "react-4",
     question: "Que fait ce composant avec `...rest` ?",
     code: "function Button({ label, ...rest }) {\n  return <button {...rest}>{label}</button>;\n}",
     options: [
@@ -124,8 +115,7 @@ const reactPropsQuestions: QuizQuestion[] = [
       "`...rest` (rest pattern) capture toutes les propriétés non explicitement déstructurées (`onClick`, `disabled`, `className`...) dans un objet. `{...rest}` les étale ensuite sur le `<button>` natif — pattern courant pour créer un composant qui garde toute la flexibilité d'un élément HTML.",
   },
   {
-    sectionId: 4,
-    sectionLabel: "Props",
+    sectionId: "react-4",
     question:
       'Que se passe-t-il si deux composants frères reçoivent la même prop `color="blue"` du même parent ?',
     options: [

@@ -2,8 +2,7 @@ import type { QuizQuestion } from "../../types";
 
 const reactUseEffectQuestions: QuizQuestion[] = [
   {
-    sectionId: 6,
-    sectionLabel: "useEffect",
+    sectionId: "react-6",
     question: "Quand s'exécute un useEffect avec un tableau de dépendances vide [] ?",
     options: [
       "Une seule fois au montage du composant",
@@ -16,8 +15,7 @@ const reactUseEffectQuestions: QuizQuestion[] = [
       "Le tableau vide signifie aucune dépendance — l'effet s'exécute une seule fois au montage. C'est le pattern typique d'un appel API initial.",
   },
   {
-    sectionId: 6,
-    sectionLabel: "useEffect",
+    sectionId: "react-6",
     question: "C'est quoi le cleanup dans useEffect et quand s'exécute-t-il ?",
     options: [
       "Une fonction pour réinitialiser le state au montage",
@@ -30,8 +28,7 @@ const reactUseEffectQuestions: QuizQuestion[] = [
       "Le cleanup évite les memory leaks. Il s'exécute quand le composant est démonté ET avant chaque nouvelle exécution de l'effet si les dépendances changent.",
   },
   {
-    sectionId: 6,
-    sectionLabel: "useEffect",
+    sectionId: "react-6",
     question: "Qu'est-ce qui ne va pas dans ce useEffect ?",
     code: "function Profil({ userId }) {\n  useEffect(() => {\n    fetch(`/api/users/${userId}`)\n      .then(r => r.json())\n      .then(d => setUser(d));\n  }, []);\n}",
     options: [
@@ -45,8 +42,7 @@ const reactUseEffectQuestions: QuizQuestion[] = [
       "Toute valeur utilisée dans useEffect qui peut changer doit être dans le tableau. Sans userId dans les dépendances, l'effet ne se ré-exécute pas si userId change.",
   },
   {
-    sectionId: 6,
-    sectionLabel: "useEffect",
+    sectionId: "react-6",
     question: "À quel moment un `useEffect` s'exécute-t-il par rapport à l'affichage à l'écran ?",
     options: [
       "Avant que React ne calcule le rendu",
@@ -59,8 +55,7 @@ const reactUseEffectQuestions: QuizQuestion[] = [
       "`useEffect` s'exécute après le rendu ET après que le navigateur a affiché les changements à l'écran — ce qui le rend adapté aux effets de bord (appels API, abonnements) qui n'ont pas besoin de bloquer l'affichage.",
   },
   {
-    sectionId: 6,
-    sectionLabel: "useEffect",
+    sectionId: "react-6",
     question: "Pourquoi le cleanup est-il important dans ce cas d'usage ?",
     code: "useEffect(() => {\n  let isCancelled = false;\n  fetch(`/api/users/${id}`)\n    .then(r => r.json())\n    .then(data => {\n      if (!isCancelled) setUser(data);\n    });\n  return () => { isCancelled = true; };\n}, [id]);",
     options: [
@@ -74,8 +69,7 @@ const reactUseEffectQuestions: QuizQuestion[] = [
       "Si `id` change rapidement (l'utilisateur navigue vite), une ancienne requête peut répondre APRÈS une nouvelle. Le flag `isCancelled`, mis à jour dans le cleanup, empêche cette réponse obsolète d'écraser les données actuelles — un pattern classique contre les race conditions.",
   },
   {
-    sectionId: 6,
-    sectionLabel: "useEffect",
+    sectionId: "react-6",
     question: "Que se passe-t-il si on omet complètement le tableau de dépendances ?",
     code: "useEffect(() => {\n  console.log('effet');\n});",
     options: [
@@ -89,8 +83,7 @@ const reactUseEffectQuestions: QuizQuestion[] = [
       "Sans tableau de dépendances du tout (ni `[]`, ni `[dep]`), React considère qu'il n'y a aucune condition et exécute l'effet après chaque rendu — souvent une source de bugs de performance si ce n'est pas volontaire.",
   },
   {
-    sectionId: 6,
-    sectionLabel: "useEffect",
+    sectionId: "react-6",
     question:
       "Pourquoi est-il souvent conseillé de séparer deux logiques indépendantes dans deux `useEffect` distincts plutôt qu'un seul ?",
     options: [
@@ -104,8 +97,7 @@ const reactUseEffectQuestions: QuizQuestion[] = [
       "Mélanger deux logiques (par exemple, un abonnement à un event ET un fetch de données) dans un seul `useEffect` complique son tableau de dépendances et sa lisibilité. Les séparer garde chaque effet simple, avec ses propres dépendances précises.",
   },
   {
-    sectionId: 6,
-    sectionLabel: "useEffect",
+    sectionId: "react-6",
     question: "Quelle est la différence entre `useEffect` et `useLayoutEffect` ?",
     options: [
       "Ce sont deux noms identiques pour le même Hook",
@@ -118,8 +110,7 @@ const reactUseEffectQuestions: QuizQuestion[] = [
       "`useLayoutEffect` bloque le navigateur jusqu'à son exécution, utile pour des mesures/mutations du DOM qui doivent être invisibles à l'utilisateur (pas de flash visuel). `useEffect` est asynchrone par rapport à l'affichage — le choix par défaut dans la grande majorité des cas.",
   },
   {
-    sectionId: 6,
-    sectionLabel: "useEffect",
+    sectionId: "react-6",
     question: "Pourquoi ce useEffect risque-t-il de provoquer une boucle infinie ?",
     code: "const [count, setCount] = useState(0);\nuseEffect(() => {\n  setCount(count + 1);\n}, [count]);",
     options: [
@@ -133,8 +124,7 @@ const reactUseEffectQuestions: QuizQuestion[] = [
       "L'effet dépend de `count` ET le modifie. Chaque exécution change `count`, ce qui redéclenche l'effet, qui rechange `count`... une boucle infinie de re-rendus. Il faut soit retirer `count` des dépendances (avec la forme fonctionnelle `setCount(c => c + 1)`), soit repenser la logique.",
   },
   {
-    sectionId: 6,
-    sectionLabel: "useEffect",
+    sectionId: "react-6",
     question:
       "Un `useEffect` peut-il retourner autre chose qu'une fonction de cleanup ou rien du tout ?",
     code: "useEffect(() => {\n  return fetch('/api/data');\n}, []);",

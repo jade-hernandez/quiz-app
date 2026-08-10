@@ -2,8 +2,7 @@ import type { QuizQuestion } from "../../types";
 
 const reactHooksQuestions: QuizQuestion[] = [
   {
-    sectionId: 9,
-    sectionLabel: "useRef",
+    sectionId: "react-9",
     question: "Que retourne exactement useRef(null) ?",
     options: ["Un objet { current: null }", "null", "undefined", "Un tableau [null, setNull]"],
     answerIndex: 0,
@@ -11,8 +10,7 @@ const reactHooksQuestions: QuizQuestion[] = [
       "useRef retourne toujours un objet avec une seule propriété : current. Sa valeur initiale est l'argument passé à useRef — ici null.",
   },
   {
-    sectionId: 9,
-    sectionLabel: "useContext",
+    sectionId: "react-9",
     question: "Quelles sont les 3 étapes pour utiliser useContext ?",
     options: [
       "useState, useEffect, useContext",
@@ -25,8 +23,7 @@ const reactHooksQuestions: QuizQuestion[] = [
       "1) createContext() crée le contexte, 2) Provider fournit la valeur aux descendants, 3) useContext() consomme la valeur n'importe où dans l'arbre.",
   },
   {
-    sectionId: 9,
-    sectionLabel: "React.memo",
+    sectionId: "react-9",
     question: "React.memo fonctionne-t-il correctement ici ?",
     code: "const Enfant = React.memo(({ onClick }) => <button onClick={onClick}>OK</button>);\n\nfunction Parent() {\n  const [count, setCount] = useState(0);\n  function handleClick() { console.log('cliqué'); }\n  return <Enfant onClick={handleClick} />;\n}",
     options: [
@@ -40,8 +37,7 @@ const reactHooksQuestions: QuizQuestion[] = [
       "handleClick est recréée à chaque rendu du parent avec une nouvelle référence. React.memo compare avec === — deux fonctions différentes en mémoire = prop changée = re-rendu. Solution : useCallback.",
   },
   {
-    sectionId: 9,
-    sectionLabel: "useMemo",
+    sectionId: "react-9",
     question: "Quand useMemo est-il vraiment utile ?",
     options: [
       "Pour tous les calculs sans exception",
@@ -54,8 +50,7 @@ const reactHooksQuestions: QuizQuestion[] = [
       "useMemo a un coût de mémoïsation. Il n'est utile que pour des calculs vraiment coûteux ou pour stabiliser des références. L'utiliser partout est de la sur-optimisation.",
   },
   {
-    sectionId: 9,
-    sectionLabel: "useReducer",
+    sectionId: "react-9",
     question: "C'est quoi un reducer ?",
     options: [
       "Une fonction pure (state, action) => newState qui centralise la logique de mise à jour du state",
@@ -68,8 +63,7 @@ const reactHooksQuestions: QuizQuestion[] = [
       "Un reducer est une fonction pure : même input = même output, sans effets de bord, sans muter le state existant. Il retourne toujours un nouveau state.",
   },
   {
-    sectionId: 9,
-    sectionLabel: "useCallback",
+    sectionId: "react-9",
     question: "Que vaut count dans le console.log et pourquoi ?",
     code: "const [count, setCount] = useState(0);\nconst fn = useCallback(() => {\n  console.log(count); // count = ?\n}, []); // après plusieurs incréments de count",
     options: [
@@ -83,8 +77,7 @@ const reactHooksQuestions: QuizQuestion[] = [
       "C'est une closure stale. useCallback avec [] mémorise la fonction une fois avec count = 0. Elle n'est jamais recréée donc count est toujours 0. Solution : ajouter count aux dépendances.",
   },
   {
-    sectionId: 9,
-    sectionLabel: "React Compiler",
+    sectionId: "react-9",
     question: "Que fait React Compiler introduit avec React 19 ?",
     options: [
       "Il remplace JSX par un nouveau langage",
@@ -97,8 +90,7 @@ const reactHooksQuestions: QuizQuestion[] = [
       "React Compiler analyse le code à la compilation et applique automatiquement les optimisations nécessaires. Mais connaître useMemo/useCallback reste essentiel pour les projets React 16-18.",
   },
   {
-    sectionId: 9,
-    sectionLabel: "Custom Hooks",
+    sectionId: "react-9",
     question: "Qu'est-ce qu'un hook personnalisé (custom hook) ?",
     options: [
       "Un nouveau type de composant React",
@@ -111,8 +103,7 @@ const reactHooksQuestions: QuizQuestion[] = [
       "Un hook personnalisé (ex. `useWindowSize`, `useLocalStorage`) est simplement une fonction qui appelle d'autres Hooks à l'intérieur, pour extraire une logique réutilisable — sans dupliquer le même `useState`/`useEffect` dans plusieurs composants.",
   },
   {
-    sectionId: 9,
-    sectionLabel: "Custom Hooks",
+    sectionId: "react-9",
     question:
       "Pourquoi la convention impose-t-elle que tout hook personnalisé commence par 'use' ?",
     options: [
@@ -126,8 +117,7 @@ const reactHooksQuestions: QuizQuestion[] = [
       "Le préfixe 'use' est ce qui permet aux outils (ESLint notamment, via `eslint-plugin-react-hooks`) de reconnaître qu'une fonction est un Hook et de vérifier automatiquement les règles associées (l'appeler uniquement au niveau racine, jamais dans une condition).",
   },
   {
-    sectionId: 9,
-    sectionLabel: "useMemo / useCallback",
+    sectionId: "react-9",
     question: "Quelle est la différence entre `useMemo` et `useCallback` ?",
     options: [
       "Ce sont deux noms différents pour exactement le même Hook",

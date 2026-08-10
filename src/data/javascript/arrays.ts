@@ -2,8 +2,7 @@ import type { QuizQuestion } from "../../types";
 
 const jsArraysQuestions: QuizQuestion[] = [
   {
-    sectionId: 7,
-    sectionLabel: "Tableaux",
+    sectionId: "javascript-7",
     question: "Quelle est la différence entre filter() et find() ?",
     options: [
       "Aucune",
@@ -16,8 +15,7 @@ const jsArraysQuestions: QuizQuestion[] = [
       "filter() retourne TOUJOURS un tableau. find() retourne UN seul élément (le premier) ou undefined si rien ne correspond.",
   },
   {
-    sectionId: 7,
-    sectionLabel: "Tableaux",
+    sectionId: "javascript-7",
     question: "Que retourne findIndex() si aucun élément ne correspond ?",
     options: ["-1", "undefined", "null", "false"],
     answerIndex: 0,
@@ -25,8 +23,7 @@ const jsArraysQuestions: QuizQuestion[] = [
       "findIndex() retourne -1 si aucun élément ne correspond — pas undefined comme find(). C'est une distinction importante !",
   },
   {
-    sectionId: 7,
-    sectionLabel: "Tableaux",
+    sectionId: "javascript-7",
     question: "Que retourne ce code ?",
     code: "const numbers = [1, 2, 3, 4, 5];\nconst total = numbers.reduce((acc, val) => acc + val, 0);",
     options: ["[1, 2, 3, 4, 5]", "undefined", "15", "5"],
@@ -35,8 +32,7 @@ const jsArraysQuestions: QuizQuestion[] = [
       "reduce() additionne : 0+1=1, 1+2=3, 3+3=6, 6+4=10, 10+5=15. L'accumulateur part de 0 et s'accumule à chaque tour.",
   },
   {
-    sectionId: 7,
-    sectionLabel: "Tableaux",
+    sectionId: "javascript-7",
     question: "Que retourne push() ?",
     options: [
       "Le nouvel élément ajouté",
@@ -49,8 +45,7 @@ const jsArraysQuestions: QuizQuestion[] = [
       "push() retourne la NOUVELLE LONGUEUR du tableau et modifie l'original. Pour créer un nouveau tableau, on utilise le spread operator.",
   },
   {
-    sectionId: 7,
-    sectionLabel: "Tableaux",
+    sectionId: "javascript-7",
     question: "Que retourne ce code ?",
     code: "const fruits = ['pomme', 'banane', 'cerise', 'mangue'];\nfruits.slice(1, 3);",
     options: [
@@ -64,8 +59,7 @@ const jsArraysQuestions: QuizQuestion[] = [
       "slice(1, 3) commence à l'index 1 (inclus) et s'arrête à l'index 3 (exclus) → ['banane', 'cerise'].",
   },
   {
-    sectionId: 7,
-    sectionLabel: "Tableaux",
+    sectionId: "javascript-7",
     question: "Que retourne ce code ?",
     code: "const arr = [1, [2, 3], [4, [5, 6]]];\narr.flat();",
     options: [
@@ -79,8 +73,7 @@ const jsArraysQuestions: QuizQuestion[] = [
       "flat() sans paramètre n'aplatit qu'un seul niveau. [2, 3] et [4, [5, 6]] sont aplatis mais [5, 6] reste imbriqué → [1, 2, 3, 4, [5, 6]].",
   },
   {
-    sectionId: 7,
-    sectionLabel: "Tableaux",
+    sectionId: "javascript-7",
     question: "Que retourne ce code ?",
     code: "const numbers = [1, 5, 8, 9, 3];\nnumbers.some(n => n > 8);\nnumbers.every(n => n < 10);",
     options: ["false et false", "true et false", "true et true", "false et true"],
@@ -88,8 +81,7 @@ const jsArraysQuestions: QuizQuestion[] = [
     explanation: "some(n > 8) → 9 > 8 ✅ → true. every(n < 10) → tous < 10 ✅ → true.",
   },
   {
-    sectionId: 7,
-    sectionLabel: "Tableaux",
+    sectionId: "javascript-7",
     question: "Quelle est la différence entre `includes()` et `indexOf()` ?",
     options: [
       "`includes()` retourne un booléen, `indexOf()` retourne un index (ou -1)",
@@ -102,8 +94,7 @@ const jsArraysQuestions: QuizQuestion[] = [
       "`includes()` répond à 'est-ce que cette valeur est présente ?' (true/false), plus lisible quand on n'a pas besoin de savoir où. `indexOf()` donne la position, ou -1 si absent. Bonus : `includes()` détecte correctement `NaN`, contrairement à `indexOf()`.",
   },
   {
-    sectionId: 7,
-    sectionLabel: "Tableaux",
+    sectionId: "javascript-7",
     question: "Que retourne ce code ?",
     code: "const numbers = [10, 1, 21, 2];\nnumbers.sort();",
     options: [
@@ -117,8 +108,7 @@ const jsArraysQuestions: QuizQuestion[] = [
       "Par défaut, `sort()` convertit les éléments en strings et trie alphabétiquement — d'où '10' avant '2'. Pour un vrai tri numérique, il faut fournir un comparateur : `numbers.sort((a, b) => a - b)`. Autre piège : `sort()` modifie le tableau original.",
   },
   {
-    sectionId: 7,
-    sectionLabel: "Tableaux",
+    sectionId: "javascript-7",
     question: "Que vaut `second` ici ?",
     code: "const fruits = ['pomme', 'banane', 'cerise'];\nconst [, second] = fruits;",
     options: ["'pomme'", "undefined", "'banane'", "SyntaxError"],

@@ -2,8 +2,7 @@ import type { QuizQuestion } from "../../types";
 
 const reactEventsQuestions: QuizQuestion[] = [
   {
-    sectionId: 8,
-    sectionLabel: "Événements",
+    sectionId: "react-8",
     question: "Que se passe-t-il avec ce code ?",
     code: "<button onClick={handleClick()}>Cliquer</button>",
     options: [
@@ -17,8 +16,7 @@ const reactEventsQuestions: QuizQuestion[] = [
       "Avec les parenthèses, on appelle la fonction au rendu. Sans parenthèses {handleClick}, on passe une référence que React appellera au clic.",
   },
   {
-    sectionId: 8,
-    sectionLabel: "Événements",
+    sectionId: "react-8",
     question: "Que s'affiche dans la console au clic sur le bouton ?",
     code: "<div onClick={() => console.log('parent')}>\n  <button onClick={() => console.log('bouton')}>\n    Cliquer\n  </button>\n</div>",
     options: [
@@ -32,8 +30,7 @@ const reactEventsQuestions: QuizQuestion[] = [
       "L'événement remonte (bubbling) : d'abord le bouton, puis le div parent. Pour stopper la propagation : e.stopPropagation().",
   },
   {
-    sectionId: 8,
-    sectionLabel: "Événements",
+    sectionId: "react-8",
     question: "C'est quoi un input contrôlé ?",
     options: [
       "Un input avec un attribut disabled",
@@ -46,8 +43,7 @@ const reactEventsQuestions: QuizQuestion[] = [
       "Un input contrôlé a sa valeur dans le state. value={valeur} affiche le state, onChange={e => setValeur(e.target.value)} le met à jour à chaque frappe. Le state est la source de vérité.",
   },
   {
-    sectionId: 8,
-    sectionLabel: "Événements",
+    sectionId: "react-8",
     question: "Qu'est-ce qu'un SyntheticEvent en React ?",
     options: [
       "Un objet événement fourni par React qui uniformise le comportement entre navigateurs",
@@ -60,8 +56,7 @@ const reactEventsQuestions: QuizQuestion[] = [
       "React enveloppe les événements natifs du navigateur dans un SyntheticEvent, avec une API cohérente quel que soit le navigateur. On y accède exactement comme un événement DOM classique (`e.target`, `e.preventDefault()`...).",
   },
   {
-    sectionId: 8,
-    sectionLabel: "Événements",
+    sectionId: "react-8",
     question: "Pourquoi appelle-t-on `e.preventDefault()` sur la soumission d'un formulaire ?",
     code: "function handleSubmit(e) {\n  e.preventDefault();\n  // ...\n}",
     options: [
@@ -75,8 +70,7 @@ const reactEventsQuestions: QuizQuestion[] = [
       "Par défaut, un `<form>` recharge intégralement la page à sa soumission — ce qui effacerait tout le state React. `e.preventDefault()` bloque ce comportement natif, pour gérer la soumission entièrement en JavaScript.",
   },
   {
-    sectionId: 8,
-    sectionLabel: "Événements",
+    sectionId: "react-8",
     question: "Comment passer un argument personnalisé à un gestionnaire d'événement ?",
     code: "// On veut appeler removeItem(item.id) au clic\n<button onClick={???}>Supprimer</button>",
     options: [
@@ -90,8 +84,7 @@ const reactEventsQuestions: QuizQuestion[] = [
       "`onClick={removeItem(item.id)}` appellerait la fonction immédiatement au rendu (pas au clic). Il faut envelopper l'appel dans une arrow function : `() => removeItem(item.id)`, qui ne s'exécute qu'au moment du clic.",
   },
   {
-    sectionId: 8,
-    sectionLabel: "Événements",
+    sectionId: "react-8",
     question: "À quoi sert `e.stopPropagation()` ?",
     code: "<div onClick={() => console.log('div')}>\n  <button onClick={(e) => {\n    e.stopPropagation();\n    console.log('bouton');\n  }}>Cliquer</button>\n</div>",
     options: [
@@ -105,8 +98,7 @@ const reactEventsQuestions: QuizQuestion[] = [
       "Sans `stopPropagation()`, un clic sur le bouton afficherait 'bouton' PUIS 'div' (bubbling). En l'appelant, l'événement s'arrête au bouton et ne remonte jamais jusqu'au `onClick` du `div` parent.",
   },
   {
-    sectionId: 8,
-    sectionLabel: "Événements",
+    sectionId: "react-8",
     question: "Quelle est la différence entre `onChange` et `onInput` sur un `<input>` en React ?",
     options: [
       "`onChange` ne se déclenche qu'à la perte du focus, jamais pendant la frappe",
@@ -119,8 +111,7 @@ const reactEventsQuestions: QuizQuestion[] = [
       "Contrairement au HTML natif (où `change` attend la perte de focus), React a choisi de faire déclencher `onChange` à chaque frappe, comme le ferait `input` nativement — c'est ce qui permet le pattern d'input contrôlé, mis à jour en temps réel.",
   },
   {
-    sectionId: 8,
-    sectionLabel: "Événements",
+    sectionId: "react-8",
     question:
       "Comment détecter que l'utilisateur a appuyé sur la touche Entrée dans un champ de texte ?",
     code: "<input onKeyDown={(e) => {\n  if (???) {\n    console.log('Entrée pressée');\n  }\n}} />",
@@ -135,8 +126,7 @@ const reactEventsQuestions: QuizQuestion[] = [
       "L'objet événement d'un événement clavier (`onKeyDown`, `onKeyUp`) expose `e.key`, une string décrivant la touche pressée ('Enter', 'Escape', 'a'...). C'est la propriété standard à vérifier pour réagir à une touche précise.",
   },
   {
-    sectionId: 8,
-    sectionLabel: "Événements",
+    sectionId: "react-8",
     question:
       "Pourquoi écrire `onClick={() => handleClick(id)}` recrée-t-il une nouvelle fonction à chaque rendu ?",
     options: [

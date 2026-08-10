@@ -2,8 +2,7 @@ import type { QuizQuestion } from "../../types";
 
 const reactJsxQuestions: QuizQuestion[] = [
   {
-    sectionId: 3,
-    sectionLabel: "JSX",
+    sectionId: "react-3",
     question: "En quoi Babel transforme-t-il le JSX ?",
     options: ["En HTML pur", "En JSON", "En CSS-in-JS", "En appels React.createElement()"],
     answerIndex: 3,
@@ -11,8 +10,7 @@ const reactJsxQuestions: QuizQuestion[] = [
       "Babel transforme chaque balise JSX en React.createElement(type, props, enfants). C'est pour ça qu'on appelle JSX du sucre syntaxique.",
   },
   {
-    sectionId: 3,
-    sectionLabel: "JSX",
+    sectionId: "react-3",
     question: "Qu'affiche ce code à l'écran ?",
     code: "const items = [];\nreturn <div>{items.length && <Liste />}</div>;",
     options: ["<Liste /> est rendu", "0", "Rien", "Une erreur"],
@@ -21,8 +19,7 @@ const reactJsxQuestions: QuizQuestion[] = [
       "Piège classique ! items.length vaut 0. React affiche 0 car c'est un nombre. Solution : items.length > 0 && <Liste /> pour retourner un booléen.",
   },
   {
-    sectionId: 3,
-    sectionLabel: "JSX",
+    sectionId: "react-3",
     question: "Quel est l'avantage de <> </> par rapport à une <div> englobante ?",
     options: [
       "C'est plus rapide à écrire",
@@ -35,8 +32,7 @@ const reactJsxQuestions: QuizQuestion[] = [
       "Un Fragment n'existe que dans le Virtual DOM — aucune trace dans le HTML final. La <div> inutile peut casser le CSS.",
   },
   {
-    sectionId: 3,
-    sectionLabel: "JSX",
+    sectionId: "react-3",
     question: "Pourquoi ne peut-on pas écrire {if (...) {}} dans du JSX ?",
     options: [
       "if est une instruction qui ne retourne pas de valeur — les {} n'acceptent que des expressions",
@@ -49,8 +45,7 @@ const reactJsxQuestions: QuizQuestion[] = [
       "Les {} attendent une expression (qui produit une valeur). if est une instruction. On utilise le ternaire condition ? A : B à la place.",
   },
   {
-    sectionId: 3,
-    sectionLabel: "JSX",
+    sectionId: "react-3",
     question:
       "Que se passe-t-il si un composant essaie de retourner deux éléments côte à côte sans les envelopper ?",
     code: "return (\n  <h1>Titre</h1>\n  <p>Texte</p>\n);",
@@ -65,8 +60,7 @@ const reactJsxQuestions: QuizQuestion[] = [
       "JSX exige un seul élément racine. Il faut envelopper dans une `<div>` ou, mieux, un Fragment (`<>...</>`) qui n'ajoute aucun nœud supplémentaire au DOM final.",
   },
   {
-    sectionId: 3,
-    sectionLabel: "JSX",
+    sectionId: "react-3",
     question: "Pourquoi écrit-on `className` plutôt que `class` en JSX ?",
     options: [
       "`class` fonctionne aussi, `className` est juste une préférence de style",
@@ -79,8 +73,7 @@ const reactJsxQuestions: QuizQuestion[] = [
       "JSX se transforme en JavaScript, où `class` est déjà un mot-clé réservé (pour la syntaxe des classes ES6). Pour éviter le conflit, React utilise `className`, qui correspond à l'attribut `class` une fois rendu dans le vrai HTML.",
   },
   {
-    sectionId: 3,
-    sectionLabel: "JSX",
+    sectionId: "react-3",
     question: "Comment applique-t-on un style inline à un élément en JSX ?",
     code: '<p style={{ color: "red", fontSize: 20 }}>Texte</p>',
     options: [
@@ -94,8 +87,7 @@ const reactJsxQuestions: QuizQuestion[] = [
       "Les premières accolades `{}` introduisent une expression JS, les secondes créent l'objet littéral du style. Les propriétés CSS s'écrivent en camelCase (`fontSize`, pas `font-size`) car ce sont des clés d'objet JavaScript.",
   },
   {
-    sectionId: 3,
-    sectionLabel: "JSX",
+    sectionId: "react-3",
     question: "Comment écrit-on un commentaire à l'intérieur du JSX ?",
     options: ["// commentaire", "<!-- commentaire -->", "# commentaire", "{/* commentaire */}"],
     answerIndex: 3,
@@ -103,8 +95,7 @@ const reactJsxQuestions: QuizQuestion[] = [
       "À l'intérieur du JSX, un commentaire doit être une expression JavaScript valide entre accolades : `{/* ... */}`. Les syntaxes `//` et `<!-- -->` ne fonctionnent pas dans ce contexte précis.",
   },
   {
-    sectionId: 3,
-    sectionLabel: "JSX",
+    sectionId: "react-3",
     question: "Que vaut l'attribut `disabled` ici ?",
     code: "<button disabled>Valider</button>",
     options: [
@@ -118,8 +109,7 @@ const reactJsxQuestions: QuizQuestion[] = [
       "Pour les attributs booléens, JSX permet un raccourci : les écrire seuls (sans `={...}`) équivaut à leur donner la valeur `true`. `disabled` seul est donc identique à `disabled={true}`.",
   },
   {
-    sectionId: 3,
-    sectionLabel: "JSX",
+    sectionId: "react-3",
     question: "Que fait `{...props}` sur un élément JSX ?",
     code: "function Input(props) {\n  return <input {...props} />;\n}",
     options: [

@@ -2,16 +2,14 @@ import type { QuizQuestion } from "../../types";
 
 const jsPrimitivesQuestions: QuizQuestion[] = [
   {
-    sectionId: 1,
-    sectionLabel: "Primitives",
+    sectionId: "javascript-1",
     question: "Combien y a-t-il de types primitifs en JavaScript ?",
     options: ["5", "6", "8", "7"],
     answerIndex: 3,
     explanation: "Les 7 primitives : string, number, boolean, null, undefined, symbol, bigint.",
   },
   {
-    sectionId: 1,
-    sectionLabel: "Primitives",
+    sectionId: "javascript-1",
     question: "Que retourne typeof null ?",
     options: ['"null"', '"object"', '"undefined"', '"boolean"'],
     answerIndex: 1,
@@ -19,8 +17,7 @@ const jsPrimitivesQuestions: QuizQuestion[] = [
       "typeof null retourne 'object' — un bug historique de JS lié à la représentation binaire en mémoire. Jamais corrigé pour des raisons de compatibilité.",
   },
   {
-    sectionId: 1,
-    sectionLabel: "Primitives",
+    sectionId: "javascript-1",
     question: "Que retourne typeof NaN ?",
     options: ['"number"', '"NaN"', '"undefined"', '"boolean"'],
     answerIndex: 0,
@@ -28,8 +25,7 @@ const jsPrimitivesQuestions: QuizQuestion[] = [
       "NaN est de type 'number' — une des grandes bizarreries de JS. NaN est le résultat d'une opération mathématique invalide, dans le domaine du number.",
   },
   {
-    sectionId: 1,
-    sectionLabel: "Primitives",
+    sectionId: "javascript-1",
     question: "Que retourne NaN === NaN ?",
     options: ["true", "undefined", "false", "TypeError"],
     answerIndex: 2,
@@ -37,8 +33,7 @@ const jsPrimitivesQuestions: QuizQuestion[] = [
       "NaN est la seule valeur en JS qui n'est pas égale à elle-même ! Pour vérifier si une valeur est NaN, on utilise Number.isNaN().",
   },
   {
-    sectionId: 1,
-    sectionLabel: "Primitives",
+    sectionId: "javascript-1",
     question: "Laquelle de ces valeurs est truthy ?",
     options: ['""', "[]", "0", "null"],
     answerIndex: 1,
@@ -46,8 +41,7 @@ const jsPrimitivesQuestions: QuizQuestion[] = [
       "Un tableau vide [] est toujours truthy ! Les 6 valeurs falsy : false, null, undefined, NaN, 0, ''.",
   },
   {
-    sectionId: 1,
-    sectionLabel: "Primitives",
+    sectionId: "javascript-1",
     question: "Quelle est la différence entre null et undefined ?",
     options: [
       "Aucune différence",
@@ -60,8 +54,7 @@ const jsPrimitivesQuestions: QuizQuestion[] = [
       "null → toi tu décides qu'il n'y a rien (volontaire). undefined → JS te dit qu'il ne sait pas encore (pas encore assigné).",
   },
   {
-    sectionId: 1,
-    sectionLabel: "Primitives",
+    sectionId: "javascript-1",
     question: "Que retourne 0.1 + 0.2 ?",
     options: ["0.3", "NaN", "0.03", "0.30000000000000004"],
     answerIndex: 3,
@@ -69,8 +62,7 @@ const jsPrimitivesQuestions: QuizQuestion[] = [
       "Problème de précision des nombres flottants en binaire — certains décimaux ne peuvent pas être représentés exactement.",
   },
   {
-    sectionId: 1,
-    sectionLabel: "Primitives",
+    sectionId: "javascript-1",
     question: "Que retourne ce code ?",
     code: "let name = 'jade';\nname[0] = 'J';\nconsole.log(name);",
     options: ['"jade"', '"Jade"', "TypeError", "undefined"],
@@ -79,8 +71,7 @@ const jsPrimitivesQuestions: QuizQuestion[] = [
       "Les strings sont immutables — on ne peut pas modifier un caractère directement. name reste 'jade'. Pour modifier, il faut créer une nouvelle string.",
   },
   {
-    sectionId: 1,
-    sectionLabel: "Primitives",
+    sectionId: "javascript-1",
     question: "Que retourne Boolean('false') ?",
     options: ["false", "true", "undefined", "TypeError"],
     answerIndex: 1,
@@ -88,8 +79,7 @@ const jsPrimitivesQuestions: QuizQuestion[] = [
       "'false' est une string NON vide → truthy → true. La distinction importante : 'false' (string) ≠ false (boolean).",
   },
   {
-    sectionId: 1,
-    sectionLabel: "Primitives",
+    sectionId: "javascript-1",
     question:
       "Quand on fait `let b = a;` avec `a` un number, que se passe-t-il si on modifie ensuite `b` ?",
     options: [
@@ -98,7 +88,7 @@ const jsPrimitivesQuestions: QuizQuestion[] = [
       "Une erreur est levée",
       "`a` devient `undefined`",
     ],
-    answerIndex: 0,
+    answerIndex: 1,
     explanation:
       "Les primitives (number, string, boolean...) sont copiées par valeur : `b` reçoit une copie indépendante. Modifier `b` n'affecte jamais `a`. C'est l'inverse pour les objets, copiés par référence.",
   },
