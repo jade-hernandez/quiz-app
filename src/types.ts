@@ -1,8 +1,13 @@
 type QuizId = "javascript" | "react";
 
+type Section = {
+  id: string;
+  label: string;
+  theme: QuizId;
+};
+
 type QuizQuestion = {
-  sectionId: number;
-  sectionLabel: string;
+  sectionId: string;
   question: string;
   code?: string;
   options: string[];
@@ -10,4 +15,4 @@ type QuizQuestion = {
   explanation: string;
 };
 
-export type { QuizQuestion, QuizId };
+export type { QuizQuestion, QuizId, Section };
