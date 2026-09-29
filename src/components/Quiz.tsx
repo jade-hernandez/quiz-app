@@ -19,6 +19,9 @@ function Quiz({ quiz, onExit, onFinish }: QuizProps) {
   const hasAnswered = selectedOption !== null;
   const isAnswerCorrect = selectedOption === currentQuestion.answerIndex;
 
+  const questionNumber = currentIndex + 1;
+  const progress = (questionNumber / quiz.questions.length) * 100;
+
   function handleNext() {
     if (currentIndex < quiz.questions.length - 1) {
       setCurrentIndex(previousIndex => previousIndex + 1);
@@ -46,6 +49,7 @@ function Quiz({ quiz, onExit, onFinish }: QuizProps) {
     if (isCorrectAnswer) {
       return "correct";
     }
+
     if (isSelected && !isCorrectAnswer) {
       return "incorrect";
     }
@@ -64,7 +68,25 @@ function Quiz({ quiz, onExit, onFinish }: QuizProps) {
 
       <h1 className='font-display text-lg font-bold'>{quiz.title}</h1>
 
+      <div className='mt-4 mb-6'>
+        <div className='mb-2 flex items-center justify-between text-xs font-medium text-neutral-500'>
+          <span>
+            Question {questionNumber} sur {quiz.questions.length}
+          </span>
+
+          <span>{Math.round(progress)} %</span>
+        </div>
+
+        <div className='h-2 overflow-hidden rounded-full bg-neutral-100'>
+          <div
+            className='h-full rounded-full bg-neutral-900 transition-all duration-300'
+            style={{ width: `${progress}%` }}
+          />
+        </div>
+      </div>
+
       <p className='mt-4 mb-4 text-sm font-medium text-neutral-900'>{currentQuestion.question}</p>
+
       {currentQuestion.code && (
         <div className='mb-4 overflow-x-auto rounded-xl bg-neutral-100 p-4 font-mono text-xs whitespace-pre'>
           {currentQuestion.code}
@@ -81,6 +103,7 @@ function Quiz({ quiz, onExit, onFinish }: QuizProps) {
             onClick={() => handleSelectOption(index)}
           />
         ))}
+
         {hasAnswered && (
           <div
             className={cn(
@@ -94,6 +117,7 @@ function Quiz({ quiz, onExit, onFinish }: QuizProps) {
             {currentQuestion.explanation}
           </div>
         )}
+
         {hasAnswered && (
           <Button
             onClick={handleNext}
@@ -106,4 +130,5 @@ function Quiz({ quiz, onExit, onFinish }: QuizProps) {
     </div>
   );
 }
+
 export { Quiz };
