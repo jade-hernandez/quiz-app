@@ -1,13 +1,24 @@
 import type { ButtonHTMLAttributes } from "react";
 import { cn } from "../utils/utils";
 
-type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
+type ButtonVariant = "primary" | "secondary" | "ghost";
 
-function Button({ className, children, ...rest }: ButtonProps) {
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+  variant?: ButtonVariant;
+};
+
+const variantStyles: Record<ButtonVariant, string> = {
+  primary: "bg-neutral-900 text-white hover:bg-neutral-900/80",
+  secondary: "bg-neutral-100 text-neutral-700 hover:bg-neutral-200",
+  ghost: "bg-transparent text-neutral-400 hover:bg-transparent hover:text-neutral-700",
+};
+
+function Button({ className, children, variant = "primary", ...rest }: ButtonProps) {
   return (
     <button
       className={cn(
-        "rounded-xl bg-neutral-900 px-5 py-2.5 text-sm font-semibold text-white hover:bg-neutral-900/80",
+        "cursor-pointer rounded-xl px-5 py-2.5 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900",
+        variantStyles[variant],
         className,
       )}
       {...rest}
@@ -18,3 +29,4 @@ function Button({ className, children, ...rest }: ButtonProps) {
 }
 
 export { Button };
+export type { ButtonProps, ButtonVariant };

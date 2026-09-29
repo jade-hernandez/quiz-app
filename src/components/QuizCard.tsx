@@ -10,11 +10,11 @@ type QuizCardProps = {
 const colorStyles = {
   amber: {
     title: "font-display text-lg font-bold text-amber-600",
-    cta: "text-sm font-semibold text-amber-600 cursor-pointer",
+    cta: "text-sm font-semibold text-amber-600",
   },
   blue: {
     title: "font-display text-lg font-bold text-blue-600",
-    cta: "text-sm font-semibold text-blue-600 cursor-pointer",
+    cta: "text-sm font-semibold text-blue-600 ",
   },
 };
 
@@ -24,7 +24,7 @@ function QuizCard({ emoji, title, questionCount, description, color, onClick }: 
   return (
     <button
       onClick={onClick}
-      className='flex flex-col gap-4 rounded-2xl border border-neutral-200 p-5 text-left transition-colors hover:border-neutral-400'
+      className='flex cursor-pointer flex-col gap-4 rounded-2xl border border-neutral-200 p-5 text-left transition-colors hover:border-neutral-400'
     >
       <div className='flex items-center justify-between'>
         <span className='text-2xl'>{emoji}</span>
