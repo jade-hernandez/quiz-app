@@ -1,13 +1,15 @@
 import { jsQuestions } from "../data/quiz-questions-js";
 import { reactQuestions } from "../data/quiz-questions-react";
 import type { QuizId } from "../types";
+
 import { QuizCard } from "./QuizCard";
+
 import type { QuizCardProps } from "./QuizCard";
 
 type QuizCardData = Omit<QuizCardProps, "onClick"> & { id: QuizId };
 
 type HomeProps = {
-  onSelectQuiz: (id: QuizId) => void;
+  onSelectTheme: (id: QuizId) => void;
 };
 
 const quizCards: QuizCardData[] = [
@@ -29,17 +31,18 @@ const quizCards: QuizCardData[] = [
   },
 ];
 
-function Home({ onSelectQuiz }: HomeProps) {
+function Home({ onSelectTheme }: HomeProps) {
   return (
     <div className='flex flex-col gap-7'>
       <div className='flex flex-col gap-1'>
         <p className='text-xs font-semibold tracking-wide text-neutral-400 uppercase'>
           Salle de révision
         </p>
-        <h1 className='font-display text-2xl font-bold text-neutral-900'>Choisis ton quiz</h1>
+
+        <h1 className='font-display text-2xl font-bold text-neutral-900'>Choisis ton parcours</h1>
+
         <p className='max-w-prose text-sm text-neutral-500'>
-          Deux parcours complets pour tester ce que tu maîtrises déjà — et repérer ce qu'il reste à
-          revoir.
+          Choisis un thème pour réviser les notions qui t'intéressent.
         </p>
       </div>
 
@@ -47,7 +50,7 @@ function Home({ onSelectQuiz }: HomeProps) {
         <QuizCard
           key={id}
           {...card}
-          onClick={() => onSelectQuiz(id)}
+          onClick={() => onSelectTheme(id)}
         />
       ))}
     </div>
