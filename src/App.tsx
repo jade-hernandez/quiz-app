@@ -81,17 +81,19 @@ function App() {
           />
         )}
 
-        {screen === "quiz" && activeQuiz && (
+        {screen === "quiz" && activeQuiz && selectedTheme && (
           <Quiz
             quiz={activeQuiz}
+            theme={selectedTheme}
             onExit={handleBackToSections}
             onFinish={handleFinishQuiz}
           />
         )}
 
-        {screen === "score" && activeQuiz && finalScore !== null && (
+        {screen === "score" && activeQuiz && selectedTheme && finalScore !== null && (
           <ScoreScreen
             score={finalScore}
+            theme={selectedTheme}
             totalQuestions={activeQuiz.questions.length}
             onExit={handleGoHome}
           />

@@ -1,16 +1,20 @@
 import { useState } from "react";
 import type { QuizData } from "../data/quizzes";
+import { themeStyles } from "../data/theme-styles";
+import type { QuizId } from "../types";
 import { cn } from "../utils/utils";
 import { QuizOption } from "./QuizOption";
 import { Button } from "./Button";
 
 type QuizProps = {
   quiz: QuizData;
+  theme: QuizId;
   onExit: () => void;
   onFinish: (score: number) => void;
 };
 
-function Quiz({ quiz, onExit, onFinish }: QuizProps) {
+function Quiz({ quiz, theme, onExit, onFinish }: QuizProps) {
+  const styles = themeStyles[theme];
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [score, setScore] = useState(0);
@@ -79,7 +83,7 @@ function Quiz({ quiz, onExit, onFinish }: QuizProps) {
 
         <div className='h-2 overflow-hidden rounded-full bg-neutral-100'>
           <div
-            className='h-full rounded-full bg-neutral-900 transition-all duration-300'
+            className={cn("h-full rounded-full transition-all duration-300", styles.progress)}
             style={{ width: `${progress}%` }}
           />
         </div>
@@ -121,7 +125,7 @@ function Quiz({ quiz, onExit, onFinish }: QuizProps) {
         {hasAnswered && (
           <Button
             onClick={handleNext}
-            className='mt-4'
+            className={cn("mt-4", styles.button, styles.outline)}
           >
             {currentIndex < quiz.questions.length - 1 ? "Question suivante" : "Voir les résultats"}
           </Button>

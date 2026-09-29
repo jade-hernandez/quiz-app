@@ -1,3 +1,5 @@
+import { themeStyles } from "../data/theme-styles";
+import { cn } from "../utils/utils";
 import { sections } from "../data/sections";
 import { quizzes } from "../data/quizzes";
 import type { QuizId } from "../types";
@@ -20,6 +22,7 @@ const themeEmojis: Record<QuizId, string> = {
 };
 
 function SectionSelection({ theme, onSelectSection, onBack }: SectionSelectionProps) {
+  const styles = themeStyles[theme];
   const themeSections = sections.filter(section => section.theme === theme);
   const themeQuestions = quizzes[theme].questions;
 
@@ -35,7 +38,7 @@ function SectionSelection({ theme, onSelectSection, onBack }: SectionSelectionPr
           ← Retour
         </Button>
 
-        <p className='text-xs font-semibold tracking-wide text-neutral-400 uppercase'>
+        <p className={cn("text-xs font-semibold tracking-wide uppercase", styles.text)}>
           {themeEmojis[theme]} {themeLabels[theme]}
         </p>
 
@@ -57,7 +60,11 @@ function SectionSelection({ theme, onSelectSection, onBack }: SectionSelectionPr
               key={section.id}
               type='button'
               onClick={() => onSelectSection(section.id)}
-              className='flex w-full cursor-pointer items-center justify-between rounded-2xl border border-neutral-200 bg-white p-5 text-left transition-colors hover:border-neutral-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900'
+              className={cn(
+                "flex w-full cursor-pointer items-center justify-between rounded-2xl border border-neutral-200 bg-white p-5 text-left transition-colors hover:border-neutral-400 focus-visible:outline-2 focus-visible:outline-offset-2",
+                styles.cardHover,
+                styles.outline,
+              )}
             >
               <div className='flex flex-col gap-1'>
                 <span className='font-display text-lg font-bold text-neutral-900'>
@@ -69,7 +76,7 @@ function SectionSelection({ theme, onSelectSection, onBack }: SectionSelectionPr
                 </span>
               </div>
 
-              <span className='text-sm font-semibold text-neutral-900'>Commencer →</span>
+              <span className={cn("text-sm font-semibold", styles.text)}>Commencer →</span>
             </button>
           );
         })}

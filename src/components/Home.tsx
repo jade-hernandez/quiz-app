@@ -6,7 +6,7 @@ import { QuizCard } from "./QuizCard";
 
 import type { QuizCardProps } from "./QuizCard";
 
-type QuizCardData = Omit<QuizCardProps, "onClick"> & { id: QuizId };
+type QuizCardData = Omit<QuizCardProps, "onClick" | "theme"> & { id: QuizId };
 
 type HomeProps = {
   onSelectTheme: (id: QuizId) => void;
@@ -19,7 +19,6 @@ const quizCards: QuizCardData[] = [
     title: "Quiz JavaScript",
     questionCount: jsQuestions.length,
     description: "Les fondamentaux, les fonctions, les objets, et plus encore.",
-    color: "amber",
   },
   {
     id: "react",
@@ -27,7 +26,6 @@ const quizCards: QuizCardData[] = [
     title: "Quiz React",
     questionCount: reactQuestions.length,
     description: "Les fondamentaux, les composants, les hooks, et plus encore.",
-    color: "blue",
   },
 ];
 
@@ -50,6 +48,7 @@ function Home({ onSelectTheme }: HomeProps) {
         <QuizCard
           key={id}
           {...card}
+          theme={id}
           onClick={() => onSelectTheme(id)}
         />
       ))}
