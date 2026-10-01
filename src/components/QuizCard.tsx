@@ -5,13 +5,22 @@ import { cn } from "../utils/utils";
 type QuizCardProps = {
   emoji: string;
   title: string;
+  sectionCount: number;
   questionCount: number;
   description: string;
   theme: QuizId;
   onClick: () => void;
 };
 
-function QuizCard({ emoji, title, questionCount, description, theme, onClick }: QuizCardProps) {
+function QuizCard({
+  emoji,
+  title,
+  questionCount,
+  sectionCount,
+  description,
+  theme,
+  onClick,
+}: QuizCardProps) {
   const styles = themeStyles[theme];
 
   return (
@@ -25,7 +34,10 @@ function QuizCard({ emoji, title, questionCount, description, theme, onClick }: 
     >
       <div className='flex items-center justify-between'>
         <span className='text-2xl'>{emoji}</span>
-        <span className='text-xs font-medium text-neutral-400'>{questionCount} questions</span>
+        <span className='text-xs font-medium text-neutral-400'>
+          {" "}
+          {sectionCount} sujets · {questionCount} questions
+        </span>
       </div>
 
       <div className='flex flex-col gap-1'>
