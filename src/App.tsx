@@ -9,16 +9,14 @@ import { quizzes } from "./data/quizzes";
 import { sections } from "./data/sections";
 
 import type { QuizData } from "./data/quizzes";
-import type { QuizId } from "./types";
+import type { QuizId, QuizResult } from "./types";
 
 function App() {
   const [screen, setScreen] = useState<"home" | "sections" | "quiz" | "score">("home");
-
   const [selectedTheme, setSelectedTheme] = useState<QuizId | null>(null);
-
   const [activeQuiz, setActiveQuiz] = useState<QuizData | null>(null);
-
-  const [finalScore, setFinalScore] = useState<number | null>(null);
+  const [result, setResult] = useState<QuizResult | null>(null);
+  const [quizAttempt, setQuizAttempt] = useState(0);
 
   function handleSelectTheme(id: QuizId) {
     setSelectedTheme(id);
@@ -54,18 +52,24 @@ function App() {
     setScreen("home");
     setSelectedTheme(null);
     setActiveQuiz(null);
-    setFinalScore(null);
+    setResult(null);
   }
 
   function handleBackToSections() {
     setScreen("sections");
     setActiveQuiz(null);
-    setFinalScore(null);
+    setResult(null);
   }
 
-  function handleFinishQuiz(score: number) {
-    setFinalScore(score);
+  function handleFinishQuiz(quizResult: QuizResult) {
+    setResult(quizResult);
     setScreen("score");
+  }
+
+  function handleRetry() {
+    setResult(null);
+    setQuizAttempt(previous => previous + 1);
+    setScreen("quiz");
   }
 
   return (
@@ -83,6 +87,7 @@ function App() {
 
         {screen === "quiz" && activeQuiz && selectedTheme && (
           <Quiz
+            key={quizAttempt}
             quiz={activeQuiz}
             theme={selectedTheme}
             onExit={handleBackToSections}
@@ -90,12 +95,13 @@ function App() {
           />
         )}
 
-        {screen === "score" && activeQuiz && selectedTheme && finalScore !== null && (
+        {screen === "score" && activeQuiz && selectedTheme && result && (
           <ScoreScreen
-            score={finalScore}
+            result={result}
             theme={selectedTheme}
             totalQuestions={activeQuiz.questions.length}
-            onExit={handleGoHome}
+            onRetry={handleRetry}
+            onBackToSections={handleBackToSections}
           />
         )}
       </div>

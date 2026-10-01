@@ -7,6 +7,7 @@ type Section = {
 };
 
 type QuizQuestion = {
+  id: string;
   sectionId: string;
   question: string;
   code?: string;
@@ -15,4 +16,14 @@ type QuizQuestion = {
   explanation: string;
 };
 
-export type { QuizQuestion, QuizId, Section };
+type QuizResult = {
+  score: number;
+  missedQuestions: MissedQuestion[];
+};
+
+type MissedQuestion = {
+  question: QuizQuestion;
+  selectedIndex: number;
+};
+
+export type { QuizQuestion, QuizId, Section, QuizResult, MissedQuestion };

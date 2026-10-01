@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { QuizData } from "../data/quizzes";
 import { themeStyles } from "../data/theme-styles";
-import type { QuizId } from "../types";
+import type { QuizId, QuizResult, MissedQuestion } from "../types";
 import { cn } from "../utils/utils";
 import { QuizOption } from "./QuizOption";
 import { Button } from "./Button";
@@ -10,7 +10,7 @@ type QuizProps = {
   quiz: QuizData;
   theme: QuizId;
   onExit: () => void;
-  onFinish: (score: number) => void;
+  onFinish: (result: QuizResult) => void;
 };
 
 function Quiz({ quiz, theme, onExit, onFinish }: QuizProps) {
@@ -18,6 +18,7 @@ function Quiz({ quiz, theme, onExit, onFinish }: QuizProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [score, setScore] = useState(0);
+  const [missedQuestions, setMissedQuestions] = useState<MissedQuestion[]>([]);
 
   const currentQuestion = quiz.questions[currentIndex];
   const hasAnswered = selectedOption !== null;
@@ -31,7 +32,7 @@ function Quiz({ quiz, theme, onExit, onFinish }: QuizProps) {
       setCurrentIndex(previousIndex => previousIndex + 1);
       setSelectedOption(null);
     } else {
-      onFinish(score);
+      onFinish({ score, missedQuestions });
     }
   }
 
@@ -39,6 +40,11 @@ function Quiz({ quiz, theme, onExit, onFinish }: QuizProps) {
     setSelectedOption(index);
     if (index === currentQuestion.answerIndex) {
       setScore(previousScore => previousScore + 1);
+    } else {
+      setMissedQuestions(previous => [
+        ...previous,
+        { question: currentQuestion, selectedIndex: index },
+      ]);
     }
   }
 
