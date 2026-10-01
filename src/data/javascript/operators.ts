@@ -2,6 +2,7 @@ import type { QuizQuestion } from "../../types";
 
 const jsOperatorsQuestions: QuizQuestion[] = [
   {
+    id: "javascript-3-1",
     sectionId: "javascript-3",
     question: "Que retourne ce code ?",
     code: '"5" + 3 + 2',
@@ -11,6 +12,7 @@ const jsOperatorsQuestions: QuizQuestion[] = [
       "'5' + 3 → '53' (concaténation car string). '53' + 2 → '532'. Seul + déclenche la concaténation avec une string.",
   },
   {
+    id: "javascript-3-2",
     sectionId: "javascript-3",
     question: "Que retourne ce code ?",
     code: '"5" - 3',
@@ -20,6 +22,7 @@ const jsOperatorsQuestions: QuizQuestion[] = [
       "- convertit '5' en number → 5 - 3 = 2. Contrairement à +, les autres opérateurs arithmétiques forcent la conversion en number.",
   },
   {
+    id: "javascript-3-3",
     sectionId: "javascript-3",
     question: "Que retourne ce code ?",
     code: "0 ?? 'défaut'\nfalse ?? 'défaut'",
@@ -29,6 +32,7 @@ const jsOperatorsQuestions: QuizQuestion[] = [
       "?? ne se déclenche que sur null et undefined. 0 et false ne sont ni l'un ni l'autre → retourne 0 et false.",
   },
   {
+    id: "javascript-3-4",
     sectionId: "javascript-3",
     question: "Que retourne ce code ?",
     code: '"10" > "9"',
@@ -38,6 +42,7 @@ const jsOperatorsQuestions: QuizQuestion[] = [
       "Les deux sont des strings → JS compare caractère par caractère. '1' vient avant '9' en ASCII → false. Pas une comparaison numérique !",
   },
   {
+    id: "javascript-3-5",
     sectionId: "javascript-3",
     question: "Que retourne ce code ?",
     code: "const user = null;\nuser?.address?.city ?? 'Inconnue'",
@@ -47,6 +52,7 @@ const jsOperatorsQuestions: QuizQuestion[] = [
       "user est null → user?.address retourne undefined → undefined ?? 'Inconnue' → 'Inconnue'. ?. et ?? font une équipe parfaite !",
   },
   {
+    id: "javascript-3-6",
     sectionId: "javascript-3",
     question: "Quelle est la différence entre == et === ?",
     options: [
@@ -60,6 +66,7 @@ const jsOperatorsQuestions: QuizQuestion[] = [
       "== est l'égalité faible — JS convertit les types avant de comparer. === est stricte — compare valeur ET type sans conversion. Toujours utiliser ===.",
   },
   {
+    id: "javascript-3-7",
     sectionId: "javascript-3",
     question: "Que retourne ce code ?",
     code: "true + true + true",
@@ -69,6 +76,7 @@ const jsOperatorsQuestions: QuizQuestion[] = [
       "true est converti en 1 par coercition numérique. 1 + 1 + 1 = 3. false vaudrait 0.",
   },
   {
+    id: "javascript-3-8",
     sectionId: "javascript-3",
     question: "Que retourne ce code si `user.getName` n'existe pas ?",
     code: "const user = { name: 'Jade' };\nuser.getName?.();",
@@ -83,6 +91,7 @@ const jsOperatorsQuestions: QuizQuestion[] = [
       "`?.()` applique l'optional chaining à l'appel de fonction : si `getName` est `undefined` ou `null`, l'expression s'arrête et retourne `undefined` au lieu de lancer une erreur.",
   },
   {
+    id: "javascript-3-9",
     sectionId: "javascript-3",
     question: "Que retourne ce code ?",
     code: "console.log(0 || 'valeur par défaut');",
@@ -92,6 +101,7 @@ const jsOperatorsQuestions: QuizQuestion[] = [
       "`||` retourne son premier opérande truthy. `0` est falsy, donc `||` évalue et retourne le second opérande. C'est le même piège que `??`, mais `||` se déclenche sur TOUTE valeur falsy (pas seulement null/undefined).",
   },
   {
+    id: "javascript-3-10",
     sectionId: "javascript-3",
     question: "Que fait `??=` dans ce code ?",
     code: "let config = { theme: null };\nconfig.theme ??= 'dark';",

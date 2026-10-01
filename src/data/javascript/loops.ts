@@ -2,6 +2,7 @@ import type { QuizQuestion } from "../../types";
 
 const jsLoopsQuestions: QuizQuestion[] = [
   {
+    id: "javascript-5-1",
     sectionId: "javascript-5",
     question: "Quelle est la différence entre for...of et for...in ?",
     options: [
@@ -15,6 +16,7 @@ const jsLoopsQuestions: QuizQuestion[] = [
       "for...of parcourt les valeurs d'un tableau. for...in parcourt les clés d'un objet. Astuce : of = des valeurs de / in = à l'intérieur des clés de.",
   },
   {
+    id: "javascript-5-2",
     sectionId: "javascript-5",
     question: "Que retourne ce code ?",
     code: "const result = [1, 2, 3].forEach(n => n * 2);",
@@ -24,6 +26,7 @@ const jsLoopsQuestions: QuizQuestion[] = [
       "forEach retourne toujours undefined — il a été conçu pour les effets de bord, pas pour transformer des données. Pour [2, 4, 6], utiliser .map().",
   },
   {
+    id: "javascript-5-3",
     sectionId: "javascript-5",
     question: "Pourquoi utilise-t-on map() plutôt que forEach() en React ?",
     options: [
@@ -37,6 +40,7 @@ const jsLoopsQuestions: QuizQuestion[] = [
       "forEach() retourne undefined → React n'a rien à afficher. map() retourne un nouveau tableau de composants que React peut rendre dans le JSX.",
   },
   {
+    id: "javascript-5-4",
     sectionId: "javascript-5",
     question: "Que retourne ce code ?",
     code: "let i = 10;\ndo {\n  console.log('exécuté');\n} while (i < 5);",
@@ -46,6 +50,7 @@ const jsLoopsQuestions: QuizQuestion[] = [
       "do...while s'exécute toujours au moins une fois avant de vérifier la condition. Même si i = 10 > 5, le bloc s'exécute une fois.",
   },
   {
+    id: "javascript-5-5",
     sectionId: "javascript-5",
     question: "Pourquoi évite-t-on l'index comme key en React ?",
     options: [
@@ -59,6 +64,7 @@ const jsLoopsQuestions: QuizQuestion[] = [
       "Si la liste est réordonnée ou filtrée, l'index change et React peut confondre les éléments → bugs visuels. Il faut toujours un id unique et stable.",
   },
   {
+    id: "javascript-5-6",
     sectionId: "javascript-5",
     question: "Quelle est la différence entre `break` et `continue` dans une boucle ?",
     options: [
@@ -72,6 +78,7 @@ const jsLoopsQuestions: QuizQuestion[] = [
       "`break` sort définitivement de la boucle. `continue` saute uniquement le reste du code de l'itération actuelle, puis continue avec la suivante.",
   },
   {
+    id: "javascript-5-7",
     sectionId: "javascript-5",
     question: "Que fait ce code ?",
     code: "const user = { name: 'Jade', age: 28 };\nfor (const [key, value] of Object.entries(user)) {\n  console.log(key, value);\n}",
@@ -86,6 +93,7 @@ const jsLoopsQuestions: QuizQuestion[] = [
       "`Object.entries()` transforme l'objet en tableau de paires `[clé, valeur]`. La déstructuration `[key, value]` dans le `for...of` extrait chaque paire à chaque itération.",
   },
   {
+    id: "javascript-5-8",
     sectionId: "javascript-5",
     question: "Que retourne ce code ?",
     code: "const arr = Array.from({ length: 3 }, (_, i) => i * 2);",
@@ -95,6 +103,7 @@ const jsLoopsQuestions: QuizQuestion[] = [
       "`Array.from({ length: 3 }, callback)` crée un tableau de 3 éléments et applique le callback `(élément, index)` à chacun. Ici `i * 2` pour `i` de 0 à 2 donne `[0, 2, 4]` — un pattern courant pour générer des séquences.",
   },
   {
+    id: "javascript-5-9",
     sectionId: "javascript-5",
     question: "Qu'est-ce qui ne va pas dans ce code ?",
     code: "let i = 0;\nwhile (i < 5) {\n  console.log(i);\n}",
@@ -109,6 +118,7 @@ const jsLoopsQuestions: QuizQuestion[] = [
       "`i` reste à `0` pour toujours, car rien à l'intérieur du bloc ne l'incrémente. La condition `i < 5` sera donc toujours vraie → boucle infinie qui plantera l'onglet du navigateur.",
   },
   {
+    id: "javascript-5-10",
     sectionId: "javascript-5",
     question: "Que retourne ce code ?",
     code: "const words = ['a', 'b', 'c'];\nconst indexed = words.reduce((acc, word, i) => {\n  acc[word] = i;\n  return acc;\n}, {});",

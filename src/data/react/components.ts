@@ -2,6 +2,7 @@ import type { QuizQuestion } from "../../types";
 
 const reactComponentsQuestions: QuizQuestion[] = [
   {
+    id: "react-2-1",
     sectionId: "react-2",
     question: "Pourquoi le nom d'un composant React doit commencer par une majuscule ?",
     options: [
@@ -15,6 +16,7 @@ const reactComponentsQuestions: QuizQuestion[] = [
       "Minuscule = balise HTML native (<div>). Majuscule = composant React (<MonComposant>). React utilise cette convention pour la réconciliation.",
   },
   {
+    id: "react-2-2",
     sectionId: "react-2",
     question: "Qu'est-ce qui a rendu les composants de classe obsolètes ?",
     options: [
@@ -28,6 +30,7 @@ const reactComponentsQuestions: QuizQuestion[] = [
       "Les Hooks (useState, useEffect...) introduits en React 16.8 donnent aux composants fonctionnels toutes les capacités des classes, avec un code plus simple.",
   },
   {
+    id: "react-2-3",
     sectionId: "react-2",
     question: "Quelle règle s'applique obligatoirement aux Hooks ?",
     options: [
@@ -41,6 +44,7 @@ const reactComponentsQuestions: QuizQuestion[] = [
       "React maintient l'ordre des Hooks entre les rendus. Les appeler dans des conditions ou boucles briserait cet ordre et causerait des bugs imprévisibles.",
   },
   {
+    id: "react-2-4",
     sectionId: "react-2",
     question: "Qu'est-ce que `children` dans `function Card({ children })` ?",
     options: [
@@ -54,6 +58,7 @@ const reactComponentsQuestions: QuizQuestion[] = [
       "`<Card>Contenu ici</Card>` place automatiquement 'Contenu ici' dans la prop `children` de `Card`. C'est ce qui permet à un composant d'englober du contenu arbitraire, comme une `<div>` HTML classique.",
   },
   {
+    id: "react-2-5",
     sectionId: "react-2",
     question: "En React, préfère-t-on généralement la composition ou l'héritage entre composants ?",
     options: [
@@ -67,6 +72,7 @@ const reactComponentsQuestions: QuizQuestion[] = [
       "React encourage la composition (un composant utilise `children` ou d'autres composants comme props) plutôt que l'héritage de classes, jugé plus rigide et plus difficile à faire évoluer dans une UI.",
   },
   {
+    id: "react-2-6",
     sectionId: "react-2",
     question: "Un composant peut-il retourner `null` ?",
     options: [
@@ -80,6 +86,7 @@ const reactComponentsQuestions: QuizQuestion[] = [
       "Retourner `null` est parfaitement valide et courant : c'est le moyen standard pour un composant de dire 'je ne rends rien à l'écran pour l'instant', par exemple avant que des données soient chargées.",
   },
   {
+    id: "react-2-7",
     sectionId: "react-2",
     question:
       "Pourquoi cherche-t-on généralement à garder les composants petits et focalisés sur une seule responsabilité ?",
@@ -94,6 +101,7 @@ const reactComponentsQuestions: QuizQuestion[] = [
       "Un composant qui fait 'une seule chose' est plus simple à comprendre d'un coup d'œil, plus facile à tester isolément, et plus probable d'être réutilisable ailleurs dans l'app — le même principe de responsabilité unique qu'en programmation générale.",
   },
   {
+    id: "react-2-8",
     sectionId: "react-2",
     question:
       "Quelle est la différence entre un export nommé et un export par défaut pour un composant ?",
@@ -108,6 +116,7 @@ const reactComponentsQuestions: QuizQuestion[] = [
       "`export { Button }` oblige à importer avec `import { Button } from ...` (même nom). `export default Button` permet d'importer sous n'importe quel nom (`import MonBouton from ...`) — d'où l'intérêt des exports nommés pour la cohérence dans un projet.",
   },
   {
+    id: "react-2-9",
     sectionId: "react-2",
     question:
       "Que désigne la distinction entre composant 'présentational' et composant 'container' ?",
@@ -122,6 +131,7 @@ const reactComponentsQuestions: QuizQuestion[] = [
       "Un composant présentational reçoit des données en props et se contente de les afficher (souvent sans state). Un composant container gère la logique, l'état, les appels de données, et les transmet aux composants présentationnels. La frontière est parfois floue, mais le principe aide à organiser le code.",
   },
   {
+    id: "react-2-10",
     sectionId: "react-2",
     question:
       "Comment TypeScript aide-t-il à valider les props d'un composant, comparé à PropTypes ?",

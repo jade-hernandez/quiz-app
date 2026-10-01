@@ -2,6 +2,7 @@ import type { QuizQuestion } from "../../types";
 
 const jsConditionsQuestions: QuizQuestion[] = [
   {
+    id: "javascript-4-1",
     sectionId: "javascript-4",
     question: "Que retourne ce code ?",
     code: 'const jour = "lundi";\nswitch (jour) {\n  case "lundi":\n    console.log("A");\n  case "mardi":\n    console.log("B");\n  default:\n    console.log("C");\n}',
@@ -11,6 +12,7 @@ const jsConditionsQuestions: QuizQuestion[] = [
       "Pas de break → fallthrough ! JS exécute 'lundi' puis continue sur 'mardi' et default. Les 3 messages sont affichés.",
   },
   {
+    id: "javascript-4-2",
     sectionId: "javascript-4",
     question: "Lequel de ces if s'exécute ?",
     options: ["if (0)", "if (null)", "if (undefined)", 'if ("false")'],
@@ -19,6 +21,7 @@ const jsConditionsQuestions: QuizQuestion[] = [
       "'false' est une string NON vide → truthy → s'exécute. 0, null et undefined sont falsy.",
   },
   {
+    id: "javascript-4-3",
     sectionId: "javascript-4",
     question: "Pourquoi ne peut-on pas utiliser if...else directement dans le JSX React ?",
     options: [
@@ -32,6 +35,7 @@ const jsConditionsQuestions: QuizQuestion[] = [
       "JSX n'accepte que des expressions dans {}. if...else est une instruction sans valeur de retour. Le ternaire et && sont des expressions.",
   },
   {
+    id: "javascript-4-4",
     sectionId: "javascript-4",
     question: "Que se passe-t-il dans le DOM React avec ce code quand count = 0 ?",
     code: "{count && <p>{count}</p>}",
@@ -46,6 +50,7 @@ const jsConditionsQuestions: QuizQuestion[] = [
       "0 est falsy → && retourne 0. React affiche les nombres dans le DOM → '0' apparaît. Solution : {count > 0 && <p>{count}</p>}.",
   },
   {
+    id: "javascript-4-5",
     sectionId: "javascript-4",
     question: "Dans quel cas utilise-t-on switch plutôt que if...else ?",
     options: [
@@ -59,6 +64,7 @@ const jsConditionsQuestions: QuizQuestion[] = [
       "switch brille quand on compare une même variable à plusieurs valeurs — plus lisible qu'une longue chaîne de else if. C'est pour ça qu'il va bien avec useReducer.",
   },
   {
+    id: "javascript-4-6",
     sectionId: "javascript-4",
     question: "Ce code affiche-t-il le message ?",
     code: "if ({}) {\n  console.log('exécuté');\n}",
@@ -73,6 +79,7 @@ const jsConditionsQuestions: QuizQuestion[] = [
       "Comme pour le tableau vide `[]`, un objet vide `{}` est truthy. Seules 6 valeurs sont falsy en JS : `false, 0, '', null, undefined, NaN` — un objet n'en fait jamais partie, peu importe son contenu.",
   },
   {
+    id: "javascript-4-7",
     sectionId: "javascript-4",
     question: "Que retourne ce code ?",
     code: "const note = 15;\nconst mention = note >= 16 ? 'Très bien' : note >= 14 ? 'Bien' : 'Assez bien';",
@@ -82,6 +89,7 @@ const jsConditionsQuestions: QuizQuestion[] = [
       "Les ternaires imbriqués s'évaluent de gauche à droite : `note >= 16` est faux (15 < 16), on passe au ternaire suivant `note >= 14` qui est vrai → 'Bien'. Pratique mais à utiliser avec parcimonie pour la lisibilité.",
   },
   {
+    id: "javascript-4-8",
     sectionId: "javascript-4",
     question: "Que retourne ce code ?",
     code: "const id = '3';\nswitch (id) {\n  case 3:\n    console.log('trouvé');\n    break;\n  default:\n    console.log('non trouvé');\n}",
@@ -91,6 +99,7 @@ const jsConditionsQuestions: QuizQuestion[] = [
       "`switch` compare avec `===` (égalité stricte), sans coercition de type. `'3'` (string) n'est pas strictement égal à `3` (number), donc aucun `case` ne correspond et c'est le `default` qui s'exécute.",
   },
   {
+    id: "javascript-4-9",
     sectionId: "javascript-4",
     question:
       "Dans une chaîne `if / else if / else`, combien de blocs peuvent s'exécuter au maximum pour un seul passage ?",
@@ -105,6 +114,7 @@ const jsConditionsQuestions: QuizQuestion[] = [
       "`if / else if / else` s'arrête au premier bloc vrai — contrairement à plusieurs `if` indépendants, qui testeraient chacun leur condition sans lien avec les autres.",
   },
   {
+    id: "javascript-4-10",
     sectionId: "javascript-4",
     question: "Que retourne ce code si `user` vaut `null` ?",
     code: "const user = null;\nif (user?.isAdmin) {\n  console.log('accès admin');\n} else {\n  console.log('accès refusé');\n}",

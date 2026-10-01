@@ -2,6 +2,7 @@ import type { QuizQuestion } from "../../types";
 
 const reactListsAndKeysQuestions: QuizQuestion[] = [
   {
+    id: "react-7-1",
     sectionId: "react-7",
     question: "Pourquoi React a-t-il besoin de la prop key sur les éléments d'une liste ?",
     options: [
@@ -15,6 +16,7 @@ const reactListsAndKeysQuestions: QuizQuestion[] = [
       "La key permet à React d'identifier chaque élément lors de la réconciliation. Sans elle, React compare par position et peut faire des erreurs quand la liste change.",
   },
   {
+    id: "react-7-2",
     sectionId: "react-7",
     question: "Pourquoi évite-t-on l'index comme key ?",
     options: [
@@ -28,6 +30,7 @@ const reactListsAndKeysQuestions: QuizQuestion[] = [
       "Si un élément est supprimé, tous les index suivants changent. React voit les mêmes keys mais des éléments différents — erreurs de rendu possibles.",
   },
   {
+    id: "react-7-3",
     sectionId: "react-7",
     question: "La prop key est-elle accessible dans le composant enfant ?",
     options: [
@@ -41,6 +44,7 @@ const reactListsAndKeysQuestions: QuizQuestion[] = [
       "key est une prop réservée par React pour la réconciliation. Elle vaut undefined si on essaie d'y accéder dans l'enfant. Pour l'utiliser dans l'enfant, on la passe en prop séparée.",
   },
   {
+    id: "react-7-4",
     sectionId: "react-7",
     question:
       "Une `key` doit-elle être unique dans toute l'application, ou seulement à un endroit précis ?",
@@ -55,6 +59,7 @@ const reactListsAndKeysQuestions: QuizQuestion[] = [
       "React ne compare les keys qu'entre éléments frères, générés par le même `.map()`. Deux listes différentes ailleurs dans l'app peuvent parfaitement réutiliser les mêmes valeurs de key sans aucun conflit.",
   },
   {
+    id: "react-7-5",
     sectionId: "react-7",
     question: "Que faut-il faire avant de mapper une liste de données qu'on veut filtrer ?",
     code: "// Objectif : n'afficher que les tâches non terminées\n{tasks.map(task => <TaskItem key={task.id} task={task} />)}",
@@ -69,6 +74,7 @@ const reactListsAndKeysQuestions: QuizQuestion[] = [
       "`tasks.filter(t => !t.done).map(task => <TaskItem key={task.id} task={task} />)` — on filtre d'abord le tableau de données, puis on mappe le résultat. Le filtrage est une opération sur les données, distincte de l'affichage.",
   },
   {
+    id: "react-7-6",
     sectionId: "react-7",
     question:
       "Comment gère-t-on des listes imbriquées (une liste de catégories, chacune avec sa propre liste d'articles) ?",
@@ -83,6 +89,7 @@ const reactListsAndKeysQuestions: QuizQuestion[] = [
       "Chaque `.map()` génère sa propre liste d'éléments frères, donc chaque niveau a besoin de sa propre `key` (souvent l'id de la catégorie pour le niveau externe, l'id de l'article pour le niveau interne).",
   },
   {
+    id: "react-7-7",
     sectionId: "react-7",
     question:
       "Que signifie l'avertissement React : \"Each child in a list should have a unique 'key' prop\" ?",
@@ -97,6 +104,7 @@ const reactListsAndKeysQuestions: QuizQuestion[] = [
       "Cet avertissement (pas une erreur bloquante) apparaît dans la console dès que React détecte une liste d'éléments générés dynamiquement sans `key`. Il invite à en ajouter une pour permettre une réconciliation fiable.",
   },
   {
+    id: "react-7-8",
     sectionId: "react-7",
     question: "Peut-on utiliser `Math.random()` pour générer une `key` ?",
     options: [
@@ -110,6 +118,7 @@ const reactListsAndKeysQuestions: QuizQuestion[] = [
       "Une key doit rester stable entre les rendus pour qu'un élément garde son identité. `Math.random()` génère une valeur différente à chaque rendu — React croit alors que chaque élément est nouveau, et le démonte/remonte à chaque fois (perte de state local, animations cassées...).",
   },
   {
+    id: "react-7-9",
     sectionId: "react-7",
     question:
       "Comment donner une `key` quand on doit retourner plusieurs éléments par itération, sans wrapper visible dans le DOM ?",
@@ -125,6 +134,7 @@ const reactListsAndKeysQuestions: QuizQuestion[] = [
       "Le raccourci `<>...</>` n'accepte aucune prop, y compris `key`. Quand une key est nécessaire sur un Fragment (cas des listes), il faut utiliser la forme complète : `import { Fragment } from 'react'` puis `<Fragment key={item.id}>`.",
   },
   {
+    id: "react-7-10",
     sectionId: "react-7",
     question: "Un élément peut-il avoir à la fois une prop `key` et une prop `id` ?",
     options: [

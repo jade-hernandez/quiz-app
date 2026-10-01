@@ -2,6 +2,7 @@ import type { QuizQuestion } from "../../types";
 
 const reactJsxQuestions: QuizQuestion[] = [
   {
+    id: "react-3-1",
     sectionId: "react-3",
     question: "En quoi Babel transforme-t-il le JSX ?",
     options: ["En HTML pur", "En JSON", "En CSS-in-JS", "En appels React.createElement()"],
@@ -10,6 +11,7 @@ const reactJsxQuestions: QuizQuestion[] = [
       "Babel transforme chaque balise JSX en React.createElement(type, props, enfants). C'est pour ça qu'on appelle JSX du sucre syntaxique.",
   },
   {
+    id: "react-3-2",
     sectionId: "react-3",
     question: "Qu'affiche ce code à l'écran ?",
     code: "const items = [];\nreturn <div>{items.length && <Liste />}</div>;",
@@ -19,6 +21,7 @@ const reactJsxQuestions: QuizQuestion[] = [
       "Piège classique ! items.length vaut 0. React affiche 0 car c'est un nombre. Solution : items.length > 0 && <Liste /> pour retourner un booléen.",
   },
   {
+    id: "react-3-3",
     sectionId: "react-3",
     question: "Quel est l'avantage de <> </> par rapport à une <div> englobante ?",
     options: [
@@ -32,6 +35,7 @@ const reactJsxQuestions: QuizQuestion[] = [
       "Un Fragment n'existe que dans le Virtual DOM — aucune trace dans le HTML final. La <div> inutile peut casser le CSS.",
   },
   {
+    id: "react-3-4",
     sectionId: "react-3",
     question: "Pourquoi ne peut-on pas écrire {if (...) {}} dans du JSX ?",
     options: [
@@ -45,6 +49,7 @@ const reactJsxQuestions: QuizQuestion[] = [
       "Les {} attendent une expression (qui produit une valeur). if est une instruction. On utilise le ternaire condition ? A : B à la place.",
   },
   {
+    id: "react-3-5",
     sectionId: "react-3",
     question:
       "Que se passe-t-il si un composant essaie de retourner deux éléments côte à côte sans les envelopper ?",
@@ -60,6 +65,7 @@ const reactJsxQuestions: QuizQuestion[] = [
       "JSX exige un seul élément racine. Il faut envelopper dans une `<div>` ou, mieux, un Fragment (`<>...</>`) qui n'ajoute aucun nœud supplémentaire au DOM final.",
   },
   {
+    id: "react-3-6",
     sectionId: "react-3",
     question: "Pourquoi écrit-on `className` plutôt que `class` en JSX ?",
     options: [
@@ -73,6 +79,7 @@ const reactJsxQuestions: QuizQuestion[] = [
       "JSX se transforme en JavaScript, où `class` est déjà un mot-clé réservé (pour la syntaxe des classes ES6). Pour éviter le conflit, React utilise `className`, qui correspond à l'attribut `class` une fois rendu dans le vrai HTML.",
   },
   {
+    id: "react-3-7",
     sectionId: "react-3",
     question: "Comment applique-t-on un style inline à un élément en JSX ?",
     code: '<p style={{ color: "red", fontSize: 20 }}>Texte</p>',
@@ -87,6 +94,7 @@ const reactJsxQuestions: QuizQuestion[] = [
       "Les premières accolades `{}` introduisent une expression JS, les secondes créent l'objet littéral du style. Les propriétés CSS s'écrivent en camelCase (`fontSize`, pas `font-size`) car ce sont des clés d'objet JavaScript.",
   },
   {
+    id: "react-3-8",
     sectionId: "react-3",
     question: "Comment écrit-on un commentaire à l'intérieur du JSX ?",
     options: ["// commentaire", "<!-- commentaire -->", "# commentaire", "{/* commentaire */}"],
@@ -95,6 +103,7 @@ const reactJsxQuestions: QuizQuestion[] = [
       "À l'intérieur du JSX, un commentaire doit être une expression JavaScript valide entre accolades : `{/* ... */}`. Les syntaxes `//` et `<!-- -->` ne fonctionnent pas dans ce contexte précis.",
   },
   {
+    id: "react-3-9",
     sectionId: "react-3",
     question: "Que vaut l'attribut `disabled` ici ?",
     code: "<button disabled>Valider</button>",
@@ -109,6 +118,7 @@ const reactJsxQuestions: QuizQuestion[] = [
       "Pour les attributs booléens, JSX permet un raccourci : les écrire seuls (sans `={...}`) équivaut à leur donner la valeur `true`. `disabled` seul est donc identique à `disabled={true}`.",
   },
   {
+    id: "react-3-10",
     sectionId: "react-3",
     question: "Que fait `{...props}` sur un élément JSX ?",
     code: "function Input(props) {\n  return <input {...props} />;\n}",

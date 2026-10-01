@@ -2,6 +2,7 @@ import type { QuizQuestion } from "../../types";
 
 const reactReactBasicsQuestions: QuizQuestion[] = [
   {
+    id: "react-1-1",
     sectionId: "react-1",
     question: "En quoi le rôle de React diffère-t-il de celui de Next.js ?",
     options: [
@@ -15,6 +16,7 @@ const reactReactBasicsQuestions: QuizQuestion[] = [
       "Next.js est construit au-dessus de React : il ajoute le routing basé sur les fichiers, le rendu serveur, l'optimisation des images, etc. React reste la bibliothèque qui gère l'affichage des composants ; Next.js est le framework qui structure l'application autour de React.",
   },
   {
+    id: "react-1-2",
     sectionId: "react-1",
     question: "Qu'est-ce que la réconciliation ?",
     options: [
@@ -28,6 +30,7 @@ const reactReactBasicsQuestions: QuizQuestion[] = [
       "La réconciliation est le processus par lequel React compare les deux états du Virtual DOM et ne met à jour que les parties du DOM réel qui ont changé.",
   },
   {
+    id: "react-1-3",
     sectionId: "react-1",
     question: "Laquelle de ces affirmations sur React et les SPAs est correcte ?",
     options: [
@@ -41,6 +44,7 @@ const reactReactBasicsQuestions: QuizQuestion[] = [
       "React est un outil. La SPA est un pattern architectural. Avec Next.js, React peut aussi faire du rendu côté serveur.",
   },
   {
+    id: "react-1-4",
     sectionId: "react-1",
     question: "Que veut-on dire quand on affirme que React est 'déclaratif' plutôt qu'impératif ?",
     options: [
@@ -54,6 +58,7 @@ const reactReactBasicsQuestions: QuizQuestion[] = [
       "En impératif, on dirait 'crée cet élément, puis ajoute-le ici'. En déclaratif, on dit juste 'voici à quoi l'UI doit ressembler pour cet état' — React se charge de calculer les manipulations du DOM nécessaires.",
   },
   {
+    id: "react-1-5",
     sectionId: "react-1",
     question: "Qu'est-ce qui déclenche un nouveau rendu (re-render) d'un composant ?",
     options: [
@@ -67,6 +72,7 @@ const reactReactBasicsQuestions: QuizQuestion[] = [
       "React re-rend un composant quand son state change (via un setter), quand ses props changent, ou quand son composant parent se re-rend. C'est le mécanisme central qui garde l'UI synchronisée avec les données.",
   },
   {
+    id: "react-1-6",
     sectionId: "react-1",
     question: "Dans quel sens l'information circule-t-elle dans un arbre de composants React ?",
     options: [
@@ -80,6 +86,7 @@ const reactReactBasicsQuestions: QuizQuestion[] = [
       "React suit un flux de données unidirectionnel (top-down) : un parent transmet des données à ses enfants via les props. Pour qu'un enfant influence son parent, il faut un mécanisme explicite (une fonction passée en prop).",
   },
   {
+    id: "react-1-7",
     sectionId: "react-1",
     question: "À quoi sert `<React.StrictMode>` ?",
     options: [
@@ -93,6 +100,7 @@ const reactReactBasicsQuestions: QuizQuestion[] = [
       "StrictMode n'a aucun effet visuel et ne change rien en production. En développement, il exécute certaines fonctions (comme le corps des composants) deux fois pour aider à repérer des effets de bord cachés ou du code non idempotent.",
   },
   {
+    id: "react-1-8",
     sectionId: "react-1",
     question: "Qu'est-ce que le Virtual DOM, concrètement ?",
     options: [
@@ -106,6 +114,7 @@ const reactReactBasicsQuestions: QuizQuestion[] = [
       "Le Virtual DOM est un simple objet JavaScript qui décrit l'UI voulue. Manipuler cet objet est bien moins coûteux que manipuler le vrai DOM directement — React ne touche au vrai DOM qu'après avoir calculé les différences nécessaires (la réconciliation).",
   },
   {
+    id: "react-1-9",
     sectionId: "react-1",
     question: "Quelle est la différence entre les packages `react` et `react-dom` ?",
     options: [
@@ -119,6 +128,7 @@ const reactReactBasicsQuestions: QuizQuestion[] = [
       "`react` est indépendant de la plateforme (composants, Hooks, JSX). `react-dom` fournit les fonctions pour afficher ces composants spécifiquement dans un navigateur (`createRoot`, `render`...). React Native utilise `react` avec un renderer différent.",
   },
   {
+    id: "react-1-10",
     sectionId: "react-1",
     question: "À quoi servent les React DevTools (extension navigateur) ?",
     options: [

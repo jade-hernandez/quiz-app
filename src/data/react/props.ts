@@ -2,6 +2,7 @@ import type { QuizQuestion } from "../../types";
 
 const reactPropsQuestions: QuizQuestion[] = [
   {
+    id: "react-4-1",
     sectionId: "react-4",
     question: "Dans quel sens circulent les props ?",
     options: [
@@ -15,6 +16,7 @@ const reactPropsQuestions: QuizQuestion[] = [
       "Les props suivent un flux unidirectionnel : toujours du parent vers l'enfant. C'est ce qui rend l'app prévisible et facile à déboguer.",
   },
   {
+    id: "react-4-2",
     sectionId: "react-4",
     question: "Comment un enfant peut-il déclencher une modification de données dans le parent ?",
     options: [
@@ -28,6 +30,7 @@ const reactPropsQuestions: QuizQuestion[] = [
       "Le parent passe une fonction en prop. L'enfant l'appelle. Le parent met à jour son state. React re-rend avec les nouvelles props.",
   },
   {
+    id: "react-4-3",
     sectionId: "react-4",
     question: "Que vaut la prop age ici ?",
     code: '<Bouton age="28" />',
@@ -37,6 +40,7 @@ const reactPropsQuestions: QuizQuestion[] = [
       "Les guillemets produisent une string. Pour passer un nombre, il faut les accolades : age={28}.",
   },
   {
+    id: "react-4-4",
     sectionId: "react-4",
     question: "Un composant enfant peut-il modifier directement une prop qu'il a reçue ?",
     code: "function Greeting({ name }) {\n  name = 'Modifié';\n  return <p>{name}</p>;\n}",
@@ -51,6 +55,7 @@ const reactPropsQuestions: QuizQuestion[] = [
       "Les props sont en lecture seule (read-only) du point de vue de l'enfant. Réassigner la variable locale `name` fonctionne comme n'importe quelle variable JS, mais ça n'a aucun effet sur la vraie source de la donnée chez le parent.",
   },
   {
+    id: "react-4-5",
     sectionId: "react-4",
     question: "Que vaut `size` ici si le parent ne passe pas cette prop ?",
     code: "function Avatar({ size = 'medium' }) {\n  return <img className={size} />;\n}",
@@ -60,6 +65,7 @@ const reactPropsQuestions: QuizQuestion[] = [
       "Comme pour une variable classique, on peut donner une valeur par défaut à une prop directement dans la déstructuration des paramètres. Si `size` n'est pas fournie, `'medium'` est utilisée.",
   },
   {
+    id: "react-4-6",
     sectionId: "react-4",
     question: "`children` est-elle une prop comme les autres ?",
     options: [
@@ -73,6 +79,7 @@ const reactPropsQuestions: QuizQuestion[] = [
       "`children` fonctionne exactement comme n'importe quelle autre prop (on peut la lire, la passer plus loin), à la différence qu'elle est remplie implicitement par React à partir du contenu placé entre les balises d'ouverture et de fermeture.",
   },
   {
+    id: "react-4-7",
     sectionId: "react-4",
     question: "Qu'est-ce que le 'prop drilling' ?",
     options: [
@@ -86,6 +93,7 @@ const reactPropsQuestions: QuizQuestion[] = [
       "Le prop drilling arrive quand une donnée doit passer par plusieurs niveaux de composants intermédiaires (qui ne l'utilisent pas, juste pour la retransmettre) avant d'atteindre le composant qui en a réellement besoin. `useContext` est une des solutions pour éviter ça.",
   },
   {
+    id: "react-4-8",
     sectionId: "react-4",
     question:
       "Comment typer les props d'un composant avec TypeScript, selon la convention la plus courante ?",
@@ -101,6 +109,7 @@ const reactPropsQuestions: QuizQuestion[] = [
       "On décrit la forme des props avec un `type` ou une `interface`, puis on l'utilise dans la signature : `function Button({ label, onClick }: ButtonProps)`. TypeScript vérifie alors que chaque utilisation du composant respecte cette forme.",
   },
   {
+    id: "react-4-9",
     sectionId: "react-4",
     question: "Que fait ce composant avec `...rest` ?",
     code: "function Button({ label, ...rest }) {\n  return <button {...rest}>{label}</button>;\n}",
@@ -115,6 +124,7 @@ const reactPropsQuestions: QuizQuestion[] = [
       "`...rest` (rest pattern) capture toutes les propriétés non explicitement déstructurées (`onClick`, `disabled`, `className`...) dans un objet. `{...rest}` les étale ensuite sur le `<button>` natif — pattern courant pour créer un composant qui garde toute la flexibilité d'un élément HTML.",
   },
   {
+    id: "react-4-10",
     sectionId: "react-4",
     question:
       'Que se passe-t-il si deux composants frères reçoivent la même prop `color="blue"` du même parent ?',

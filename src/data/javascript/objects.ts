@@ -2,6 +2,7 @@ import type { QuizQuestion } from "../../types";
 
 const jsObjectsQuestions: QuizQuestion[] = [
   {
+    id: "javascript-8-1",
     sectionId: "javascript-8",
     question: "Que retourne ce code ?",
     code: "const user = { name: 'Wayne' };\nconst { name, city = 'Gotham' } = user;\nconsole.log(city);",
@@ -11,6 +12,7 @@ const jsObjectsQuestions: QuizQuestion[] = [
       "city n'existe pas dans user → JS utilise la valeur par défaut 'Gotham'. Sans valeur par défaut, ce serait undefined.",
   },
   {
+    id: "javascript-8-2",
     sectionId: "javascript-8",
     question: "Que retourne ce code ?",
     code: "const user = { name: 'Wayne' };\nconst { name: userName } = user;\nconsole.log(userName);\nconsole.log(name);",
@@ -25,6 +27,7 @@ const jsObjectsQuestions: QuizQuestion[] = [
       "Le renommage { name: userName } crée userName avec la valeur de name. La variable name n'existe pas dans ce scope → ReferenceError.",
   },
   {
+    id: "javascript-8-3",
     sectionId: "javascript-8",
     question: "Que retourne ce code ?",
     code: "const user1 = { name: 'Wayne' };\nconst user2 = user1;\nuser2.name = 'Clark';\nconsole.log(user1.name);",
@@ -34,6 +37,7 @@ const jsObjectsQuestions: QuizQuestion[] = [
       "Passage par référence — user2 = user1 ne copie pas l'objet. Les deux pointent vers le même objet en mémoire. Modifier user2.name modifie aussi user1.name.",
   },
   {
+    id: "javascript-8-4",
     sectionId: "javascript-8",
     question: "Quelle est la différence entre shallow copy et deep copy ?",
     options: [
@@ -47,6 +51,7 @@ const jsObjectsQuestions: QuizQuestion[] = [
       "Shallow copy {...obj} copie 1 niveau — les objets imbriqués sont partagés. Deep copy structuredClone() copie tout — complètement indépendante.",
   },
   {
+    id: "javascript-8-5",
     sectionId: "javascript-8",
     question: "Que retourne Object.entries({ name: 'Wayne', age: 35 }) ?",
     options: [
@@ -60,6 +65,7 @@ const jsObjectsQuestions: QuizQuestion[] = [
       "Object.entries() retourne un tableau de paires [clé, valeur]. Très utile combiné avec map() pour transformer un objet.",
   },
   {
+    id: "javascript-8-6",
     sectionId: "javascript-8",
     question: "Que fait ...rest dans ce composant React ?",
     code: "function Button({ label, ...rest }) {\n  return <button {...rest}>{label}</button>;\n}",
@@ -74,6 +80,7 @@ const jsObjectsQuestions: QuizQuestion[] = [
       "...rest récupère toutes les props non déstructurées (onClick, className, etc.) et {...rest} les étale sur le bouton. Pattern très courant en React.",
   },
   {
+    id: "javascript-8-7",
     sectionId: "javascript-8",
     question: "Que retourne ce code ?",
     code: "const fruits = ['pomme', 'banane', 'cerise'];\nconst [first, ...rest] = fruits;\nconsole.log(rest);",
@@ -83,6 +90,7 @@ const jsObjectsQuestions: QuizQuestion[] = [
       "...rest récupère tous les éléments restants après first. first = 'pomme', rest = ['banane', 'cerise'].",
   },
   {
+    id: "javascript-8-8",
     sectionId: "javascript-8",
     question: "Que retourne ce code si `user.address` n'existe pas ?",
     code: "const user = { name: 'Wayne' };\nconsole.log(user.address?.city);",
@@ -97,6 +105,7 @@ const jsObjectsQuestions: QuizQuestion[] = [
       "`?.` (optional chaining) vérifie chaque étape avant de continuer : si `user.address` est `undefined`, l'expression s'arrête et retourne `undefined` au lieu de planter en essayant de lire `.city` sur `undefined`.",
   },
   {
+    id: "javascript-8-9",
     sectionId: "javascript-8",
     question: "Que se passe-t-il avec ce code ?",
     code: "const user = Object.freeze({ name: 'Wayne' });\nuser.name = 'Clark';\nconsole.log(user.name);",
@@ -111,6 +120,7 @@ const jsObjectsQuestions: QuizQuestion[] = [
       "`Object.freeze()` rend l'objet immuable en mode silencieux (sans erreur, sauf en mode strict) : la tentative de modification est simplement ignorée, `user.name` reste `'Wayne'`. Attention : c'est une immutabilité superficielle (shallow), les objets imbriqués restent modifiables.",
   },
   {
+    id: "javascript-8-10",
     sectionId: "javascript-8",
     question: "Que retourne ce code ?",
     code: "const key = 'age';\nconst user = { name: 'Jade', [key]: 28 };\nconsole.log(user.age);",
