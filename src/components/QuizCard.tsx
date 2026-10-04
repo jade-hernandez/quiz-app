@@ -1,52 +1,67 @@
 import { themeStyles } from "../data/theme-styles";
 import type { QuizId } from "../types";
 import { cn } from "../utils/utils";
+import { Button } from "./Button";
 
 type QuizCardProps = {
-  emoji: string;
   title: string;
-  sectionCount: number;
-  questionCount: number;
   description: string;
+  questionCount: number;
+  sectionLabels: string[];
   theme: QuizId;
   onClick: () => void;
 };
 
 function QuizCard({
-  emoji,
   title,
-  questionCount,
-  sectionCount,
   description,
+  questionCount,
+  sectionLabels,
   theme,
   onClick,
 }: QuizCardProps) {
   const styles = themeStyles[theme];
 
   return (
-    <button
-      onClick={onClick}
-      className={cn(
-        "flex cursor-pointer flex-col gap-4 rounded-2xl border border-neutral-200 p-5 text-left transition-colors hover:border-neutral-400 focus-visible:outline-2 focus-visible:outline-offset-2",
-        styles.cardHover,
-        styles.outline,
-      )}
-    >
-      <div className='flex items-center justify-between'>
-        <span className='text-2xl'>{emoji}</span>
-        <span className='text-xs font-medium text-neutral-400'>
-          {" "}
-          {sectionCount} sujets · {questionCount} questions
-        </span>
+    <article className={cn("flex flex-col gap-5 rounded-3xl border p-8", styles.panel)}>
+      <div className='flex flex-wrap items-baseline justify-between gap-2'>
+        <h3 className={cn("font-display text-3xl font-extrabold", styles.heading)}>{title}</h3>
+        <p className={cn("text-sm font-semibold", styles.heading)}>
+          {questionCount} questions · {sectionLabels.length} sections
+        </p>
       </div>
 
-      <div className='flex flex-col gap-1'>
-        <div className={cn("font-display text-lg font-bold", styles.text)}>{title}</div>
-        <p className='text-sm text-neutral-500'>{description}</p>
-      </div>
+      <p className='text-neutral-700'>{description}</p>
 
-      <span className={cn("text-sm font-semibold", styles.text)}>Commencer →</span>
-    </button>
+      <ul
+        role='list'
+        className='flex flex-wrap gap-2'
+      >
+        {sectionLabels.map(label => (
+          <li
+            key={label}
+            className={cn(
+              "rounded-full border bg-white px-3.5 py-1 text-sm font-medium",
+              styles.chip,
+            )}
+          >
+            {label}
+          </li>
+        ))}
+      </ul>
+
+      <Button
+        type='button'
+        onClick={onClick}
+        className={cn(
+          "mt-auto self-start rounded-2xl px-6 py-3.5 text-base text-white",
+          styles.buttonStrong,
+          styles.outline,
+        )}
+      >
+        Choisir {title}
+      </Button>
+    </article>
   );
 }
 

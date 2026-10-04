@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-import { Home } from "./components/Home";
 import { Quiz } from "./components/Quiz";
 import { ScoreScreen } from "./components/ScoreScreen";
 import { SectionSelection } from "./components/SectionSelection";
@@ -10,6 +9,7 @@ import { sections } from "./data/sections";
 
 import type { QuizData } from "./data/quizzes";
 import type { QuizId, QuizResult } from "./types";
+import { Landing } from "./Landing";
 
 function App() {
   const [screen, setScreen] = useState<"home" | "sections" | "quiz" | "score">("home");
@@ -72,11 +72,13 @@ function App() {
     setScreen("quiz");
   }
 
+  if (screen === "home") {
+    return <Landing onSelectTheme={handleSelectTheme} />;
+  }
+
   return (
     <div className='flex min-h-screen items-start justify-center bg-neutral-50 px-4 py-8'>
       <div className='w-full max-w-xl rounded-2xl bg-white p-8 shadow-sm'>
-        {screen === "home" && <Home onSelectTheme={handleSelectTheme} />}
-
         {screen === "sections" && selectedTheme && (
           <SectionSelection
             theme={selectedTheme}

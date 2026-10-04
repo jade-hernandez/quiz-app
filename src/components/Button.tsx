@@ -13,9 +13,16 @@ const variantStyles: Record<ButtonVariant, string> = {
   ghost: "bg-transparent text-neutral-400 hover:bg-transparent hover:text-neutral-700",
 };
 
-function Button({ className, children, variant = "primary", ...rest }: ButtonProps) {
+function Button({
+  className,
+  children,
+  variant = "primary",
+  type = "button",
+  ...rest
+}: ButtonProps) {
   return (
     <button
+      type={type}
       className={cn(
         "cursor-pointer rounded-xl px-5 py-2.5 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900",
         variantStyles[variant],
