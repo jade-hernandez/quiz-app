@@ -71,9 +71,9 @@ function Quiz({ quiz, theme, onExit, onFinish }: QuizProps) {
     <div>
       <button
         onClick={onExit}
-        className='mb-4 text-sm text-neutral-500 hover:text-neutral-900'
+        className='mb-4 cursor-pointer text-sm text-neutral-500 hover:text-neutral-900'
       >
-        ← Retour à l'accueil
+        ← Retour aux sujets
       </button>
 
       <h1 className='font-display text-lg font-bold'>{quiz.title}</h1>
