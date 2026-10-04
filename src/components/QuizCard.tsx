@@ -1,5 +1,5 @@
 import { themeStyles } from "../data/theme-styles";
-import type { QuizId } from "../types";
+import type { QuizId, Section } from "../types";
 import { cn } from "../utils/utils";
 import { Button } from "./Button";
 
@@ -7,7 +7,7 @@ type QuizCardProps = {
   title: string;
   description: string;
   questionCount: number;
-  sectionLabels: string[];
+  themeSections: Section[];
   theme: QuizId;
   onClick: () => void;
 };
@@ -16,7 +16,7 @@ function QuizCard({
   title,
   description,
   questionCount,
-  sectionLabels,
+  themeSections,
   theme,
   onClick,
 }: QuizCardProps) {
@@ -27,7 +27,7 @@ function QuizCard({
       <div className='flex flex-wrap items-baseline justify-between gap-2'>
         <h3 className={cn("font-display text-3xl font-extrabold", styles.heading)}>{title}</h3>
         <p className={cn("text-sm font-semibold", styles.heading)}>
-          {questionCount} questions · {sectionLabels.length} sections
+          {questionCount} questions · {themeSections.length} sections
         </p>
       </div>
 
@@ -37,21 +37,20 @@ function QuizCard({
         role='list'
         className='flex flex-wrap gap-2'
       >
-        {sectionLabels.map(label => (
+        {themeSections.map(section => (
           <li
-            key={label}
+            key={section.id}
             className={cn(
               "rounded-full border bg-white px-3.5 py-1 text-sm font-medium",
               styles.chip,
             )}
           >
-            {label}
+            {section.label}
           </li>
         ))}
       </ul>
 
       <Button
-        type='button'
         onClick={onClick}
         className={cn(
           "mt-auto self-start rounded-2xl px-6 py-3.5 text-base text-white",

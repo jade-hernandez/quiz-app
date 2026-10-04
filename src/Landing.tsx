@@ -2,7 +2,7 @@ import { QuizCard } from "./components/QuizCard";
 import { jsQuestions } from "./data/quiz-questions-js";
 import { reactQuestions } from "./data/quiz-questions-react";
 import { sections } from "./data/sections";
-import type { QuizId } from "./types";
+import type { QuizId, Section } from "./types";
 import { cn } from "./utils/utils";
 
 type LandingProps = {
@@ -14,7 +14,7 @@ type ThemeCardData = {
   title: string;
   description: string;
   questionCount: number;
-  sectionLabels: string[];
+  themeSections: Section[];
 };
 
 type Step = {
@@ -29,18 +29,14 @@ const themeCards: ThemeCardData[] = [
     title: "JavaScript",
     description: "Les fondamentaux du langage, des variables aux tableaux.",
     questionCount: jsQuestions.length,
-    sectionLabels: sections
-      .filter(section => section.theme === "javascript")
-      .map(section => section.label),
+    themeSections: sections.filter(section => section.theme === "javascript"),
   },
   {
     id: "react",
     title: "React",
     description: "Penser en composants : de JSX aux hooks.",
     questionCount: reactQuestions.length,
-    sectionLabels: sections
-      .filter(section => section.theme === "react")
-      .map(section => section.label),
+    themeSections: sections.filter(section => section.theme === "react"),
   },
 ];
 
