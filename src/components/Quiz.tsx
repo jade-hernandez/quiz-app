@@ -69,12 +69,13 @@ function Quiz({ quiz, theme, onExit, onFinish }: QuizProps) {
 
   return (
     <div>
-      <button
+      <Button
+        variant='ghost'
         onClick={onExit}
-        className='mb-4 cursor-pointer text-sm text-neutral-500 hover:text-neutral-900'
+        className='mb-4 px-0'
       >
         ← Retour aux sujets
-      </button>
+      </Button>
 
       <h1 className='font-display text-lg font-bold'>{quiz.title}</h1>
 
@@ -131,7 +132,7 @@ function Quiz({ quiz, theme, onExit, onFinish }: QuizProps) {
         {hasAnswered && (
           <Button
             onClick={handleNext}
-            className={cn("mt-4", styles.button, styles.outline)}
+            className={cn("mt-4", styles.buttonStrong, styles.outline)}
           >
             {currentIndex < quiz.questions.length - 1 ? "Question suivante" : "Voir les résultats"}
           </Button>
