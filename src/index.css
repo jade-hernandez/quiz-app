@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "@fontsource/bricolage-grotesque/latin-800.css";
 
 @theme {
   --font-display: "Bricolage Grotesque", system-ui, sans-serif;
