@@ -1,13 +1,265 @@
 @import "tailwindcss";
+@import "@fontsource-variable/bricolage-grotesque/opsz.css";
+@import "@fontsource-variable/dm-sans/wght.css";
+@import "@fontsource-variable/jetbrains-mono/wght.css";
 
+/*
+ * Design tokens, "Fine Sticker" (visual redesign). Each variable becomes utilities, for example
+ * --color-ink -> bg-ink / text-ink, --radius-control -> rounded-control, --text-hero -> text-hero.
+ * Taken from the design archive's Tailwind section; its recommendations for the OPEN items are
+ * provisional defaults (font delivery, desktop type sizes, the palette reset below).
+ */
 @theme {
-  --font-display: "Space Grotesk", system-ui, sans-serif;
+  /* Remove Tailwind's default palette so only the design's colours exist. */
+  --color-*: initial;
+
+  /* colour: surfaces and text */
+  --color-ink: #1b1726;
+  --color-paper: #fff8ec;
+  --color-card: #ffffff;
+  --color-muted: #5a5468;
+
+  /* colour: fills (text on them is always text-ink) */
+  --color-js: #ffd54f;
+  --color-react: #7dd3fc;
+  --color-action: #ff8fb1;
+  --color-correct: #6ee7b7;
+  --color-incorrect: #ff9a8b;
+  --color-chip: #ddd3ff;
+
+  /* colour: code box */
+  --color-code-bg: #1b1726;
+  --color-code-header: #2a2438;
+  --color-code-text: #fff8ec;
+  --color-code-muted: #a39cb8;
+  --color-code-keyword: #ff9dbb;
+  --color-code-number: #ffd54f;
+  --color-code-function: #7dd3fc;
+  --color-code-string: #a8e6a1;
+  --color-code-tag: #ffb38a;
+  --color-inline-code: rgb(27 23 38 / 0.09);
+
+  /* fonts: font-display (Bricolage Grotesque), font-sans (DM Sans), font-mono (JetBrains Mono) */
+  --font-display:
+    "Bricolage Grotesque Variable", "Bricolage Grotesque", system-ui, sans-serif;
+  --font-sans:
+    "DM Sans Variable", "DM Sans", system-ui, -apple-system, "Segoe UI",
+    sans-serif;
+  --font-mono:
+    "JetBrains Mono Variable", "JetBrains Mono", ui-monospace, "SF Mono", Menlo,
+    monospace;
+  --font-mono--font-feature-settings: "liga" 0, "calt" 0;
+
+  /* type scale (mobile, DECIDED). Utility examples: text-hero, text-question, text-code */
+  --text-hero: 1.8125rem;
+  --text-hero--line-height: 1.06;
+  --text-hero--letter-spacing: -0.02em;
+  --text-hero--font-weight: 800;
+  --text-title: 1.5625rem;
+  --text-title--line-height: 1.1;
+  --text-title--letter-spacing: -0.02em;
+  --text-title--font-weight: 800;
+  --text-card-title: 1.5rem;
+  --text-card-title--line-height: 1.1;
+  --text-card-title--letter-spacing: -0.02em;
+  --text-card-title--font-weight: 800;
+  --text-result: 1.6875rem;
+  --text-result--line-height: 1.15;
+  --text-result--letter-spacing: -0.02em;
+  --text-result--font-weight: 800;
+  --text-score: 2.625rem;
+  --text-score--line-height: 1;
+  --text-score--letter-spacing: -0.02em;
+  --text-score--font-weight: 800;
+  --text-question: 1.25rem;
+  --text-question--line-height: 1.16;
+  --text-question--letter-spacing: -0.02em;
+  --text-question--font-weight: 800;
+  --text-question-nocode: 1.4375rem;
+  --text-question-nocode--line-height: 1.16;
+  --text-question-nocode--letter-spacing: -0.02em;
+  --text-question-nocode--font-weight: 800;
+  --text-section: 1.125rem;
+  --text-section--line-height: 1.2;
+  --text-section--letter-spacing: -0.02em;
+  --text-section--font-weight: 800;
+  --text-row: 1.0625rem;
+  --text-row--line-height: 1.2;
+  --text-row--letter-spacing: -0.02em;
+  --text-row--font-weight: 800;
+  --text-button-lg: 1rem;
+  --text-button-lg--line-height: 1.2;
+  --text-button-lg--font-weight: 700;
+  --text-button: 0.9375rem;
+  --text-button--line-height: 1.2;
+  --text-button--font-weight: 700;
+  --text-body: 0.875rem;
+  --text-body--line-height: 1.4;
+  --text-small: 0.8125rem;
+  --text-small--line-height: 1.4;
+  --text-option-code: 0.8125rem;
+  --text-option-code--line-height: 1.5;
+  --text-option-code--font-weight: 500;
+  --text-caption: 0.75rem;
+  --text-caption--line-height: 1.4;
+  --text-caption--font-weight: 700;
+  --text-micro: 0.6875rem;
+  --text-micro--line-height: 1.4;
+  --text-micro--font-weight: 700;
+  --text-code: 0.78125rem;
+  --text-code--line-height: 1.65;
+  --text-code--font-weight: 500;
+
+  /* type scale (desktop, OPEN). Use with the lg: variant, e.g. text-hero lg:text-hero-lg */
+  --text-hero-lg: 3.5rem;
+  --text-hero-lg--line-height: 1.04;
+  --text-hero-lg--letter-spacing: -0.02em;
+  --text-hero-lg--font-weight: 800;
+  --text-title-lg: 2.5rem;
+  --text-title-lg--line-height: 1.08;
+  --text-title-lg--letter-spacing: -0.02em;
+  --text-title-lg--font-weight: 800;
+  --text-card-title-lg: 2rem;
+  --text-card-title-lg--line-height: 1.08;
+  --text-card-title-lg--letter-spacing: -0.02em;
+  --text-card-title-lg--font-weight: 800;
+  --text-question-lg: 1.625rem;
+  --text-question-lg--line-height: 1.18;
+  --text-question-lg--letter-spacing: -0.02em;
+  --text-question-lg--font-weight: 800;
+  --text-body-lg: 1rem;
+  --text-body-lg--line-height: 1.45;
+  --text-small-lg: 0.9375rem;
+  --text-small-lg--line-height: 1.45;
+  --text-code-lg: 0.875rem;
+  --text-code-lg--line-height: 1.65;
+
+  /* shape: rounded-control, rounded-card, rounded-panel, rounded-code, rounded-badge, ... */
+  --radius-control: 0.75rem;
+  --radius-card: 0.875rem;
+  --radius-panel: 0.75rem;
+  --radius-code: 0.625rem;
+  --radius-badge: 0.4375rem;
+  --radius-segment: 0.3125rem;
+  --radius-logo: 0.5625rem;
+  --radius-pill: 9999px;
+
+  /* hard shadows, no blur: shadow-sticker, shadow-sticker-lift. (shadow-none = pressed) */
+  --shadow-sticker: 2px 2px 0 var(--color-ink);
+  --shadow-sticker-lift: 3px 3px 0 var(--color-ink);
+
+  /* named spacing: p-page, px-page, p-page-lg */
+  --spacing-page: 1.125rem;
+  --spacing-page-lg: 2.5rem;
+
+  /* easing: ease-soft */
+  --ease-soft: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  /* animations. Every keyframe defines ONLY its "from" state (or intermediate steps), so when
+     the animation is switched off for reduced motion the element is already in its end state. */
+  --animate-screen-in: screen-in 0.2s ease-out both; /* screen enters */
+  --animate-rise: rise 0.2s ease-out both; /* explanation card enters */
+  --animate-nudge: nudge 0.18s ease-out; /* wrong answer: 2px two-beat nudge */
+  --animate-icon-in: icon-in 0.16s ease-out; /* check / cross appear */
+  --animate-pop: pop 0.32s ease-out both; /* trophy badge (add delay 0.7s) */
+  --animate-ring: ring 0.9s var(--ease-soft) 0.1s both; /* score ring draws */
+  --animate-spark: spark 0.8s ease-out both; /* sparkles (delays 0.9s, 1.0s, 1.1s) */
+
+  @keyframes screen-in {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+  }
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+  }
+  @keyframes nudge {
+    25% {
+      transform: translateX(-2px);
+    }
+    75% {
+      transform: translateX(2px);
+    }
+  }
+  @keyframes icon-in {
+    from {
+      opacity: 0;
+      transform: scale(0.85);
+    }
+  }
+  @keyframes pop {
+    0% {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    70% {
+      transform: scale(1.06);
+    }
+  }
+  @keyframes ring {
+    from {
+      stroke-dashoffset: 314.16; /* circumference of the r=50 ring in a 120x120 viewBox */
+    }
+  }
+  @keyframes spark {
+    0% {
+      opacity: 0;
+      transform: scale(0.3);
+    }
+    40% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(0.7) translateY(-8px);
+    }
+  }
 }
 
-body {
-  font-family:
-    system-ui,
-    -apple-system,
-    "Segoe UI",
-    sans-serif;
+/* Topic accent that switches at runtime. Put data-topic="js" | "react" on the screen's root element.
+   Then bg-accent / border-accent / text-accent follow the topic (progress segments, score ring,
+   badge, section number badges, topic chips).  "inline" makes the utilities read var(--accent) live. */
+@theme inline {
+  --color-accent: var(--accent);
+}
+:root {
+  --accent: var(--color-js);
+}
+[data-topic="react"] {
+  --accent: var(--color-react);
+}
+
+/* One reusable utility for the outline every element has: border-sticker */
+@utility border-sticker {
+  border: 1.5px solid var(--color-ink);
+}
+
+/* Visible focus on every focusable element (DECIDED): 2px ink ring, 3px away from the element */
+@layer base {
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 3px;
+  }
+}
+
+/* Reduced motion (DECIDED): no animations, no transitions. State changes (colour, icon, text)
+   stay instant, which is why no information is lost. The score number must also skip its
+   count-up in script (read matchMedia('(prefers-reduced-motion: reduce)')). */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
 }
