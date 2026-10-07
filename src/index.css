@@ -1,6 +1,36 @@
 @import "tailwindcss";
 @import "@fontsource/bricolage-grotesque/latin-800.css";
+@import "@fontsource-variable/dm-sans/wght.css";
 
 @theme {
+  --color-*: initial;
+  --color-ink: #1b1726;
+  --color-paper: #fff8ec;
+  --color-js: #ffd54f;
+  --color-chip: #ddd3ff;
+  --color-muted: #5a5468;
+
   --font-display: "Bricolage Grotesque", system-ui, sans-serif;
+  --font-sans: "DM Sans Variable", system-ui, sans-serif;
+
+  --leading-display: 1.1;
+
+  --shadow-sticker: 2px 2px 0 var(--color-ink);
+}
+
+@utility border-sticker {
+  border: 1.5px solid var(--color-ink);
+}
+
+@utility display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+  }
 }

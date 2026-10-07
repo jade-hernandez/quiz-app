@@ -6,11 +6,12 @@ and LICENSE file on 2026-10-07.
 ## Fonts: SIL Open Font License 1.1 (OFL-1.1)
 
 - **Bricolage Grotesque** (package `@fontsource/bricolage-grotesque` 5.3.0): Copyright 2022 The Bricolage Grotesque Project Authors (https://github.com/ateliertriay/bricolage)
+- **DM Sans** (package `@fontsource-variable/dm-sans` 5.3.0): Copyright 2014 The DM Sans Project Authors (https://github.com/googlefonts/dm-fonts)
 
-The font is self-hosted through the Fontsource package above and served with the app. The OFL allows that as long as
+The fonts are self-hosted through the Fontsource packages above and served with the app. The OFL allows that as long as
 the copyright notice and the licence text travel with the font, which is what this file is for.
 
-The OFL text, as shipped in that package:
+The OFL text, as shipped in those packages (identical in both):
 
 ```text
 This Font Software is licensed under the SIL Open Font License, Version 1.1.
