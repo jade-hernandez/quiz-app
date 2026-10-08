@@ -2,6 +2,7 @@ import type { TopicId } from "../domain/sections.ts";
 import type { Topic } from "../domain/topics.ts";
 import { Chip } from "./Chip.tsx";
 import { Icon } from "./Icon.tsx";
+import { sticker } from "./sticker.ts";
 
 // Full class names, not built from the id, so Tailwind can see them.
 const backgrounds: Record<TopicId, string> = {
@@ -13,17 +14,20 @@ type TopicCardProps = {
   readonly topic: Topic;
   readonly questionCount: number;
   readonly sectionCount: number;
+  readonly onSelect: () => void;
 };
 
 export function TopicCard({
   topic,
   questionCount,
   sectionCount,
+  onSelect,
 }: TopicCardProps) {
   return (
     <button
       type='button'
-      className={`group flex flex-col gap-1 rounded-xl px-4 py-3 text-left shadow-sticker transition-[translate,box-shadow] duration-100 ease-out border-sticker hover:-translate-px hover:shadow-sticker-lift active:translate-0.5 active:shadow-none active:duration-75 ${backgrounds[topic.id]}`}
+      onClick={onSelect}
+      className={`${sticker} group flex flex-col gap-1 px-4 py-3 text-left ${backgrounds[topic.id]}`}
     >
       <span className='flex items-center justify-between'>
         <span className='display text-2xl leading-display lg:text-3xl'>

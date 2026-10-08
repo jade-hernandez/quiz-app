@@ -1,4 +1,5 @@
 const paths = {
+  "arrow-left": ["M5 12l14 0", "M5 12l6 6", "M5 12l6 -6"],
   "arrow-right": ["M5 12l14 0", "M13 18l6 -6", "M13 6l6 6"],
 } as const;
 

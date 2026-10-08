@@ -1,9 +1,12 @@
 import { Chip } from "../components/Chip.tsx";
 import { TopicCard } from "../components/TopicCard.tsx";
 import { questionCountOfTopic, sectionsOfTopic } from "../data/queries.ts";
+import type { TopicId } from "../domain/sections.ts";
 import { topics } from "../domain/topics.ts";
 
-export function Home() {
+type HomeProps = { readonly onSelectTopic: (topic: TopicId) => void };
+
+export function Home({ onSelectTopic }: HomeProps) {
   return (
     <main className='mx-auto flex min-h-dvh w-full max-w-160 flex-col gap-3 p-4 lg:max-w-240 lg:p-10'>
       <div className='flex flex-col gap-3 md:my-auto'>
@@ -37,6 +40,7 @@ export function Home() {
               topic={topic}
               questionCount={questionCountOfTopic(topic.id)}
               sectionCount={sectionsOfTopic(topic.id).length}
+              onSelect={() => onSelectTopic(topic.id)}
             />
           ))}
         </div>
