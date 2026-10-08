@@ -18,7 +18,10 @@ export function Sections({ topic, onBack }: SectionsProps) {
         />
         <Chip tone='neutral'>{topics[topic].title}</Chip>
       </div>
-      <h1 className='display text-2xl leading-display lg:text-4xl'>
+      <h1
+        tabIndex={-1}
+        className='display text-2xl leading-display lg:text-4xl'
+      >
         Choisis une section
       </h1>
     </main>

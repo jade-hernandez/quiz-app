@@ -22,7 +22,10 @@ export function Home({ onSelectTopic }: HomeProps) {
           >
             JavaScript et React · en français
           </Chip>
-          <h1 className='display text-3xl leading-display lg:text-6xl'>
+          <h1
+            tabIndex={-1}
+            className='display text-3xl leading-display lg:text-6xl'
+          >
             Révise JavaScript et React,{" "}
             <span className='rounded-lg bg-js box-decoration-clone px-1'>
               une question à&nbsp;la&nbsp;fois.
