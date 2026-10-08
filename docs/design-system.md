@@ -171,7 +171,7 @@ Found by rendering the tokens in a browser. Apply them when the token is added.
 - **Never reviewed by the user:** Sections screen, desktop layouts, review list, React blue variant, tier icons, desktop Home decoration, tablet layout.
 - **Snapped from the mockup, to confirm by eye when built:** result 30 (was 27), score 36 (was 42), code 12 (was 12.5), page padding 16 (was 18), desktop hero 60 (was 56), radii 4, 8 and 12. Line-heights collapsed to 1.1, 1.4 and 1.65 (proposal).
 - **Defaults taken:** topic accent on, palette reset, inline SVG icons, hand-written tokenizer, body font for answers, wrap choice not saved, no ligatures, no keyboard shortcuts, static logo, Home without "Comment ça marche", nav, CTA band or footer.
-- **Proposal from the build, not in the design:** after a screen change, move focus to the new screen's heading and hide the focus ring on that heading only. To decide when the first screen change exists.
+- **Decided 2026-10-08:** after a screen change, focus moves to the new screen's heading (`tabIndex={-1}`, so Tab does not stop on it). The focus ring stays visible on it, as the accessibility rules require, and the heading is `w-fit` so the ring hugs the text. Hiding the ring on headings only is an option to revisit after trying it with a keyboard.
 
 ## Not in this design
 

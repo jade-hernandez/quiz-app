@@ -24,7 +24,7 @@ export function Home({ onSelectTopic }: HomeProps) {
           </Chip>
           <h1
             tabIndex={-1}
-            className='display text-3xl leading-display lg:text-6xl'
+            className='w-fit display text-3xl leading-display lg:text-6xl'
           >
             Révise JavaScript et React,{" "}
             <span className='rounded-lg bg-js box-decoration-clone px-1'>

@@ -20,7 +20,7 @@ export function Sections({ topic, onBack }: SectionsProps) {
       </div>
       <h1
         tabIndex={-1}
-        className='display text-2xl leading-display lg:text-4xl'
+        className='w-fit display text-2xl leading-display lg:text-4xl'
       >
         Choisis une section
       </h1>
