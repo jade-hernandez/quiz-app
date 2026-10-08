@@ -1,6 +1,7 @@
 import type { TopicId } from "../domain/sections.ts";
 import type { Topic } from "../domain/topics.ts";
 import { Chip } from "./Chip.tsx";
+import { Icon } from "./Icon.tsx";
 
 // Full class names, not built from the id, so Tailwind can see them.
 const backgrounds: Record<TopicId, string> = {
@@ -29,20 +30,7 @@ export function TopicCard({
           {topic.title}
         </span>
         <span className='grid size-8 place-items-center rounded-full bg-card text-lg transition-transform duration-100 ease-out border-sticker group-hover:translate-x-0.5'>
-          <svg
-            viewBox='0 0 24 24'
-            fill='none'
-            stroke='currentColor'
-            strokeWidth='2'
-            strokeLinecap='round'
-            strokeLinejoin='round'
-            aria-hidden='true'
-            className='size-[1em]'
-          >
-            <path d='M5 12l14 0' />
-            <path d='M13 18l6 -6' />
-            <path d='M13 6l6 6' />
-          </svg>
+          <Icon name='arrow-right' />
         </span>
       </span>
       <span className='text-sm lg:text-base'>{topic.description}</span>
