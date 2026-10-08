@@ -4,7 +4,6 @@ import { Chip } from "./Chip.tsx";
 import { Icon } from "./Icon.tsx";
 import { sticker } from "./sticker.ts";
 
-// Full class names, not built from the id, so Tailwind can see them.
 const backgrounds: Record<TopicId, string> = {
   javascript: "bg-js",
   react: "bg-react",

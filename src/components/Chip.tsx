@@ -9,8 +9,6 @@ type ChipProps = {
   readonly children: string;
 };
 
-// className is for placement only: with no class-merge helper, conflicting
-// classes would resolve by stylesheet order, not by their order in the string.
 export function Chip({ tone, className = "", children }: ChipProps) {
   return (
     <span

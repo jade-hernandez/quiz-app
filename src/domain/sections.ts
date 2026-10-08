@@ -1,7 +1,5 @@
 export type TopicId = "javascript" | "react";
 
-// The sections, in display order. Their ids become the SectionId type, so a question
-// that points at a section that does not exist fails to compile.
 export const sections = [
   { id: "javascript-1", label: "Primitives", topic: "javascript" },
   { id: "javascript-2", label: "Variables", topic: "javascript" },

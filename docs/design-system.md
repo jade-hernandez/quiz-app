@@ -165,6 +165,7 @@ Found by rendering the tokens in a browser. Apply them when the token is added.
 - Nothing disables code ligatures: set `--font-mono--font-feature-settings: "liga" 0, "calt" 0`.
 - Chips, captions and buttons are bold (700): set `font-bold` explicitly, because Tailwind's default sizes carry no weight.
 - Without a class-merging helper, two conflicting utilities on one element resolve by stylesheet order, not by order in the class string. Keep any shared class group free of properties a component overrides.
+- Tailwind only generates classes that appear written out in full in the source. A class built from a variable, such as `bg-${id}`, is never generated: map each id to its full class name instead.
 
 ## Open items
 
