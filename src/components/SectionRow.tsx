@@ -5,12 +5,19 @@ type SectionRowProps = {
   readonly number: number;
   readonly label: string;
   readonly questionCount: number;
+  readonly onSelect: () => void;
 };
 
-export function SectionRow({ number, label, questionCount }: SectionRowProps) {
+export function SectionRow({
+  number,
+  label,
+  questionCount,
+  onSelect,
+}: SectionRowProps) {
   return (
     <button
       type='button'
+      onClick={onSelect}
       className={`${sticker} flex min-h-12 w-full items-center gap-3 bg-card px-3 py-2 text-left md:px-4 md:py-5`}
     >
       <span className='grid size-6 place-items-center rounded-lg bg-accent display text-sm border-sticker md:size-10 md:text-base'>

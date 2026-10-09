@@ -3,15 +3,16 @@ import { Chip } from "../components/Chip.tsx";
 import { Logo } from "../components/Logo.tsx";
 import { SectionRow } from "../components/SectionRow.tsx";
 import { questionsOfSection, sectionsOfTopic } from "../data/queries.ts";
-import type { TopicId } from "../domain/sections.ts";
+import type { Section, TopicId } from "../domain/sections.ts";
 import { topics } from "../domain/topics.ts";
 
 type SectionsProps = {
   readonly topic: TopicId;
   readonly onBack: () => void;
+  readonly onSelectSection: (section: Section) => void;
 };
 
-export function Sections({ topic, onBack }: SectionsProps) {
+export function Sections({ topic, onBack, onSelectSection }: SectionsProps) {
   return (
     <main
       data-topic={topic}
@@ -45,6 +46,7 @@ export function Sections({ topic, onBack }: SectionsProps) {
               number={index + 1}
               label={section.label}
               questionCount={questionsOfSection(section.id).length}
+              onSelect={() => onSelectSection(section)}
             />
           </li>
         ))}
