@@ -1,5 +1,6 @@
 import { BackButton } from "../components/BackButton.tsx";
 import { Chip } from "../components/Chip.tsx";
+import { Logo } from "../components/Logo.tsx";
 import { SectionRow } from "../components/SectionRow.tsx";
 import { questionsOfSection, sectionsOfTopic } from "../data/queries.ts";
 import type { TopicId } from "../domain/sections.ts";
@@ -16,6 +17,9 @@ export function Sections({ topic, onBack }: SectionsProps) {
       data-topic={topic}
       className='mx-auto flex min-h-dvh w-full max-w-160 flex-col gap-3 p-4 lg:max-w-240 lg:p-10'
     >
+      <header className='hidden lg:mb-9 lg:flex'>
+        <Logo />
+      </header>
       <div className='flex items-center gap-3'>
         <BackButton
           label='Retour aux sujets'

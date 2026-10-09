@@ -1,4 +1,5 @@
 import { Chip } from "../components/Chip.tsx";
+import { Logo } from "../components/Logo.tsx";
 import { TopicCard } from "../components/TopicCard.tsx";
 import { questionCountOfTopic, sectionsOfTopic } from "../data/queries.ts";
 import type { TopicId } from "../domain/sections.ts";
@@ -11,9 +12,7 @@ export function Home({ onSelectTopic }: HomeProps) {
     <main className='mx-auto flex min-h-dvh w-full max-w-160 flex-col gap-3 p-4 lg:max-w-240 lg:p-10'>
       <div className='flex flex-col gap-3 md:my-auto'>
         <header className='flex'>
-          <span className='-rotate-2 rounded-lg bg-js px-3 py-1 display text-base leading-display shadow-sticker border-sticker'>
-            Quiz App
-          </span>
+          <Logo />
         </header>
         <div className='flex flex-col gap-3'>
           <Chip
