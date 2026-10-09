@@ -34,7 +34,7 @@ export function Sections({ topic, onBack }: SectionsProps) {
           Dans l'ordre que tu veux.
         </p>
       </div>
-      <ul className='flex flex-col gap-2'>
+      <ul className='flex flex-col gap-2 md:grid md:grid-cols-2 md:gap-3 lg:grid-cols-3'>
         {sectionsOfTopic(topic).map((section, index) => (
           <li key={section.id}>
             <SectionRow
