@@ -1,5 +1,7 @@
 import { BackButton } from "../components/BackButton.tsx";
 import { Chip } from "../components/Chip.tsx";
+import { SectionRow } from "../components/SectionRow.tsx";
+import { questionsOfSection, sectionsOfTopic } from "../data/queries.ts";
 import type { TopicId } from "../domain/sections.ts";
 import { topics } from "../domain/topics.ts";
 
@@ -32,6 +34,17 @@ export function Sections({ topic, onBack }: SectionsProps) {
           Dans l'ordre que tu veux.
         </p>
       </div>
+      <ul className='flex flex-col gap-2'>
+        {sectionsOfTopic(topic).map((section, index) => (
+          <li key={section.id}>
+            <SectionRow
+              number={index + 1}
+              label={section.label}
+              questionCount={questionsOfSection(section.id).length}
+            />
+          </li>
+        ))}
+      </ul>
     </main>
   );
 }
