@@ -21,12 +21,17 @@ export function Sections({ topic, onBack }: SectionsProps) {
         />
         <Chip tone='topic'>{topics[topic].title}</Chip>
       </div>
-      <h1
-        tabIndex={-1}
-        className='w-fit display text-2xl leading-display lg:text-4xl'
-      >
-        Choisis une section
-      </h1>
+      <div>
+        <h1
+          tabIndex={-1}
+          className='w-fit display text-2xl leading-display lg:text-4xl'
+        >
+          Choisis une section
+        </h1>
+        <p className='mt-1 text-sm text-muted lg:text-base'>
+          Dans l'ordre que tu veux.
+        </p>
+      </div>
     </main>
   );
 }
