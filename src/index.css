@@ -21,6 +21,18 @@
   --shadow-sticker-lift: 3px 3px 0 var(--color-ink);
 }
 
+@theme inline {
+  --color-accent: var(--accent);
+}
+
+:root {
+  --accent: var(--color-js);
+}
+
+[data-topic="react"] {
+  --accent: var(--color-react);
+}
+
 @utility border-sticker {
   border: 1.5px solid var(--color-ink);
 }

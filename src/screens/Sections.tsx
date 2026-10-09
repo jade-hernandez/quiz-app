@@ -10,13 +10,16 @@ type SectionsProps = {
 
 export function Sections({ topic, onBack }: SectionsProps) {
   return (
-    <main className='mx-auto flex min-h-dvh w-full max-w-160 flex-col gap-3 p-4 lg:max-w-240 lg:p-10'>
+    <main
+      data-topic={topic}
+      className='mx-auto flex min-h-dvh w-full max-w-160 flex-col gap-3 p-4 lg:max-w-240 lg:p-10'
+    >
       <div className='flex items-center gap-3'>
         <BackButton
           label='Retour aux sujets'
           onClick={onBack}
         />
-        <Chip tone='neutral'>{topics[topic].title}</Chip>
+        <Chip tone='topic'>{topics[topic].title}</Chip>
       </div>
       <h1
         tabIndex={-1}

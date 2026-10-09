@@ -1,5 +1,6 @@
 const tones = {
   neutral: "bg-chip px-3",
+  topic: "bg-accent px-3",
   stat: "bg-card px-2",
 } as const;
 
