@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AnswerOption } from "../components/AnswerOption.tsx";
 import type { AnswerStatus } from "../components/AnswerOption.tsx";
 import { BackButton } from "../components/BackButton.tsx";
@@ -35,10 +35,16 @@ export function Question({ section, onBack, onFinish }: QuestionProps) {
   const question = questions[position];
   const selected = answers[position];
   const isLast = position === questions.length - 1;
+  const status = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     document.querySelector<HTMLElement>("main h1")?.focus();
   }, [position]);
+
+  useEffect(() => {
+    if (selected === undefined) return;
+    status.current?.firstElementChild?.scrollIntoView({ block: "nearest" });
+  }, [selected]);
 
   function answer(picked: number) {
     setAnswers((current) =>
@@ -101,6 +107,7 @@ export function Question({ section, onBack, onFinish }: QuestionProps) {
             ))}
           </ul>
           <div
+            ref={status}
             role='status'
             className='not-empty:mt-3'
           >
