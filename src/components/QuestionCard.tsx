@@ -22,6 +22,7 @@ export function QuestionCard({ label, language, question }: QuestionCardProps) {
       </h1>
       {question.code !== undefined && (
         <CodeBox
+          key={question.id}
           code={question.code}
           language={language}
         />
