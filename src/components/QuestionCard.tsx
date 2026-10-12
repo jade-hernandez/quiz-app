@@ -1,12 +1,14 @@
 import type { Question } from "../domain/question.ts";
 import { Chip } from "./Chip.tsx";
+import { CodeBox } from "./CodeBox.tsx";
 
 type QuestionCardProps = {
   readonly label: string;
+  readonly language: string;
   readonly question: Question;
 };
 
-export function QuestionCard({ label, question }: QuestionCardProps) {
+export function QuestionCard({ label, language, question }: QuestionCardProps) {
   const size = question.code === undefined ? "text-2xl" : "text-xl lg:text-2xl";
 
   return (
@@ -18,6 +20,12 @@ export function QuestionCard({ label, question }: QuestionCardProps) {
       >
         {question.question}
       </h1>
+      {question.code !== undefined && (
+        <CodeBox
+          code={question.code}
+          language={language}
+        />
+      )}
     </div>
   );
 }

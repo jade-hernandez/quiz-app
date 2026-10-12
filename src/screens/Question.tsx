@@ -85,6 +85,7 @@ export function Question({ section, onBack, onFinish }: QuestionProps) {
         <div className='mx-auto w-full max-w-140 lg:max-w-180'>
           <QuestionCard
             label={`${topics[section.topic].title} · ${section.label}`}
+            language={topics[section.topic].codeLanguage}
             question={question}
           />
           <ul className='mt-3 flex flex-col gap-2'>

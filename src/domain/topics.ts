@@ -4,6 +4,7 @@ export type Topic = {
   readonly id: TopicId;
   readonly title: string;
   readonly description: string;
+  readonly codeLanguage: string;
 };
 
 export const topics: Record<TopicId, Topic> = {
@@ -11,10 +12,12 @@ export const topics: Record<TopicId, Topic> = {
     id: "javascript",
     title: "JavaScript",
     description: "Les fondamentaux du langage",
+    codeLanguage: "JavaScript",
   },
   react: {
     id: "react",
     title: "React",
     description: "Penser en composants",
+    codeLanguage: "JSX",
   },
 };

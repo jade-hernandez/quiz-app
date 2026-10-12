@@ -1,17 +1,18 @@
 # Third-party licences
 
 Open-source software served with the app, with the notices its licence requires. Checked against the package metadata
-and LICENSE file on 2026-10-07.
+and LICENSE file on 2026-10-07 (JetBrains Mono on 2026-10-12).
 
 ## Fonts: SIL Open Font License 1.1 (OFL-1.1)
 
 - **Bricolage Grotesque** (package `@fontsource/bricolage-grotesque` 5.3.0): Copyright 2022 The Bricolage Grotesque Project Authors (https://github.com/ateliertriay/bricolage)
 - **DM Sans** (package `@fontsource-variable/dm-sans` 5.3.0): Copyright 2014 The DM Sans Project Authors (https://github.com/googlefonts/dm-fonts)
+- **JetBrains Mono** (package `@fontsource/jetbrains-mono` 5.3.0): Copyright 2020 The JetBrains Mono Project Authors (https://github.com/JetBrains/JetBrainsMono)
 
 The fonts are self-hosted through the Fontsource packages above and served with the app. The OFL allows that as long as
 the copyright notice and the licence text travel with the font, which is what this file is for.
 
-The OFL text, as shipped in those packages (identical in both):
+The OFL text, as shipped in those packages (identical in all three):
 
 ```text
 This Font Software is licensed under the SIL Open Font License, Version 1.1.
