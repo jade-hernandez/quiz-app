@@ -1,3 +1,4 @@
+import { AnswerOption } from "../components/AnswerOption.tsx";
 import { BackButton } from "../components/BackButton.tsx";
 import { QuestionCard } from "../components/QuestionCard.tsx";
 import { questionsOfSection } from "../data/queries.ts";
@@ -31,10 +32,22 @@ export function Question({ section, onBack }: QuestionProps) {
           Aucune question dans cette section.
         </h1>
       ) : (
-        <QuestionCard
-          label={`${topics[section.topic].title} · ${section.label}`}
-          question={question}
-        />
+        <>
+          <QuestionCard
+            label={`${topics[section.topic].title} · ${section.label}`}
+            question={question}
+          />
+          <ul className='flex flex-col gap-2'>
+            {question.options.map((text, index) => (
+              <li key={`${question.id}-${index}`}>
+                <AnswerOption
+                  index={index}
+                  text={text}
+                />
+              </li>
+            ))}
+          </ul>
+        </>
       )}
     </main>
   );
