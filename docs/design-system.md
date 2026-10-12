@@ -137,7 +137,7 @@ Score buttons: "Réessayer" (pink, restarts the same section), "Revoir mes erreu
 
 - **Question, mobile layout** (decided): a full-height column. A fixed header (back icon button, progress, counter, with a 1.5px hairline once the content has scrolled), a scroll area (padding 8/16/16, bottom padding of the pinned bar's height plus a margin after answering, 92px in the mockup, with the same `scroll-padding-bottom`), then the pinned bar.
 - **After the first answer** (decided): mark the chosen option (incorrect) and the right one (correct), flatten the rest, show the explanation, then scroll it into view above the bar. If its bottom is below the scroll area's bottom minus 98px, scroll down just enough; if it is taller than the viewport, align its top.
-- **Live region**: one persistent `role="status"` element. Inject "Correct ! <explanation>" or "Pas tout à fait. <explanation>" as text. Never toggle `hidden` on a live region.
+- **Live region** (decided 2026-10-12): one persistent `role="status"` element that wraps the explanation card. The card is inserted into it after the first answer, so a screen reader announces "Correct ! <explanation>" or "Pas tout à fait. <explanation>" and the text is not duplicated in a hidden copy. Never toggle `hidden` on a live region. Not tested with a real screen reader.
 - **Desktop** (open, never reviewed): Home in two columns with an optional frozen question-card decoration; Sections as a 3-column grid (`minmax(0, 1fr)`); Question in a 960px column, two columns when there is code (question and code on the left at 460px, sticky; answers, explanation and the next button on the right), one centred 720px column otherwise; Score with a 208px ring and buttons in a row.
 
 ## Accessibility (decided unless noted)

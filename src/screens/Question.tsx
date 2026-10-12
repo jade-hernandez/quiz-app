@@ -2,6 +2,7 @@ import { useState } from "react";
 import { AnswerOption } from "../components/AnswerOption.tsx";
 import type { AnswerStatus } from "../components/AnswerOption.tsx";
 import { BackButton } from "../components/BackButton.tsx";
+import { ExplanationCard } from "../components/ExplanationCard.tsx";
 import { QuestionCard } from "../components/QuestionCard.tsx";
 import { questionsOfSection } from "../data/queries.ts";
 import type { OptionIndex } from "../domain/question.ts";
@@ -47,12 +48,12 @@ export function Question({ section, onBack }: QuestionProps) {
           Aucune question dans cette section.
         </h1>
       ) : (
-        <div className='mx-auto flex w-full max-w-140 flex-col gap-3 lg:max-w-180'>
+        <div className='mx-auto w-full max-w-140 lg:max-w-180'>
           <QuestionCard
             label={`${topics[section.topic].title} · ${section.label}`}
             question={question}
           />
-          <ul className='flex flex-col gap-2'>
+          <ul className='mt-3 flex flex-col gap-2'>
             {question.options.map((text, index) => (
               <li key={`${question.id}-${index}`}>
                 <AnswerOption
@@ -64,6 +65,17 @@ export function Question({ section, onBack }: QuestionProps) {
               </li>
             ))}
           </ul>
+          <div
+            role='status'
+            className='not-empty:mt-3'
+          >
+            {selected !== undefined && (
+              <ExplanationCard
+                correct={selected === question.answerIndex}
+                text={question.explanation}
+              />
+            )}
+          </div>
         </div>
       )}
     </main>
