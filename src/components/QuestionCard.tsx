@@ -1,6 +1,7 @@
 import type { Question } from "../domain/question.ts";
 import { Chip } from "./Chip.tsx";
 import { CodeBox } from "./CodeBox.tsx";
+import { InlineText } from "./InlineText.tsx";
 
 type QuestionCardProps = {
   readonly label: string;
@@ -18,7 +19,7 @@ export function QuestionCard({ label, language, question }: QuestionCardProps) {
         tabIndex={-1}
         className={`display leading-display ${size}`}
       >
-        {question.question}
+        <InlineText text={question.question} />
       </h1>
       {question.code !== undefined && (
         <CodeBox

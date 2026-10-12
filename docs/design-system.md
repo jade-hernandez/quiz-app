@@ -151,8 +151,8 @@ Score buttons: "Réessayer" (pink, restarts the same section), "Revoir mes erreu
 
 ## Content rules
 
-- **French punctuation.** Use a narrow no-break space (U+202F) before `?` `!` `:` `;` in questions, answers, explanations and UI strings, never inside `` `backticks` ``. The data uses a plain space, so apply it when rendering. Use `&nbsp;` inside "une question à la fois." and between a number and `%`.
-- **Backticks.** `` `text` `` renders as a code chip (present in 58 answers, 72 explanations and 39 questions).
+- **French punctuation.** Use a narrow no-break space (U+202F) before `?` `!` `:` `;` in questions, answers, explanations and UI strings, never inside `` `backticks` ``. The data uses a plain space, so apply it when rendering. Use `&nbsp;` inside "une question à la fois." and between a number and `%`. Built 2026-10-12 in `InlineText`, which replaces the plain space outside backticks only: the data has 256 of them (175 `?`, 65 `:`, 9 `!`, 7 `;`) and one inside a code chip that stays as written.
+- **Backticks.** `` `text` `` renders as a code chip (present in 58 answers, 72 explanations and 39 questions). The chip is `font-mono`, 0.9em, weight 500, `rounded-sm`, 4px side padding and `bg-ink/9` (the design's `rgb(27 23 38 / 0.09)`), with `tracking-normal` so the heading's negative letter spacing does not squeeze it. Backticks are balanced in all 1,020 texts.
 - **Answer font** (open, default): the body font for every answer, relying on backtick chips. A monospace guess misclassifies some answers.
 - **Syntax colours** (open mechanism, default): a small hand-written line tokenizer (about 0.5 KB gzip), checked by the design on all 81 snippets. It assumes the data has no block comments, multi-line template strings, regex literals or apostrophes in JSX text. If that changes, switch to a library (sugar-high is the smallest measured, 10.5 KB gzip).
 - **Icons.** Tabler outline set (MIT), 2px stroke, 24px grid, inline SVG in `currentColor`, no package. Ten icons: `arrow-left`, `arrow-right`, `check`, `x`, `chevron-right`, `trophy`, `thumb-up`, `plant-2`, `text-wrap`, `arrows-horizontal`.

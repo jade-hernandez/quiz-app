@@ -1,4 +1,5 @@
 import { Icon } from "./Icon.tsx";
+import { InlineText } from "./InlineText.tsx";
 import { sticker } from "./sticker.ts";
 
 const letters = "ABCD";
@@ -46,7 +47,9 @@ export function AnswerOption({
       <span className='grid size-6 shrink-0 place-items-center rounded-lg bg-paper text-xs font-bold border-sticker'>
         {letters.charAt(index)}
       </span>
-      <span className='mt-0.5 flex-1 text-sm lg:mt-0 lg:text-base'>{text}</span>
+      <span className='mt-0.5 flex-1 text-sm lg:mt-0 lg:text-base'>
+        <InlineText text={text} />
+      </span>
       <span className='grid size-6 shrink-0 place-items-center text-lg'>
         {icon !== undefined && <Icon name={icon} />}
       </span>

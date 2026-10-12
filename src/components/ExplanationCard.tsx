@@ -1,4 +1,5 @@
 import { Icon } from "./Icon.tsx";
+import { InlineText } from "./InlineText.tsx";
 
 type ExplanationCardProps = {
   readonly correct: boolean;
@@ -16,7 +17,9 @@ export function ExplanationCard({ correct, text }: ExplanationCardProps) {
         </span>
         {correct ? "Correct\u202F!" : "Pas tout à fait."}
       </div>
-      <p className='p-3 text-sm lg:text-base'>{text}</p>
+      <p className='p-3 text-sm lg:text-base'>
+        <InlineText text={text} />
+      </p>
     </div>
   );
 }
