@@ -4,6 +4,7 @@ import type { AnswerStatus } from "../components/AnswerOption.tsx";
 import { BackButton } from "../components/BackButton.tsx";
 import { ExplanationCard } from "../components/ExplanationCard.tsx";
 import { NextBar } from "../components/NextBar.tsx";
+import { Progress } from "../components/Progress.tsx";
 import { QuestionCard } from "../components/QuestionCard.tsx";
 import { questionsOfSection } from "../data/queries.ts";
 import type { OptionIndex } from "../domain/question.ts";
@@ -52,6 +53,12 @@ export function Question({ section, onBack }: QuestionProps) {
           label='Retour aux sections'
           onClick={onBack}
         />
+        {question !== undefined && (
+          <Progress
+            current={position + 1}
+            total={questions.length}
+          />
+        )}
       </div>
       {question === undefined ? (
         <h1
