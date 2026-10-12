@@ -1,15 +1,18 @@
+import type { Ref } from "react";
 import { Icon } from "./Icon.tsx";
 import { sticker } from "./sticker.ts";
 
 type NextBarProps = {
+  readonly ref: Ref<HTMLDivElement>;
   readonly label: string;
   readonly visible: boolean;
   readonly onNext: () => void;
 };
 
-export function NextBar({ label, visible, onNext }: NextBarProps) {
+export function NextBar({ ref, label, visible, onNext }: NextBarProps) {
   return (
     <div
+      ref={ref}
       className={`fixed inset-x-0 bottom-0 border-t-[1.5px] border-ink bg-paper p-4 md:static md:mt-3 md:flex md:justify-end md:border-0 md:bg-transparent md:p-0 ${visible ? "" : "invisible"}`}
     >
       <button

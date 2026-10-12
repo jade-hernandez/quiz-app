@@ -36,6 +36,7 @@ export function Question({ section, onBack, onFinish }: QuestionProps) {
   const selected = answers[position];
   const isLast = position === questions.length - 1;
   const status = useRef<HTMLDivElement>(null);
+  const bar = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     document.querySelector<HTMLElement>("main h1")?.focus();
@@ -43,7 +44,16 @@ export function Question({ section, onBack, onFinish }: QuestionProps) {
 
   useEffect(() => {
     if (selected === undefined) return;
-    status.current?.firstElementChild?.scrollIntoView({ block: "nearest" });
+    const card = status.current?.firstElementChild;
+    if (!card) return;
+    const margin = 12;
+    const { top, bottom } = card.getBoundingClientRect();
+    const floor = Math.min(
+      bar.current?.getBoundingClientRect().top ?? window.innerHeight,
+      window.innerHeight,
+    );
+    const hidden = bottom - (floor - margin);
+    if (hidden > 0) window.scrollBy(0, Math.max(0, Math.min(hidden, top)));
   }, [selected]);
 
   function answer(picked: number) {
@@ -119,6 +129,7 @@ export function Question({ section, onBack, onFinish }: QuestionProps) {
             )}
           </div>
           <NextBar
+            ref={bar}
             label={isLast ? "Voir les résultats" : "Question suivante"}
             visible={selected !== undefined}
             onNext={showNext}
