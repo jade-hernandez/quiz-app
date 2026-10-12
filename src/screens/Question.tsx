@@ -47,7 +47,7 @@ export function Question({ section, onBack }: QuestionProps) {
           Aucune question dans cette section.
         </h1>
       ) : (
-        <>
+        <div className='mx-auto flex w-full max-w-140 flex-col gap-3 lg:max-w-180'>
           <QuestionCard
             label={`${topics[section.topic].title} · ${section.label}`}
             question={question}
@@ -64,7 +64,7 @@ export function Question({ section, onBack }: QuestionProps) {
               </li>
             ))}
           </ul>
-        </>
+        </div>
       )}
     </main>
   );
