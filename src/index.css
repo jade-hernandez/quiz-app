@@ -16,6 +16,11 @@
   --color-incorrect: #ff9a8b;
   --color-code-header: #2a2438;
   --color-code-muted: #a39cb8;
+  --color-code-keyword: #ff9dbb;
+  --color-code-number: #ffd54f;
+  --color-code-function: #7dd3fc;
+  --color-code-string: #a8e6a1;
+  --color-code-tag: #ffb38a;
 
   --font-display: "Bricolage Grotesque", system-ui, sans-serif;
   --font-sans: "DM Sans Variable", system-ui, sans-serif;

@@ -1,6 +1,18 @@
 import { useState } from "react";
 import { Chip } from "./Chip.tsx";
 import { Icon } from "./Icon.tsx";
+import { tokenize } from "./tokenize.ts";
+import type { TokenKind } from "./tokenize.ts";
+
+const tones: Record<TokenKind, string> = {
+  plain: "text-paper",
+  comment: "text-code-muted",
+  string: "text-code-string",
+  number: "text-code-number",
+  tag: "text-code-tag",
+  keyword: "text-code-keyword",
+  call: "text-code-function",
+};
 
 type CodeBoxProps = {
   readonly code: string;
@@ -64,7 +76,14 @@ export function CodeBox({ code, language }: CodeBoxProps) {
                         : undefined
                     }
                   >
-                    {line}
+                    {tokenize(line).map((token, position) => (
+                      <span
+                        key={position}
+                        className={tones[token.kind]}
+                      >
+                        {token.text}
+                      </span>
+                    ))}
                   </span>
                 </span>
               );
