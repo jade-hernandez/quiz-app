@@ -47,11 +47,9 @@ export function AnswerOption({
         {letters.charAt(index)}
       </span>
       <span className='mt-0.5 flex-1 text-sm lg:mt-0 lg:text-base'>{text}</span>
-      {icon !== undefined && (
-        <span className='grid size-6 shrink-0 place-items-center text-lg'>
-          <Icon name={icon} />
-        </span>
-      )}
+      <span className='grid size-6 shrink-0 place-items-center text-lg'>
+        {icon !== undefined && <Icon name={icon} />}
+      </span>
     </button>
   );
 }
