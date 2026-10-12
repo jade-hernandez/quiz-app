@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AnswerOption } from "../components/AnswerOption.tsx";
 import type { AnswerStatus } from "../components/AnswerOption.tsx";
 import { BackButton } from "../components/BackButton.tsx";
 import { ExplanationCard } from "../components/ExplanationCard.tsx";
+import { NextBar } from "../components/NextBar.tsx";
 import { QuestionCard } from "../components/QuestionCard.tsx";
 import { questionsOfSection } from "../data/queries.ts";
 import type { OptionIndex } from "../domain/question.ts";
@@ -26,13 +27,25 @@ function statusOf(
 }
 
 export function Question({ section, onBack }: QuestionProps) {
-  const question = questionsOfSection(section.id)[0];
+  const questions = questionsOfSection(section.id);
+  const [position, setPosition] = useState(0);
   const [selected, setSelected] = useState<number | undefined>(undefined);
+  const question = questions[position];
+  const hasNext = position < questions.length - 1;
+
+  useEffect(() => {
+    document.querySelector<HTMLElement>("main h1")?.focus();
+  }, [position]);
+
+  function goToNext() {
+    setPosition(position + 1);
+    setSelected(undefined);
+  }
 
   return (
     <main
       data-topic={section.topic}
-      className='mx-auto flex min-h-dvh w-full max-w-160 flex-col gap-3 p-4 lg:max-w-240 lg:p-10'
+      className='mx-auto flex min-h-dvh w-full max-w-160 flex-col gap-3 p-4 pb-24 md:pb-4 lg:max-w-240 lg:p-10'
     >
       <div className='flex items-center gap-3'>
         <BackButton
@@ -76,6 +89,12 @@ export function Question({ section, onBack }: QuestionProps) {
               />
             )}
           </div>
+          {hasNext && (
+            <NextBar
+              visible={selected !== undefined}
+              onNext={goToNext}
+            />
+          )}
         </div>
       )}
     </main>
