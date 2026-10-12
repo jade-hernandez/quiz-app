@@ -8,7 +8,7 @@ type ExplanationCardProps = {
 
 export function ExplanationCard({ correct, text }: ExplanationCardProps) {
   return (
-    <div className='overflow-hidden rounded-xl bg-card shadow-sticker border-sticker'>
+    <div className='animate-rise overflow-hidden rounded-xl bg-card shadow-sticker border-sticker'>
       <div
         className={`flex items-center gap-2 border-b-[1.5px] border-ink px-3 py-1 text-base font-bold ${correct ? "bg-correct" : "bg-incorrect"}`}
       >

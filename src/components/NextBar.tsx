@@ -13,7 +13,7 @@ export function NextBar({ ref, label, visible, onNext }: NextBarProps) {
   return (
     <div
       ref={ref}
-      className={`fixed inset-x-0 bottom-0 border-t-[1.5px] border-ink bg-paper p-4 md:static md:mt-3 md:flex md:justify-end md:border-0 md:bg-transparent md:p-0 ${visible ? "" : "invisible"}`}
+      className={`fixed inset-x-0 bottom-0 border-t-[1.5px] border-ink bg-paper p-4 transition-[opacity,translate,visibility] duration-180 ease-out md:static md:mt-3 md:flex md:justify-end md:border-0 md:bg-transparent md:p-0 ${visible ? "" : "invisible translate-y-2 opacity-0"}`}
     >
       <button
         type='button'

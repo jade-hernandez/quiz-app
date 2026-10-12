@@ -3,10 +3,10 @@ type ProgressProps = {
   readonly total: number;
 };
 
-function toneOf(position: number, current: number): string {
-  if (position < current) return "bg-accent";
-  if (position === current) return "bg-ink";
-  return "bg-card";
+function fillOf(position: number, current: number): string {
+  if (position < current) return "scale-x-100 bg-accent";
+  if (position === current) return "scale-x-100 bg-ink";
+  return "scale-x-0 bg-ink";
 }
 
 export function Progress({ current, total }: ProgressProps) {
@@ -23,8 +23,12 @@ export function Progress({ current, total }: ProgressProps) {
         {Array.from({ length: total }, (_, index) => (
           <span
             key={index}
-            className={`h-2 flex-1 rounded-sm border-sticker ${toneOf(index + 1, current)}`}
-          />
+            className='h-2 flex-1 overflow-hidden rounded-sm bg-card border-sticker'
+          >
+            <span
+              className={`block size-full origin-left transition-[scale,background-color] duration-220 ease-out ${fillOf(index + 1, current)}`}
+            />
+          </span>
         ))}
       </div>
       <span

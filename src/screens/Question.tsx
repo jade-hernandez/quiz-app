@@ -44,15 +44,14 @@ export function Question({ section, onBack, onFinish }: QuestionProps) {
 
   useEffect(() => {
     if (selected === undefined) return;
-    const card = status.current?.firstElementChild;
-    if (!card) return;
+    const region = status.current;
+    const pinned = bar.current;
+    if (!region || !pinned) return;
     const margin = 12;
-    const { top, bottom } = card.getBoundingClientRect();
-    const floor = Math.min(
-      bar.current?.getBoundingClientRect().top ?? window.innerHeight,
-      window.innerHeight,
-    );
-    const hidden = bottom - (floor - margin);
+    const { top, bottom } = region.getBoundingClientRect();
+    const covered =
+      getComputedStyle(pinned).position === "fixed" ? pinned.offsetHeight : 0;
+    const hidden = bottom - (window.innerHeight - covered - margin);
     if (hidden > 0) window.scrollBy(0, Math.max(0, Math.min(hidden, top)));
   }, [selected]);
 
