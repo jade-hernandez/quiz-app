@@ -1,5 +1,8 @@
 import { BackButton } from "../components/BackButton.tsx";
+import { QuestionCard } from "../components/QuestionCard.tsx";
+import { questionsOfSection } from "../data/queries.ts";
 import type { Section } from "../domain/sections.ts";
+import { topics } from "../domain/topics.ts";
 
 type QuestionProps = {
   readonly section: Section;
@@ -7,6 +10,8 @@ type QuestionProps = {
 };
 
 export function Question({ section, onBack }: QuestionProps) {
+  const question = questionsOfSection(section.id)[0];
+
   return (
     <main
       data-topic={section.topic}
@@ -18,12 +23,19 @@ export function Question({ section, onBack }: QuestionProps) {
           onClick={onBack}
         />
       </div>
-      <h1
-        tabIndex={-1}
-        className='w-fit display text-2xl leading-display lg:text-4xl'
-      >
-        {section.label}
-      </h1>
+      {question === undefined ? (
+        <h1
+          tabIndex={-1}
+          className='w-fit display text-2xl leading-display'
+        >
+          Aucune question dans cette section.
+        </h1>
+      ) : (
+        <QuestionCard
+          label={`${topics[section.topic].title} · ${section.label}`}
+          question={question}
+        />
+      )}
     </main>
   );
 }
