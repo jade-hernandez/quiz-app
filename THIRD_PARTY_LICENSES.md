@@ -109,7 +109,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
 
 ## Icons: Tabler Icons, MIT
 
-- **arrow-left**, **arrow-right** and **chevron-right** (`@tabler/icons` 3.49.0, outline set): Copyright (c) 2020-2026 Paweł Kuna. The SVGs are inlined with their path shapes unchanged; the invisible bounding-box path and the class attribute are dropped.
+- **arrow-left**, **arrow-right**, **chevron-right**, **check** and **x** (`@tabler/icons` 3.49.0, outline set): Copyright (c) 2020-2026 Paweł Kuna. The SVGs are inlined with their path shapes unchanged; the invisible bounding-box path and the class attribute are dropped.
 
 The MIT text, as published in that package:
 

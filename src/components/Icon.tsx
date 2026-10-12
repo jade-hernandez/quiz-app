@@ -2,6 +2,8 @@ const paths = {
   "arrow-left": ["M5 12l14 0", "M5 12l6 6", "M5 12l6 -6"],
   "arrow-right": ["M5 12l14 0", "M13 18l6 -6", "M13 6l6 6"],
   "chevron-right": ["M9 6l6 6l-6 6"],
+  check: ["M5 12l5 5l10 -10"],
+  x: ["M18 6l-12 12", "M6 6l12 12"],
 } as const;
 
 type IconProps = { readonly name: keyof typeof paths };

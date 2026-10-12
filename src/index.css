@@ -11,6 +11,8 @@
   --color-card: #ffffff;
   --color-chip: #ddd3ff;
   --color-muted: #5a5468;
+  --color-correct: #6ee7b7;
+  --color-incorrect: #ff9a8b;
 
   --font-display: "Bricolage Grotesque", system-ui, sans-serif;
   --font-sans: "DM Sans Variable", system-ui, sans-serif;

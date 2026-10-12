@@ -1,7 +1,10 @@
+import { useState } from "react";
 import { AnswerOption } from "../components/AnswerOption.tsx";
+import type { AnswerStatus } from "../components/AnswerOption.tsx";
 import { BackButton } from "../components/BackButton.tsx";
 import { QuestionCard } from "../components/QuestionCard.tsx";
 import { questionsOfSection } from "../data/queries.ts";
+import type { OptionIndex } from "../domain/question.ts";
 import type { Section } from "../domain/sections.ts";
 import { topics } from "../domain/topics.ts";
 
@@ -10,8 +13,20 @@ type QuestionProps = {
   readonly onBack: () => void;
 };
 
+function statusOf(
+  index: number,
+  answerIndex: OptionIndex,
+  selected: number | undefined,
+): AnswerStatus {
+  if (selected === undefined) return "idle";
+  if (index === answerIndex) return "correct";
+  if (index === selected) return "incorrect";
+  return "flat";
+}
+
 export function Question({ section, onBack }: QuestionProps) {
   const question = questionsOfSection(section.id)[0];
+  const [selected, setSelected] = useState<number | undefined>(undefined);
 
   return (
     <main
@@ -43,6 +58,8 @@ export function Question({ section, onBack }: QuestionProps) {
                 <AnswerOption
                   index={index}
                   text={text}
+                  status={statusOf(index, question.answerIndex, selected)}
+                  onSelect={() => setSelected((current) => current ?? index)}
                 />
               </li>
             ))}
