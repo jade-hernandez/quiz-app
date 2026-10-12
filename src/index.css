@@ -31,6 +31,25 @@
 
   --shadow-sticker: 2px 2px 0 var(--color-ink);
   --shadow-sticker-lift: 3px 3px 0 var(--color-ink);
+
+  --animate-nudge: nudge 180ms ease-out;
+  --animate-icon-in: icon-in 160ms ease-out;
+
+  @keyframes nudge {
+    25% {
+      translate: -2px;
+    }
+    75% {
+      translate: 2px;
+    }
+  }
+
+  @keyframes icon-in {
+    from {
+      opacity: 0;
+      scale: 0.85;
+    }
+  }
 }
 
 @theme inline {
@@ -75,6 +94,7 @@
   *,
   ::before,
   ::after {
+    animation: none !important;
     transition: none !important;
   }
 }

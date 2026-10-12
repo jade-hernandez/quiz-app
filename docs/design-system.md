@@ -107,6 +107,8 @@ Desktop sizes (open, never reviewed), on the same scale: hero 60 (`text-6xl`), t
 
 **Reduced motion:** `prefers-reduced-motion: reduce` turns off every animation and transition, hides the sparkles, shows the final score at once and scrolls to the explanation instantly. Each `@keyframes` defines only its start, so with the animation off the element is already in its end state.
 
+**Answer feedback, built 2026-10-12:** the three answered looks share one transition (`background-color`, `translate`, `box-shadow`, 180ms, ease-out), so the fill fades and the others flatten together. The picked wrong row also runs `nudge` (180ms: 0, then −2px at 25%, +2px at 75%, then rest) and the check or cross runs `icon-in` (160ms, from opacity 0 and scale .85). Both keyframes use the individual `translate` and `scale` properties, so they do not fight the `translate` utilities, and both define only their start, so with animation off the element is already in its end state. The reduced-motion block now switches off `animation` as well as `transition`.
+
 ## Components
 
 - **Button** (decided). Variants: default (white), action (pink), ink (dark), large, icon, text link. Min height 44px. Hover (pointer only) lifts 1px; pressed drops 2px. No separate disabled look: after an answer, options use their answered states. An icon-only button is 36px visible with a 44×44 hit area (pseudo-element `inset: -6px`, measured from the padding box). An `overflow: hidden` ancestor would clip that extension.
