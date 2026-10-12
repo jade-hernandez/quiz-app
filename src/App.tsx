@@ -3,12 +3,19 @@ import type { ReactElement } from "react";
 import type { Section, TopicId } from "./domain/sections.ts";
 import { Home } from "./screens/Home.tsx";
 import { Question } from "./screens/Question.tsx";
+import { Score } from "./screens/Score.tsx";
 import { Sections } from "./screens/Sections.tsx";
 
 type Screen =
   | { readonly name: "home" }
   | { readonly name: "sections"; readonly topic: TopicId }
-  | { readonly name: "question"; readonly section: Section };
+  | { readonly name: "question"; readonly section: Section }
+  | {
+      readonly name: "score";
+      readonly section: Section;
+      readonly score: number;
+      readonly total: number;
+    };
 
 function renderScreen(
   screen: Screen,
@@ -31,6 +38,18 @@ function renderScreen(
       return (
         <Question
           section={screen.section}
+          onBack={() => go({ name: "sections", topic: screen.section.topic })}
+          onFinish={(score, total) =>
+            go({ name: "score", section: screen.section, score, total })
+          }
+        />
+      );
+    case "score":
+      return (
+        <Score
+          section={screen.section}
+          score={screen.score}
+          total={screen.total}
           onBack={() => go({ name: "sections", topic: screen.section.topic })}
         />
       );

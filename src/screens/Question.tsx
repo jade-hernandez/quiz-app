@@ -14,6 +14,7 @@ import { topics } from "../domain/topics.ts";
 type QuestionProps = {
   readonly section: Section;
   readonly onBack: () => void;
+  readonly onFinish: (score: number, total: number) => void;
 };
 
 function statusOf(
@@ -27,20 +28,33 @@ function statusOf(
   return "flat";
 }
 
-export function Question({ section, onBack }: QuestionProps) {
+export function Question({ section, onBack, onFinish }: QuestionProps) {
   const questions = questionsOfSection(section.id);
   const [position, setPosition] = useState(0);
-  const [selected, setSelected] = useState<number | undefined>(undefined);
+  const [answers, setAnswers] = useState<readonly number[]>([]);
   const question = questions[position];
-  const hasNext = position < questions.length - 1;
+  const selected = answers[position];
+  const isLast = position === questions.length - 1;
 
   useEffect(() => {
     document.querySelector<HTMLElement>("main h1")?.focus();
   }, [position]);
 
-  function goToNext() {
-    setPosition(position + 1);
-    setSelected(undefined);
+  function answer(picked: number) {
+    setAnswers((current) =>
+      current.length > position ? current : [...current, picked],
+    );
+  }
+
+  function showNext() {
+    if (!isLast) {
+      setPosition(position + 1);
+      return;
+    }
+    const score = answers.filter(
+      (picked, index) => picked === questions[index]?.answerIndex,
+    ).length;
+    onFinish(score, questions.length);
   }
 
   return (
@@ -80,7 +94,7 @@ export function Question({ section, onBack }: QuestionProps) {
                   index={index}
                   text={text}
                   status={statusOf(index, question.answerIndex, selected)}
-                  onSelect={() => setSelected((current) => current ?? index)}
+                  onSelect={() => answer(index)}
                 />
               </li>
             ))}
@@ -96,12 +110,11 @@ export function Question({ section, onBack }: QuestionProps) {
               />
             )}
           </div>
-          {hasNext && (
-            <NextBar
-              visible={selected !== undefined}
-              onNext={goToNext}
-            />
-          )}
+          <NextBar
+            label={isLast ? "Voir les résultats" : "Question suivante"}
+            visible={selected !== undefined}
+            onNext={showNext}
+          />
         </div>
       )}
     </main>
