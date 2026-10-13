@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { Button } from "../components/ui/Button.tsx";
 import { InlineText } from "../components/ui/InlineText.tsx";
+import { MistakeCard } from "../components/MistakeCard.tsx";
 import { ScoreRing } from "../components/ScoreRing.tsx";
 import { TierBadge } from "../components/TierBadge.tsx";
 import { questionsOfSection } from "../data/queries.ts";
 import type { Section } from "../domain/sections.ts";
+import { topics } from "../domain/topics.ts";
 import { verdictFor } from "../domain/verdict.ts";
 
 type ScoreProps = {
@@ -21,9 +23,12 @@ export function Score({ section, answers, onRetry, onBack }: ScoreProps) {
   ).length;
   const percent = Math.round((score / questions.length) * 100);
   const verdict = verdictFor(percent);
-  const mistakes = questions.filter(
-    (question, index) => answers[index] !== question.answerIndex,
-  );
+  const mistakes = answers.flatMap((picked, index) => {
+    const question = questions[index];
+    const chosen = question?.options[picked];
+    if (question === undefined || chosen === undefined) return [];
+    return picked === question.answerIndex ? [] : [{ question, chosen }];
+  });
   const [reviewing, setReviewing] = useState(false);
 
   return (
@@ -72,10 +77,14 @@ export function Score({ section, answers, onRetry, onBack }: ScoreProps) {
         </Button>
       </div>
       {reviewing && (
-        <ul className='flex w-full flex-col gap-3 text-left'>
-          {mistakes.map((question) => (
+        <ul className='flex w-full max-w-160 flex-col gap-3 text-left'>
+          {mistakes.map(({ question, chosen }) => (
             <li key={question.id}>
-              <InlineText text={question.question} />
+              <MistakeCard
+                question={question}
+                chosen={chosen}
+                language={topics[section.topic].codeLanguage}
+              />
             </li>
           ))}
         </ul>
