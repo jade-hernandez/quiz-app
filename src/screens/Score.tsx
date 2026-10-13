@@ -1,7 +1,8 @@
 import { BackButton } from "../components/BackButton.tsx";
+import { InlineText } from "../components/InlineText.tsx";
 import { questionsOfSection } from "../data/queries.ts";
 import type { Section } from "../domain/sections.ts";
-import { topics } from "../domain/topics.ts";
+import { verdictFor } from "../domain/verdict.ts";
 
 type ScoreProps = {
   readonly section: Section;
@@ -14,6 +15,7 @@ export function Score({ section, answers, onBack }: ScoreProps) {
   const score = answers.filter(
     (picked, index) => picked === questions[index]?.answerIndex,
   ).length;
+  const verdict = verdictFor(Math.round((score / questions.length) * 100));
 
   return (
     <main
@@ -28,13 +30,14 @@ export function Score({ section, answers, onBack }: ScoreProps) {
       </div>
       <h1
         tabIndex={-1}
-        className='w-fit display text-4xl leading-display'
+        className='w-fit display text-3xl leading-display lg:text-4xl'
       >
-        {`${score} / ${questions.length}`}
+        <InlineText text={verdict.title} />
       </h1>
-      <p className='text-sm text-muted lg:text-base'>
-        {`${topics[section.topic].title} · ${section.label}`}
+      <p className='text-sm lg:text-base'>
+        <InlineText text={verdict.text} />
       </p>
+      <p className='text-sm text-muted lg:text-base'>{`${score} / ${questions.length}`}</p>
     </main>
   );
 }
