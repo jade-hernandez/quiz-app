@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Button } from "../components/ui/Button.tsx";
 import { InlineText } from "../components/ui/InlineText.tsx";
 import { ScoreRing } from "../components/ScoreRing.tsx";
@@ -20,6 +21,10 @@ export function Score({ section, answers, onRetry, onBack }: ScoreProps) {
   ).length;
   const percent = Math.round((score / questions.length) * 100);
   const verdict = verdictFor(percent);
+  const mistakes = questions.filter(
+    (question, index) => answers[index] !== question.answerIndex,
+  );
+  const [reviewing, setReviewing] = useState(false);
 
   return (
     <main
@@ -48,6 +53,17 @@ export function Score({ section, answers, onRetry, onBack }: ScoreProps) {
         >
           Réessayer
         </Button>
+        {mistakes.length > 0 && (
+          <Button
+            tone='white'
+            expanded={reviewing}
+            onClick={() => setReviewing(!reviewing)}
+          >
+            {reviewing
+              ? "Masquer mes erreurs"
+              : `Revoir mes erreurs (${mistakes.length})`}
+          </Button>
+        )}
         <Button
           tone='link'
           onClick={onBack}
@@ -55,6 +71,15 @@ export function Score({ section, answers, onRetry, onBack }: ScoreProps) {
           Retour aux sections
         </Button>
       </div>
+      {reviewing && (
+        <ul className='flex w-full flex-col gap-3 text-left'>
+          {mistakes.map((question) => (
+            <li key={question.id}>
+              <InlineText text={question.question} />
+            </li>
+          ))}
+        </ul>
+      )}
     </main>
   );
 }
