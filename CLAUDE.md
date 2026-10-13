@@ -13,4 +13,4 @@
 
 # Project
 
-French-language JS/React quiz. UI text in French, code in English. Branch `pragmatic-clean-start` stays parallel to `main`; never merge into or alter `main`.
+French-language JS/React quiz. UI text in French, code in English. Work happens on `main`.
