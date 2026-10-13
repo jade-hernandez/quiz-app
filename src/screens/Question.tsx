@@ -14,7 +14,7 @@ import { topics } from "../domain/topics.ts";
 type QuestionProps = {
   readonly section: Section;
   readonly onBack: () => void;
-  readonly onFinish: (score: number, total: number) => void;
+  readonly onFinish: (answers: readonly number[]) => void;
 };
 
 function statusOf(
@@ -67,10 +67,7 @@ export function Question({ section, onBack, onFinish }: QuestionProps) {
       setPosition(position + 1);
       return;
     }
-    const score = answers.filter(
-      (picked, index) => picked === questions[index]?.answerIndex,
-    ).length;
-    onFinish(score, questions.length);
+    onFinish(answers);
   }
 
   return (

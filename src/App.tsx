@@ -13,8 +13,7 @@ type Screen =
   | {
       readonly name: "score";
       readonly section: Section;
-      readonly score: number;
-      readonly total: number;
+      readonly answers: readonly number[];
     };
 
 function renderScreen(
@@ -39,8 +38,8 @@ function renderScreen(
         <Question
           section={screen.section}
           onBack={() => go({ name: "sections", topic: screen.section.topic })}
-          onFinish={(score, total) =>
-            go({ name: "score", section: screen.section, score, total })
+          onFinish={(answers) =>
+            go({ name: "score", section: screen.section, answers })
           }
         />
       );
@@ -48,8 +47,7 @@ function renderScreen(
       return (
         <Score
           section={screen.section}
-          score={screen.score}
-          total={screen.total}
+          answers={screen.answers}
           onBack={() => go({ name: "sections", topic: screen.section.topic })}
         />
       );

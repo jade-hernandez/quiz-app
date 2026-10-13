@@ -1,15 +1,20 @@
 import { BackButton } from "../components/BackButton.tsx";
+import { questionsOfSection } from "../data/queries.ts";
 import type { Section } from "../domain/sections.ts";
 import { topics } from "../domain/topics.ts";
 
 type ScoreProps = {
   readonly section: Section;
-  readonly score: number;
-  readonly total: number;
+  readonly answers: readonly number[];
   readonly onBack: () => void;
 };
 
-export function Score({ section, score, total, onBack }: ScoreProps) {
+export function Score({ section, answers, onBack }: ScoreProps) {
+  const questions = questionsOfSection(section.id);
+  const score = answers.filter(
+    (picked, index) => picked === questions[index]?.answerIndex,
+  ).length;
+
   return (
     <main
       data-topic={section.topic}
@@ -25,7 +30,7 @@ export function Score({ section, score, total, onBack }: ScoreProps) {
         tabIndex={-1}
         className='w-fit display text-4xl leading-display'
       >
-        {`${score} / ${total}`}
+        {`${score} / ${questions.length}`}
       </h1>
       <p className='text-sm text-muted lg:text-base'>
         {`${topics[section.topic].title} · ${section.label}`}
