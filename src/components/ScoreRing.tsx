@@ -45,7 +45,7 @@ export function ScoreRing({ percent, score, total }: ScoreRingProps) {
             strokeLinecap='round'
             strokeDasharray={circumference}
             strokeDashoffset={circumference * (1 - percent / 100)}
-            className='stroke-accent'
+            className='animate-ring-draw stroke-accent'
           />
         )}
       </svg>

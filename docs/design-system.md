@@ -103,6 +103,8 @@ Desktop sizes (open, never reviewed), on the same scale: hero 60 (`text-6xl`), t
 | Tier badge                          | scale .8 to 1.06 to 1 (the only overshoot)  | 320ms, delay 700ms                             |
 | Sparkles (80%+ only)                | scale .3 to 1 to .7, fade, drift up 8px     | 800ms, delays 900, 1000, 1100ms                |
 
+The ring is one keyframe, `from { stroke-dashoffset: 315 }` (just above the circumference 314.16, so the arc is empty), with `backwards` fill so it stays empty during the 100ms delay; the end value is the arc's own offset, so the script has no animation state.
+
 **Score celebration (decided 2026-10-07):** the ring, count-up, badge and sparkles are an exception to the short-animation rules. They may use longer timings and a staggered sequence. The values above are starting points, to tune by eye in the browser.
 
 **Reduced motion:** `prefers-reduced-motion: reduce` turns off every animation and transition, hides the sparkles, shows the final score at once and scrolls to the explanation instantly. Each `@keyframes` defines only its start, so with the animation off the element is already in its end state.
@@ -125,7 +127,7 @@ Desktop sizes (open, never reviewed), on the same scale: hero 60 (`text-6xl`), t
 - **Explanation card** (decided). Appears after the first answer: a header strip (mint "Correct !" or coral "Pas tout à fait.", with icon), then the text at body size.
 - **Pinned bar, mobile** (decided). Full width at the bottom, 1.5px ink top border, paper background, one full-width ink button: "Question suivante", or "Voir les résultats" on question 10. `visibility: hidden` until the first answer, so it is also out of the tab order. From 768px (`md`) it is not pinned: the button follows the explanation, right-aligned in the column, as in the desktop mockup (decided 2026-10-12).
 - **Score** (ring, count-up, trophy and sparkles decided; tiers decided 2026-10-13). Ring 164px: SVG viewBox 120, r=50, an ink outline stroke (13), a paper track (10), the accent arc (10, round cap), rotated −90°. Arc offset = 314.16 × (1 − pct/100). Number inside (36px, see Typography for the 100% case), "8 / 10" beneath. From `lg` the ring is 208px with the number at 48px (36px at 100%) and the line beneath at 16px; the badge is 52px with a 24px icon. Tier badge: 44px circle, accent fill, outline, icon. Three 16px four-point sparkles (pink, blue, yellow) at 80% and above.
-- **Review** (decided 2026-10-13). "Revoir mes erreurs (n)" is a white button, hidden when n is 0, that toggles a list (`aria-expanded`, label becomes "Masquer mes erreurs"); no routing. One mistake card per missed question: the question, the code box if any, rows "Ta réponse :" (coral, cross) and "Bonne réponse :" (mint, check), then the explanation in muted text. The card is a question card (white, outline, sticker shadow); the rows are full-width coral and mint strips; the list is a 640px column.
+- **Review** (decided 2026-10-13). "Revoir mes erreurs (n)" is a white button, hidden when n is 0, that toggles a list (`aria-expanded`, label becomes "Masquer mes erreurs"); no routing. Focus stays on the toggle (decided 2026-10-13). One mistake card per missed question: the question, the code box if any, rows "Ta réponse :" (coral, cross) and "Bonne réponse :" (mint, check), then the explanation in muted text. The card is a question card (white, outline, sticker shadow); the rows are full-width coral and mint strips; the list is a 640px column.
 
 Score tiers (thresholds from the prototype: 100, ≥80, ≥40, else):
 
