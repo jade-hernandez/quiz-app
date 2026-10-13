@@ -1,6 +1,7 @@
 import { Button } from "../components/ui/Button.tsx";
 import { InlineText } from "../components/ui/InlineText.tsx";
 import { ScoreRing } from "../components/ScoreRing.tsx";
+import { TierBadge } from "../components/TierBadge.tsx";
 import { questionsOfSection } from "../data/queries.ts";
 import type { Section } from "../domain/sections.ts";
 import { verdictFor } from "../domain/verdict.ts";
@@ -30,6 +31,7 @@ export function Score({ section, answers, onRetry, onBack }: ScoreProps) {
         score={score}
         total={questions.length}
       />
+      <TierBadge icon={verdict.icon} />
       <h1
         tabIndex={-1}
         className='w-fit display text-3xl leading-display lg:text-4xl'
