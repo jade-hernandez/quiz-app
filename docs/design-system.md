@@ -13,7 +13,7 @@ Source: the design thread's archive, kept locally in `handoff.local/from-design/
 
 1. **Sticker, drawn finely.** Every element has a 1.5px ink outline. Anything pressable also has a 2px hard shadow (no blur). Fills are soft bright colours; text on a fill is always ink.
 2. **Tactile, not noisy.** Pressing drops the element onto its shadow. Everything else is calm.
-3. **Delicate motion.** Nothing moves more than 2px on interaction, nothing loops, only the score badge overshoots. No shake, confetti or sound. Supporting motion (buttons, answers, screens) stays short. One exception: the score celebration at 80% and above may be slower and staggered (see Motion).
+3. **Delicate motion.** Nothing moves more than 2px on interaction, nothing loops, only the score badge overshoots. No shake, confetti or sound. Supporting motion (buttons, answers, screens) stays short. One exception: the score celebration may be slower and staggered (see Motion).
 4. **Colour is never the only signal.** Correct and incorrect also use an icon and words.
 5. **One reading unit per question.** The question text and its code share one card. The code box is dark, has line numbers and syntax colours, and wraps long lines by default.
 6. **Mobile first.** 360px baseline, desktop layout from 64rem (Tailwind `lg:`). Tablet (640–1023px) uses the mobile layout in a centred column of at most 640px (open).
@@ -101,9 +101,11 @@ Desktop sizes (open, never reviewed), on the same scale: hero 60 (`text-6xl`), t
 | Score ring                          | arc draws                                   | 900ms, delay 100ms, `cubic-bezier(.2,.8,.2,1)` |
 | Score number                        | counts up in script                         | 800ms, ease-out cubic                          |
 | Tier badge                          | scale .8 to 1.06 to 1 (the only overshoot)  | 320ms, delay 700ms                             |
-| Sparkles (80%+ only)                | scale .3 to 1 to .7, fade, drift up 8px     | 800ms, delays 900, 1000, 1100ms                |
+| Sparkles (every score)              | scale .3 to 1 to .7, fade, drift up 8px     | 800ms, delays 900, 1000, 1100ms                |
 
 The count-up is `useCountUp` (`src/hooks`): `requestAnimationFrame`, 100ms delay like the ring, ease-out cubic, and a script check of `prefers-reduced-motion` because the CSS rule cannot stop a number; the number is `aria-hidden` and the ring's label carries the final score. Digits are tabular (measured: "11 %", "00 %", "88 %" all 86.1px, against 66.8 to 89.1px proportional) so the text does not shift while counting.
+
+The badge pop is `scale` .8 to 1.06 (at 70%) to 1, after a 700ms delay with `backwards` fill, so it waits small and lands as the ring finishes. Sparkles use `both` fill and a base opacity of 0, so after the animation they stay gone and, under reduced motion (animation off), they are never shown. Their positions are percentages of the ring box, measured from the mockup in ring-radius units (pink −1.66, −.68; blue 1.60, −.12; yellow −1.22, 1.40), so the same offsets hold at 164 and 208px. Every score gets the sparkles (decided 2026-10-13, over the design's 80% and above): a quiz for learning should end well whatever the score, so there is no flag in the verdict table.
 
 The ring is one keyframe, `from { stroke-dashoffset: 315 }` (just above the circumference 314.16, so the arc is empty), with `backwards` fill so it stays empty during the 100ms delay; the end value is the arc's own offset, so the script has no animation state.
 
@@ -128,19 +130,19 @@ The ring is one keyframe, `from { stroke-dashoffset: 315 }` (just above the circ
 - **Answer option** (decided). A button row, min 44px, padding 12: letter badge A–D (24px, keeps its paper fill), text, status icon on the right. States: idle, hover, pressed, focus, answered-flat (every option neither chosen nor correct loses its shadow and drops 2px), correct (mint + check), incorrect (coral + cross + nudge). After the first answer all options stop reacting: `aria-disabled` and the first pick wins (decided 2026-10-12: `disabled` on a focused button drops focus to `body`, tested in Chrome 152). Long answers wrap with the badge top-aligned (the longest is 164 characters).
 - **Explanation card** (decided). Appears after the first answer: a header strip (mint "Correct !" or coral "Pas tout à fait.", with icon), then the text at body size.
 - **Pinned bar, mobile** (decided). Full width at the bottom, 1.5px ink top border, paper background, one full-width ink button: "Question suivante", or "Voir les résultats" on question 10. `visibility: hidden` until the first answer, so it is also out of the tab order. From 768px (`md`) it is not pinned: the button follows the explanation, right-aligned in the column, as in the desktop mockup (decided 2026-10-12).
-- **Score** (ring, count-up, trophy and sparkles decided; tiers decided 2026-10-13). Ring 164px: SVG viewBox 120, r=50, an ink outline stroke (13), a paper track (10), the accent arc (10, round cap), rotated −90°. Arc offset = 314.16 × (1 − pct/100). Number inside (36px, see Typography for the 100% case), "8 / 10" beneath. From `lg` the ring is 208px with the number at 48px (36px at 100%) and the line beneath at 16px; the badge is 52px with a 24px icon. Tier badge: 44px circle, accent fill, outline, icon. Three 16px four-point sparkles (pink, blue, yellow) at 80% and above.
+- **Score** (ring, count-up, trophy and sparkles decided; tiers decided 2026-10-13). Ring 164px: SVG viewBox 120, r=50, an ink outline stroke (13), a paper track (10), the accent arc (10, round cap), rotated −90°. Arc offset = 314.16 × (1 − pct/100). Number inside (36px, see Typography for the 100% case), "8 / 10" beneath. From `lg` the ring is 208px with the number at 48px (36px at 100%) and the line beneath at 16px; the badge is 52px with a 24px icon. Tier badge: 44px circle, accent fill, outline, icon. Three 16px four-point sparkles (pink, blue, yellow) at every score.
 - **Review** (decided 2026-10-13). "Revoir mes erreurs (n)" is a white button, hidden when n is 0, that toggles a list (`aria-expanded`, label becomes "Masquer mes erreurs"); no routing. Focus stays on the toggle (decided 2026-10-13). One mistake card per missed question: the question, the code box if any, rows "Ta réponse :" (coral, cross) and "Bonne réponse :" (mint, check), then the explanation in muted text. The card is a question card (white, outline, sticker shadow); the rows are full-width coral and mint strips; the list is a 640px column.
 
 Score tiers (thresholds from the prototype: 100, ≥80, ≥40, else):
 
-| Score    | Title            | Text                                                        | Icon (open) | Sparkles |
-| -------- | ---------------- | ----------------------------------------------------------- | ----------- | -------- |
-| 100%     | Sans faute !     | Tu maîtrises cette section.                                 | trophy      | yes      |
-| 80–99%   | Excellent !      | Encore un petit effort pour le sans-faute.                  | trophy      | yes      |
-| 40–79%   | Bien joué !      | Les bases sont là, revois tes erreurs pour progresser.      | thumb-up    | no       |
-| below 40 | C'est un début ! | Chaque erreur est une occasion d'apprendre. On y retourne ? | plant-2     | no       |
+| Score    | Title            | Text                                                        | Icon     |
+| -------- | ---------------- | ----------------------------------------------------------- | -------- |
+| 100%     | Sans faute !     | Tu maîtrises cette section.                                 | trophy   |
+| 80–99%   | Excellent !      | Encore un petit effort pour le sans-faute.                  | trophy   |
+| 40–79%   | Bien joué !      | Les bases sont là, revois tes erreurs pour progresser.      | thumb-up |
+| below 40 | C'est un début ! | Chaque erreur est une occasion d'apprendre. On y retourne ? | plant-2  |
 
-Built 2026-10-13 in `src/domain/verdict.ts`: `verdictFor(percent)` returns the title and the sentence, and the title is the screen's `h1`. The icon is in the table and drawn by `TierBadge` (decorative, `aria-hidden`: the title carries the tier). The sparkles flag joins the table with the sparkles, so nothing is in it before it is used. The percentage comes from the picks: `Math.round(score / questions * 100)`, which is always a multiple of 10 with 10 questions per section. The design has no line with the topic and section name, so the screen does not show one (decided 2026-10-13).
+Built 2026-10-13 in `src/domain/verdict.ts`: `verdictFor(percent)` returns the title and the sentence, and the title is the screen's `h1`. The icon is in the table and drawn by `TierBadge` (decorative, `aria-hidden`: the title carries the tier). The percentage comes from the picks: `Math.round(score / questions * 100)`, which is always a multiple of 10 with 10 questions per section. The design has no line with the topic and section name, so the screen does not show one (decided 2026-10-13).
 
 Score buttons, always one column (decided 2026-10-13, over the mockup's row): full width on the phone, 320px wide from `md`. "Réessayer" (pink, restarts the same section), "Revoir mes erreurs (n)" (white, hidden when n = 0), "Retour aux sections" (text link, goes to Sections; the design keeps the prototype's label "Retour aux sujets" although it goes to Sections, and we renamed it to match, decided 2026-10-13).
 

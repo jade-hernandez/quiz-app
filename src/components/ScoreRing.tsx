@@ -1,3 +1,4 @@
+import { Sparkles } from "./Sparkles.tsx";
 import { useCountUp } from "../hooks/useCountUp.ts";
 
 const radius = 50;
@@ -53,6 +54,7 @@ export function ScoreRing({ percent, score, total }: ScoreRingProps) {
           />
         )}
       </svg>
+      <Sparkles />
       <div
         aria-hidden='true'
         className='absolute inset-0 grid place-content-center text-center'
