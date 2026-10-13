@@ -1,5 +1,5 @@
-import { Icon } from "./Icon.tsx";
-import { InlineText } from "./InlineText.tsx";
+import { Icon } from "./ui/Icon.tsx";
+import { InlineText } from "./ui/InlineText.tsx";
 
 type ExplanationCardProps = {
   readonly correct: boolean;

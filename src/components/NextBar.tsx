@@ -1,6 +1,6 @@
 import type { Ref } from "react";
-import { Icon } from "./Icon.tsx";
-import { sticker } from "./sticker.ts";
+import { Icon } from "./ui/Icon.tsx";
+import { sticker } from "./ui/sticker.ts";
 
 type NextBarProps = {
   readonly ref: Ref<HTMLDivElement>;

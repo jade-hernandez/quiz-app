@@ -1,8 +1,8 @@
 import type { TopicId } from "../domain/sections.ts";
 import type { Topic } from "../domain/topics.ts";
-import { Chip } from "./Chip.tsx";
-import { Icon } from "./Icon.tsx";
-import { sticker } from "./sticker.ts";
+import { Chip } from "./ui/Chip.tsx";
+import { Icon } from "./ui/Icon.tsx";
+import { sticker } from "./ui/sticker.ts";
 
 const backgrounds: Record<TopicId, string> = {
   javascript: "bg-js",

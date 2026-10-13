@@ -1,5 +1,5 @@
-import { Button } from "../components/Button.tsx";
-import { InlineText } from "../components/InlineText.tsx";
+import { Button } from "../components/ui/Button.tsx";
+import { InlineText } from "../components/ui/InlineText.tsx";
 import { ScoreRing } from "../components/ScoreRing.tsx";
 import { questionsOfSection } from "../data/queries.ts";
 import type { Section } from "../domain/sections.ts";

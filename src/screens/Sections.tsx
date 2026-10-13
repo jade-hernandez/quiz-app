@@ -1,6 +1,6 @@
-import { BackButton } from "../components/BackButton.tsx";
-import { Chip } from "../components/Chip.tsx";
-import { Logo } from "../components/Logo.tsx";
+import { BackButton } from "../components/ui/BackButton.tsx";
+import { Chip } from "../components/ui/Chip.tsx";
+import { Logo } from "../components/ui/Logo.tsx";
 import { SectionRow } from "../components/SectionRow.tsx";
 import { questionsOfSection, sectionsOfTopic } from "../data/queries.ts";
 import type { Section, TopicId } from "../domain/sections.ts";

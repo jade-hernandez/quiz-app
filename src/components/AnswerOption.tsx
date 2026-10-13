@@ -1,6 +1,6 @@
-import { Icon } from "./Icon.tsx";
-import { InlineText } from "./InlineText.tsx";
-import { sticker } from "./sticker.ts";
+import { Icon } from "./ui/Icon.tsx";
+import { InlineText } from "./ui/InlineText.tsx";
+import { sticker } from "./ui/sticker.ts";
 
 const letters = "ABCD";
 
