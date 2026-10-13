@@ -12,6 +12,7 @@ import { sections } from "./domain/sections.ts";
 import type { Section, TopicId } from "./domain/sections.ts";
 import { topics } from "./domain/topics.ts";
 import { Home } from "./screens/Home.tsx";
+import { NotFound } from "./screens/NotFound.tsx";
 import { Question } from "./screens/Question.tsx";
 import { Score } from "./screens/Score.tsx";
 import { Sections } from "./screens/Sections.tsx";
@@ -57,6 +58,11 @@ function useGo() {
   };
 }
 
+function NotFoundRoute() {
+  const go = useGo();
+  return <NotFound onHome={() => go("/")} />;
+}
+
 function HomeRoute() {
   const go = useGo();
   return <Home onSelectTopic={(topic) => go(topicPath(topic))} />;
@@ -65,7 +71,7 @@ function HomeRoute() {
 function SectionsRoute() {
   const { topic } = useParams();
   const go = useGo();
-  if (!isTopicId(topic)) return <Redirect to='/' />;
+  if (!isTopicId(topic)) return <NotFoundRoute />;
   return (
     <Sections
       topic={topic}
@@ -78,7 +84,7 @@ function SectionsRoute() {
 function QuestionRoute() {
   const section = useSection();
   const go = useGo();
-  if (section === undefined) return <Redirect to='/' />;
+  if (section === undefined) return <NotFoundRoute />;
   return (
     <Question
       section={section}
@@ -97,7 +103,7 @@ function ScoreRoute() {
   const section = useSection();
   const go = useGo();
   const answers = readAnswers(useLocation().state);
-  if (section === undefined) return <Redirect to='/' />;
+  if (section === undefined) return <NotFoundRoute />;
   if (answers === undefined) {
     return <Redirect to={sectionPath(section)} />;
   }
@@ -141,7 +147,7 @@ export default function App() {
       />
       <Route
         path='*'
-        element={<Redirect to='/' />}
+        element={<NotFoundRoute />}
       />
     </Routes>
   );
