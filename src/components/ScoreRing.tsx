@@ -12,7 +12,7 @@ export function ScoreRing({ percent, score, total }: ScoreRingProps) {
     <div
       role='img'
       aria-label={`Score : ${score} sur ${total}, ${percent} %`}
-      className='relative size-41'
+      className='relative size-41 lg:size-52'
     >
       <svg
         viewBox='0 0 120 120'
@@ -54,11 +54,11 @@ export function ScoreRing({ percent, score, total }: ScoreRingProps) {
         className='absolute inset-0 grid place-content-center text-center'
       >
         <span
-          className={`display leading-none ${percent === 100 ? "text-3xl" : "text-4xl"}`}
+          className={`display leading-none ${percent === 100 ? "text-3xl lg:text-4xl" : "text-4xl lg:text-5xl"}`}
         >
           {percent}&nbsp;%
         </span>
-        <span className='mt-1 text-sm font-bold text-muted'>
+        <span className='mt-1 text-sm font-bold text-muted lg:text-base'>
           {`${score} / ${total}`}
         </span>
       </div>

@@ -9,7 +9,7 @@ export function TierBadge({ icon }: TierBadgeProps) {
   return (
     <span
       aria-hidden='true'
-      className='flex size-11 items-center justify-center rounded-full bg-accent text-xl border-sticker'
+      className='flex size-11 items-center justify-center rounded-full bg-accent text-xl border-sticker lg:size-13 lg:text-2xl'
     >
       <Icon name={icon} />
     </span>

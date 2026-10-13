@@ -41,7 +41,7 @@ export function Score({ section, answers, onRetry, onBack }: ScoreProps) {
       <p className='text-sm lg:text-base'>
         <InlineText text={verdict.text} />
       </p>
-      <div className='flex w-full flex-col gap-2'>
+      <div className='flex w-full flex-col gap-2 md:max-w-80'>
         <Button
           tone='action'
           onClick={onRetry}
