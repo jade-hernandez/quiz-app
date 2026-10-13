@@ -71,7 +71,7 @@ Text sizes (decided 2026-10-07): Tailwind's default steps, no custom size tokens
 | caption           | 12 (`text-xs`)   | sans 700     | chips, code header, stat chips                 | 12, 11 |
 | code              | 12 (`text-xs`)   | mono 500     | code box, progress counter                     | 12.5   |
 
-Display roles are Bricolage 800. The score at 100% needed 34px in the mockup to clear the ring: check that "100 %" fits at 36, otherwise use 30. Re-measure how code wraps at 12px.
+Display roles are Bricolage 800. The score at 100% needed 34px in the mockup to clear the ring: check that "100 %" fits at 36, otherwise use 30. Checked 2026-10-13 on the built ring (164px): at 36 the text box leaves about 1.5px between the digits and the inner edge, so 100 % uses 30; the other values (at most "80 %", 89px wide) keep 36 with 4.7px a side or more. Re-measure how code wraps at 12px.
 
 Line-heights (proposal, the mockup had 9 values from 1.0 to 1.65): 1.1 for display text and buttons, 1.4 for running text and captions, 1.65 for code.
 
