@@ -48,6 +48,7 @@ function renderScreen(
         <Score
           section={screen.section}
           answers={screen.answers}
+          onRetry={() => go({ name: "question", section: screen.section })}
           onBack={() => go({ name: "sections", topic: screen.section.topic })}
         />
       );

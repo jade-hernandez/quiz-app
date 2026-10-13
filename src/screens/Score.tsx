@@ -1,4 +1,4 @@
-import { BackButton } from "../components/BackButton.tsx";
+import { Button } from "../components/Button.tsx";
 import { InlineText } from "../components/InlineText.tsx";
 import { questionsOfSection } from "../data/queries.ts";
 import type { Section } from "../domain/sections.ts";
@@ -7,10 +7,11 @@ import { verdictFor } from "../domain/verdict.ts";
 type ScoreProps = {
   readonly section: Section;
   readonly answers: readonly number[];
+  readonly onRetry: () => void;
   readonly onBack: () => void;
 };
 
-export function Score({ section, answers, onBack }: ScoreProps) {
+export function Score({ section, answers, onRetry, onBack }: ScoreProps) {
   const questions = questionsOfSection(section.id);
   const score = answers.filter(
     (picked, index) => picked === questions[index]?.answerIndex,
@@ -22,12 +23,6 @@ export function Score({ section, answers, onBack }: ScoreProps) {
       data-topic={section.topic}
       className='mx-auto flex min-h-dvh w-full max-w-160 flex-col gap-3 p-4 lg:max-w-240 lg:p-10'
     >
-      <div className='flex items-center gap-3'>
-        <BackButton
-          label='Retour aux sections'
-          onClick={onBack}
-        />
-      </div>
       <h1
         tabIndex={-1}
         className='w-fit display text-3xl leading-display lg:text-4xl'
@@ -38,6 +33,20 @@ export function Score({ section, answers, onBack }: ScoreProps) {
         <InlineText text={verdict.text} />
       </p>
       <p className='text-sm text-muted lg:text-base'>{`${score} / ${questions.length}`}</p>
+      <div className='flex flex-col gap-2'>
+        <Button
+          tone='action'
+          onClick={onRetry}
+        >
+          Réessayer
+        </Button>
+        <Button
+          tone='link'
+          onClick={onBack}
+        >
+          Retour aux sections
+        </Button>
+      </div>
     </main>
   );
 }

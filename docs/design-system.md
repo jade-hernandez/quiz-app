@@ -138,7 +138,7 @@ Score tiers (thresholds from the prototype: 100, ≥80, ≥40, else):
 
 Built 2026-10-13 in `src/domain/verdict.ts`: `verdictFor(percent)` returns the title and the sentence, and the title is the screen's `h1`. The icon and the sparkles flag join the table with the badge and the sparkles, so nothing is in it before it is used. The percentage comes from the picks: `Math.round(score / questions * 100)`, which is always a multiple of 10 with 10 questions per section. The design has no line with the topic and section name, so the screen does not show one (decided 2026-10-13).
 
-Score buttons: "Réessayer" (pink, restarts the same section), "Revoir mes erreurs (n)" (white, hidden when n = 0), "Retour aux sujets" (text link, goes to Sections).
+Score buttons: "Réessayer" (pink, restarts the same section), "Revoir mes erreurs (n)" (white, hidden when n = 0), "Retour aux sections" (text link, goes to Sections; the design keeps the prototype's label "Retour aux sujets" although it goes to Sections, and we renamed it to match, decided 2026-10-13).
 
 ## Screen behaviour
 
