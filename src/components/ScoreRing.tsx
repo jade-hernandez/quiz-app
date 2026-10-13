@@ -1,3 +1,5 @@
+import { useCountUp } from "../hooks/useCountUp.ts";
+
 const radius = 50;
 const circumference = 2 * Math.PI * radius;
 
@@ -8,6 +10,8 @@ type ScoreRingProps = {
 };
 
 export function ScoreRing({ percent, score, total }: ScoreRingProps) {
+  const shown = useCountUp(percent);
+
   return (
     <div
       role='img'
@@ -54,9 +58,9 @@ export function ScoreRing({ percent, score, total }: ScoreRingProps) {
         className='absolute inset-0 grid place-content-center text-center'
       >
         <span
-          className={`display leading-none ${percent === 100 ? "text-3xl lg:text-4xl" : "text-4xl lg:text-5xl"}`}
+          className={`display leading-none tabular-nums ${percent === 100 ? "text-3xl lg:text-4xl" : "text-4xl lg:text-5xl"}`}
         >
-          {percent}&nbsp;%
+          {shown}&nbsp;%
         </span>
         <span className='mt-1 text-sm font-bold text-muted lg:text-base'>
           {`${score} / ${total}`}

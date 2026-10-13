@@ -103,6 +103,8 @@ Desktop sizes (open, never reviewed), on the same scale: hero 60 (`text-6xl`), t
 | Tier badge                          | scale .8 to 1.06 to 1 (the only overshoot)  | 320ms, delay 700ms                             |
 | Sparkles (80%+ only)                | scale .3 to 1 to .7, fade, drift up 8px     | 800ms, delays 900, 1000, 1100ms                |
 
+The count-up is `useCountUp` (`src/hooks`): `requestAnimationFrame`, 100ms delay like the ring, ease-out cubic, and a script check of `prefers-reduced-motion` because the CSS rule cannot stop a number; the number is `aria-hidden` and the ring's label carries the final score. Digits are tabular (measured: "11 %", "00 %", "88 %" all 86.1px, against 66.8 to 89.1px proportional) so the text does not shift while counting.
+
 The ring is one keyframe, `from { stroke-dashoffset: 315 }` (just above the circumference 314.16, so the arc is empty), with `backwards` fill so it stays empty during the 100ms delay; the end value is the arc's own offset, so the script has no animation state.
 
 **Score celebration (decided 2026-10-07):** the ring, count-up, badge and sparkles are an exception to the short-animation rules. They may use longer timings and a staggered sequence. The values above are starting points, to tune by eye in the browser.
