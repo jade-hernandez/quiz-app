@@ -35,6 +35,7 @@ export function Question({ section, onBack, onFinish }: QuestionProps) {
   const question = questions[position];
   const selected = answers[position];
   const isLast = position === questions.length - 1;
+  const split = question !== undefined && question.code !== undefined;
   const status = useRef<HTMLDivElement>(null);
   const bar = useRef<HTMLDivElement>(null);
 
@@ -75,7 +76,7 @@ export function Question({ section, onBack, onFinish }: QuestionProps) {
   return (
     <main
       data-topic={section.topic}
-      className='mx-auto flex min-h-dvh w-full max-w-160 flex-col gap-3 p-4 pb-24 md:pb-4 lg:max-w-240 lg:p-10'
+      className='mx-auto flex min-h-dvh w-full max-w-160 flex-col gap-3 p-4 pb-24 md:pb-4 lg:max-w-260 lg:p-10'
     >
       <div className='flex items-center gap-3'>
         <BackButton
@@ -97,42 +98,47 @@ export function Question({ section, onBack, onFinish }: QuestionProps) {
           Aucune question dans cette section.
         </h1>
       ) : (
-        <div className='mx-auto w-full max-w-140 lg:max-w-180'>
+        <div
+          className={`mx-auto w-full max-w-140 ${split ? "lg:grid lg:max-w-240 lg:grid-cols-[460px_minmax(0,1fr)] lg:items-start lg:gap-x-8" : "lg:max-w-180"}`}
+        >
           <QuestionCard
+            className={split ? "lg:sticky lg:top-6" : ""}
             label={`${topics[section.topic].title} · ${section.label}`}
             language={topics[section.topic].codeLanguage}
             question={question}
           />
-          <ul className='mt-3 flex flex-col gap-2'>
-            {question.options.map((text, index) => (
-              <li key={`${question.id}-${index}`}>
-                <AnswerOption
-                  index={index}
-                  text={text}
-                  status={statusOf(index, question.answerIndex, selected)}
-                  onSelect={() => answer(index)}
+          <div className={`mt-3 ${split ? "lg:mt-0" : ""}`}>
+            <ul className='flex flex-col gap-2'>
+              {question.options.map((text, index) => (
+                <li key={`${question.id}-${index}`}>
+                  <AnswerOption
+                    index={index}
+                    text={text}
+                    status={statusOf(index, question.answerIndex, selected)}
+                    onSelect={() => answer(index)}
+                  />
+                </li>
+              ))}
+            </ul>
+            <div
+              ref={status}
+              role='status'
+              className='not-empty:mt-3'
+            >
+              {selected !== undefined && (
+                <ExplanationCard
+                  correct={selected === question.answerIndex}
+                  text={question.explanation}
                 />
-              </li>
-            ))}
-          </ul>
-          <div
-            ref={status}
-            role='status'
-            className='not-empty:mt-3'
-          >
-            {selected !== undefined && (
-              <ExplanationCard
-                correct={selected === question.answerIndex}
-                text={question.explanation}
-              />
-            )}
+              )}
+            </div>
+            <NextBar
+              ref={bar}
+              label={isLast ? "Voir les résultats" : "Question suivante"}
+              visible={selected !== undefined}
+              onNext={showNext}
+            />
           </div>
-          <NextBar
-            ref={bar}
-            label={isLast ? "Voir les résultats" : "Question suivante"}
-            visible={selected !== undefined}
-            onNext={showNext}
-          />
         </div>
       )}
     </main>

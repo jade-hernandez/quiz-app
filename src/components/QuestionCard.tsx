@@ -4,16 +4,24 @@ import { CodeBox } from "./CodeBox.tsx";
 import { InlineText } from "./InlineText.tsx";
 
 type QuestionCardProps = {
+  readonly className: string;
   readonly label: string;
   readonly language: string;
   readonly question: Question;
 };
 
-export function QuestionCard({ label, language, question }: QuestionCardProps) {
+export function QuestionCard({
+  className,
+  label,
+  language,
+  question,
+}: QuestionCardProps) {
   const size = question.code === undefined ? "text-2xl" : "text-xl lg:text-2xl";
 
   return (
-    <div className='flex flex-col items-start gap-3 rounded-xl bg-card p-3 shadow-sticker border-sticker'>
+    <div
+      className={`flex flex-col items-start gap-3 rounded-xl bg-card p-3 shadow-sticker border-sticker ${className}`}
+    >
       <Chip tone='topic'>{label}</Chip>
       <h1
         tabIndex={-1}
