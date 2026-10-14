@@ -1,7 +1,7 @@
 import { Chip } from "../components/ui/Chip.tsx";
 import { Logo } from "../components/ui/Logo.tsx";
 import { TopicCard } from "../components/TopicCard.tsx";
-import { questionCountOfTopic, sectionsOfTopic } from "../data/queries.ts";
+import { questionCountOfTopic, sectionsOfTopic } from "../domain/sections.ts";
 import type { TopicId } from "../domain/sections.ts";
 import { topics } from "../domain/topics.ts";
 

@@ -2,7 +2,7 @@ import { BackButton } from "../components/ui/BackButton.tsx";
 import { Chip } from "../components/ui/Chip.tsx";
 import { Logo } from "../components/ui/Logo.tsx";
 import { SectionRow } from "../components/SectionRow.tsx";
-import { questionsOfSection, sectionsOfTopic } from "../data/queries.ts";
+import { sectionsOfTopic } from "../domain/sections.ts";
 import type { Section, TopicId } from "../domain/sections.ts";
 import { topics } from "../domain/topics.ts";
 
@@ -45,7 +45,7 @@ export function Sections({ topic, onBack, onSelectSection }: SectionsProps) {
             <SectionRow
               number={index + 1}
               label={section.label}
-              questionCount={questionsOfSection(section.id).length}
+              questionCount={section.questionCount}
               onSelect={() => onSelectSection(section)}
             />
           </li>
