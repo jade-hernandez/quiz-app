@@ -4,20 +4,26 @@ import { InlineText } from "../components/ui/InlineText.tsx";
 import { MistakeCard } from "../components/MistakeCard.tsx";
 import { ScoreRing } from "../components/ScoreRing.tsx";
 import { TierBadge } from "../components/TierBadge.tsx";
-import { questionsOfSection } from "../data/queries.ts";
+import type { Question } from "../domain/question.ts";
 import type { Section } from "../domain/sections.ts";
 import { topics } from "../domain/topics.ts";
 import { verdictFor } from "../domain/verdict.ts";
 
 type ScoreProps = {
   readonly section: Section;
+  readonly questions: readonly Question[];
   readonly answers: readonly number[];
   readonly onRetry: () => void;
   readonly onBack: () => void;
 };
 
-export function Score({ section, answers, onRetry, onBack }: ScoreProps) {
-  const questions = questionsOfSection(section.id);
+export function Score({
+  section,
+  questions,
+  answers,
+  onRetry,
+  onBack,
+}: ScoreProps) {
   const score = answers.filter(
     (picked, index) => picked === questions[index]?.answerIndex,
   ).length;

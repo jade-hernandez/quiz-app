@@ -6,13 +6,16 @@ import { ExplanationCard } from "../components/ExplanationCard.tsx";
 import { NextBar } from "../components/NextBar.tsx";
 import { Progress } from "../components/Progress.tsx";
 import { QuestionCard } from "../components/QuestionCard.tsx";
-import { questionsOfSection } from "../data/queries.ts";
-import type { OptionIndex } from "../domain/question.ts";
+import type {
+  OptionIndex,
+  Question as QuestionData,
+} from "../domain/question.ts";
 import type { Section } from "../domain/sections.ts";
 import { topics } from "../domain/topics.ts";
 
 type QuestionProps = {
   readonly section: Section;
+  readonly questions: readonly QuestionData[];
   readonly onBack: () => void;
   readonly onFinish: (answers: readonly number[]) => void;
 };
@@ -28,8 +31,12 @@ function statusOf(
   return "flat";
 }
 
-export function Question({ section, onBack, onFinish }: QuestionProps) {
-  const questions = questionsOfSection(section.id);
+export function Question({
+  section,
+  questions,
+  onBack,
+  onFinish,
+}: QuestionProps) {
   const [position, setPosition] = useState(0);
   const [answers, setAnswers] = useState<readonly number[]>([]);
   const question = questions[position];

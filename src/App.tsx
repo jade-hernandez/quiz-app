@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { Suspense, use, useEffect, useRef } from "react";
 import {
   Navigate,
   Route,
@@ -8,10 +8,12 @@ import {
   useParams,
 } from "react-router";
 import type { NavigateOptions } from "react-router";
+import { loadQuestions } from "./data/queries.ts";
 import { sections } from "./domain/sections.ts";
 import type { Section, TopicId } from "./domain/sections.ts";
 import { topics } from "./domain/topics.ts";
 import { Home } from "./screens/Home.tsx";
+import { Loading } from "./screens/Loading.tsx";
 import { NotFound } from "./screens/NotFound.tsx";
 import { Question } from "./screens/Question.tsx";
 import { Score } from "./screens/Score.tsx";
@@ -88,6 +90,7 @@ function QuestionRoute() {
   return (
     <Question
       section={section}
+      questions={use(loadQuestions(section.id))}
       onBack={() => go(topicPath(section.topic))}
       onFinish={(answers) =>
         go(`${sectionPath(section)}/score`, {
@@ -110,6 +113,7 @@ function ScoreRoute() {
   return (
     <Score
       section={section}
+      questions={use(loadQuestions(section.id))}
       answers={answers}
       onRetry={() => go(sectionPath(section), { replace: true })}
       onBack={() => go(topicPath(section.topic))}
@@ -128,27 +132,29 @@ export default function App() {
   }, [pathname]);
 
   return (
-    <Routes>
-      <Route
-        path='/'
-        element={<HomeRoute />}
-      />
-      <Route
-        path='/:topic'
-        element={<SectionsRoute />}
-      />
-      <Route
-        path='/:topic/:section'
-        element={<QuestionRoute />}
-      />
-      <Route
-        path='/:topic/:section/score'
-        element={<ScoreRoute />}
-      />
-      <Route
-        path='*'
-        element={<NotFoundRoute />}
-      />
-    </Routes>
+    <Suspense fallback={<Loading />}>
+      <Routes>
+        <Route
+          path='/'
+          element={<HomeRoute />}
+        />
+        <Route
+          path='/:topic'
+          element={<SectionsRoute />}
+        />
+        <Route
+          path='/:topic/:section'
+          element={<QuestionRoute />}
+        />
+        <Route
+          path='/:topic/:section/score'
+          element={<ScoreRoute />}
+        />
+        <Route
+          path='*'
+          element={<NotFoundRoute />}
+        />
+      </Routes>
+    </Suspense>
   );
 }
