@@ -1,17 +1,17 @@
 import { useEffect, useRef, useState } from "react";
-import { AnswerOption } from "../components/AnswerOption.tsx";
-import type { AnswerStatus } from "../components/AnswerOption.tsx";
-import { BackButton } from "../ui/BackButton.tsx";
-import { ExplanationCard } from "../components/ExplanationCard.tsx";
-import { NextBar } from "../components/NextBar.tsx";
-import { Progress } from "../components/Progress.tsx";
-import { QuestionCard } from "../components/QuestionCard.tsx";
+import { AnswerOption } from "./AnswerOption.tsx";
+import type { AnswerStatus } from "./AnswerOption.tsx";
+import { BackButton } from "../../ui/BackButton.tsx";
+import { ExplanationCard } from "./ExplanationCard.tsx";
+import { NextBar } from "./NextBar.tsx";
+import { Progress } from "./Progress.tsx";
+import { QuestionCard } from "./QuestionCard.tsx";
 import type {
   OptionIndex,
   Question as QuestionData,
-} from "../domain/question.ts";
-import type { Section } from "../domain/sections.ts";
-import { topics } from "../domain/topics.ts";
+} from "../../domain/question.ts";
+import type { Section } from "../../domain/sections.ts";
+import { topics } from "../../domain/topics.ts";
 
 type QuestionProps = {
   readonly section: Section;

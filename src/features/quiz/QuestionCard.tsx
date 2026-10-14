@@ -1,7 +1,7 @@
-import type { Question } from "../domain/question.ts";
-import { Chip } from "../ui/Chip.tsx";
-import { CodeBox } from "../ui/CodeBox.tsx";
-import { InlineText } from "../ui/InlineText.tsx";
+import type { Question } from "../../domain/question.ts";
+import { Chip } from "../../ui/Chip.tsx";
+import { CodeBox } from "../../ui/CodeBox.tsx";
+import { InlineText } from "../../ui/InlineText.tsx";
 
 type QuestionCardProps = {
   readonly className: string;

@@ -1,5 +1,5 @@
-import { Icon } from "../ui/Icon.tsx";
-import { sticker } from "../ui/sticker.ts";
+import { Icon } from "../../ui/Icon.tsx";
+import { sticker } from "../../ui/sticker.ts";
 
 type SectionRowProps = {
   readonly number: number;

@@ -1,10 +1,10 @@
-import { BackButton } from "../ui/BackButton.tsx";
-import { Chip } from "../ui/Chip.tsx";
-import { Logo } from "../ui/Logo.tsx";
-import { SectionRow } from "../components/SectionRow.tsx";
-import { sectionsOfTopic } from "../domain/sections.ts";
-import type { Section, TopicId } from "../domain/sections.ts";
-import { topics } from "../domain/topics.ts";
+import { BackButton } from "../../ui/BackButton.tsx";
+import { Chip } from "../../ui/Chip.tsx";
+import { Logo } from "../../ui/Logo.tsx";
+import { SectionRow } from "./SectionRow.tsx";
+import { sectionsOfTopic } from "../../domain/sections.ts";
+import type { Section, TopicId } from "../../domain/sections.ts";
+import { topics } from "../../domain/topics.ts";
 
 type SectionsProps = {
   readonly topic: TopicId;

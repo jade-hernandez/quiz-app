@@ -1,9 +1,12 @@
-import { Chip } from "../ui/Chip.tsx";
-import { Logo } from "../ui/Logo.tsx";
-import { TopicCard } from "../components/TopicCard.tsx";
-import { questionCountOfTopic, sectionsOfTopic } from "../domain/sections.ts";
-import type { TopicId } from "../domain/sections.ts";
-import { topics } from "../domain/topics.ts";
+import { Chip } from "../../ui/Chip.tsx";
+import { Logo } from "../../ui/Logo.tsx";
+import { TopicCard } from "./TopicCard.tsx";
+import {
+  questionCountOfTopic,
+  sectionsOfTopic,
+} from "../../domain/sections.ts";
+import type { TopicId } from "../../domain/sections.ts";
+import { topics } from "../../domain/topics.ts";
 
 type HomeProps = { readonly onSelectTopic: (topic: TopicId) => void };
 

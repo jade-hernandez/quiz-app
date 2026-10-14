@@ -1,5 +1,5 @@
 import type { Ref } from "react";
-import { Button } from "../ui/Button.tsx";
+import { Button } from "../../ui/Button.tsx";
 
 type NextBarProps = {
   readonly ref: Ref<HTMLDivElement>;
