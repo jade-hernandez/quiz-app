@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Button } from "../components/ui/Button.tsx";
-import { InlineText } from "../components/ui/InlineText.tsx";
+import { Button } from "../ui/Button.tsx";
+import { InlineText } from "../ui/InlineText.tsx";
 import { MistakeCard } from "../components/MistakeCard.tsx";
 import { ScoreRing } from "../components/ScoreRing.tsx";
 import { TierBadge } from "../components/TierBadge.tsx";

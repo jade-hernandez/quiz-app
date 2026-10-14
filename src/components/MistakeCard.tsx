@@ -1,7 +1,7 @@
 import type { Question } from "../domain/question.ts";
-import { CodeBox } from "./ui/CodeBox.tsx";
-import { Icon } from "./ui/Icon.tsx";
-import { InlineText } from "./ui/InlineText.tsx";
+import { CodeBox } from "../ui/CodeBox.tsx";
+import { Icon } from "../ui/Icon.tsx";
+import { InlineText } from "../ui/InlineText.tsx";
 
 type MistakeCardProps = {
   readonly question: Question;

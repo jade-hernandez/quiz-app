@@ -1,5 +1,5 @@
-import { Button } from "../components/ui/Button.tsx";
-import { Logo } from "../components/ui/Logo.tsx";
+import { Button } from "../ui/Button.tsx";
+import { Logo } from "../ui/Logo.tsx";
 
 type NotFoundProps = { readonly onHome: () => void };
 

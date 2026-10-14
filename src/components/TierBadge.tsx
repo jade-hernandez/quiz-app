@@ -1,5 +1,5 @@
-import { Icon } from "./ui/Icon.tsx";
-import type { IconName } from "./ui/Icon.tsx";
+import { Icon } from "../ui/Icon.tsx";
+import type { IconName } from "../ui/Icon.tsx";
 
 type TierBadgeProps = {
   readonly icon: IconName;

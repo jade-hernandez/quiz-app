@@ -13,7 +13,7 @@ import { sections } from "./domain/sections.ts";
 import type { Section, TopicId } from "./domain/sections.ts";
 import { topics } from "./domain/topics.ts";
 import { Home } from "./screens/Home.tsx";
-import { ErrorBoundary } from "./components/ui/ErrorBoundary.tsx";
+import { ErrorBoundary } from "./ui/ErrorBoundary.tsx";
 import { LoadError } from "./screens/LoadError.tsx";
 import { Loading } from "./screens/Loading.tsx";
 import { NotFound } from "./screens/NotFound.tsx";

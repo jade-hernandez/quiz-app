@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { AnswerOption } from "../components/AnswerOption.tsx";
 import type { AnswerStatus } from "../components/AnswerOption.tsx";
-import { BackButton } from "../components/ui/BackButton.tsx";
+import { BackButton } from "../ui/BackButton.tsx";
 import { ExplanationCard } from "../components/ExplanationCard.tsx";
 import { NextBar } from "../components/NextBar.tsx";
 import { Progress } from "../components/Progress.tsx";
