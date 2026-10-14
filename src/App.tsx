@@ -14,11 +14,11 @@ import type { Section, TopicId } from "./domain/sections.ts";
 import { topics } from "./domain/topics.ts";
 import { Home } from "./features/topics/Home.tsx";
 import { ErrorBoundary } from "./ui/ErrorBoundary.tsx";
-import { LoadError } from "./screens/LoadError.tsx";
-import { Loading } from "./screens/Loading.tsx";
-import { NotFound } from "./screens/NotFound.tsx";
+import { LoadError } from "./features/status/LoadError.tsx";
+import { Loading } from "./features/status/Loading.tsx";
+import { NotFound } from "./features/status/NotFound.tsx";
 import { Question } from "./features/quiz/Question.tsx";
-import { Score } from "./screens/Score.tsx";
+import { Score } from "./features/score/Score.tsx";
 import { Sections } from "./features/sections/Sections.tsx";
 
 function topicPath(topic: TopicId): string {

@@ -1,5 +1,5 @@
 import { Sparkles } from "./Sparkles.tsx";
-import { useCountUp } from "../hooks/useCountUp.ts";
+import { useCountUp } from "./useCountUp.ts";
 
 const radius = 50;
 const circumference = 2 * Math.PI * radius;

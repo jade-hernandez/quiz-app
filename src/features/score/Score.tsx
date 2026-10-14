@@ -1,13 +1,13 @@
 import { useState } from "react";
-import { Button } from "../ui/Button.tsx";
-import { InlineText } from "../ui/InlineText.tsx";
-import { MistakeCard } from "../components/MistakeCard.tsx";
-import { ScoreRing } from "../components/ScoreRing.tsx";
-import { TierBadge } from "../components/TierBadge.tsx";
-import type { Question } from "../domain/question.ts";
-import type { Section } from "../domain/sections.ts";
-import { topics } from "../domain/topics.ts";
-import { verdictFor } from "../domain/verdict.ts";
+import { Button } from "../../ui/Button.tsx";
+import { InlineText } from "../../ui/InlineText.tsx";
+import { MistakeCard } from "./MistakeCard.tsx";
+import { ScoreRing } from "./ScoreRing.tsx";
+import { TierBadge } from "./TierBadge.tsx";
+import type { Question } from "../../domain/question.ts";
+import type { Section } from "../../domain/sections.ts";
+import { topics } from "../../domain/topics.ts";
+import { verdictFor } from "./verdict.ts";
 
 type ScoreProps = {
   readonly section: Section;

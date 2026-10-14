@@ -1,5 +1,5 @@
-import { Button } from "../ui/Button.tsx";
-import { Logo } from "../ui/Logo.tsx";
+import { Button } from "../../ui/Button.tsx";
+import { Logo } from "../../ui/Logo.tsx";
 
 type LoadErrorProps = {
   readonly onReload: () => void;
