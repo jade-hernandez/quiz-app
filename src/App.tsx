@@ -13,6 +13,8 @@ import { sections } from "./domain/sections.ts";
 import type { Section, TopicId } from "./domain/sections.ts";
 import { topics } from "./domain/topics.ts";
 import { Home } from "./screens/Home.tsx";
+import { ErrorBoundary } from "./components/ui/ErrorBoundary.tsx";
+import { LoadError } from "./screens/LoadError.tsx";
 import { Loading } from "./screens/Loading.tsx";
 import { NotFound } from "./screens/NotFound.tsx";
 import { Question } from "./screens/Question.tsx";
@@ -123,6 +125,7 @@ function ScoreRoute() {
 
 export default function App() {
   const { pathname } = useLocation();
+  const go = useGo();
   const shown = useRef(pathname);
 
   useEffect(() => {
@@ -132,29 +135,39 @@ export default function App() {
   }, [pathname]);
 
   return (
-    <Suspense fallback={<Loading />}>
-      <Routes>
-        <Route
-          path='/'
-          element={<HomeRoute />}
+    <ErrorBoundary
+      resetKey={pathname}
+      fallback={() => (
+        <LoadError
+          onReload={() => window.location.reload()}
+          onHome={() => go("/")}
         />
-        <Route
-          path='/:topic'
-          element={<SectionsRoute />}
-        />
-        <Route
-          path='/:topic/:section'
-          element={<QuestionRoute />}
-        />
-        <Route
-          path='/:topic/:section/score'
-          element={<ScoreRoute />}
-        />
-        <Route
-          path='*'
-          element={<NotFoundRoute />}
-        />
-      </Routes>
-    </Suspense>
+      )}
+    >
+      <Suspense fallback={<Loading />}>
+        <Routes>
+          <Route
+            path='/'
+            element={<HomeRoute />}
+          />
+          <Route
+            path='/:topic'
+            element={<SectionsRoute />}
+          />
+          <Route
+            path='/:topic/:section'
+            element={<QuestionRoute />}
+          />
+          <Route
+            path='/:topic/:section/score'
+            element={<ScoreRoute />}
+          />
+          <Route
+            path='*'
+            element={<NotFoundRoute />}
+          />
+        </Routes>
+      </Suspense>
+    </ErrorBoundary>
   );
 }
