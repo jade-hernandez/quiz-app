@@ -16,7 +16,7 @@ export function NextBar({ ref, label, visible, onNext }: NextBarProps) {
     >
       <div className='w-full md:w-auto'>
         <Button
-          tone='ink'
+          tone='topic'
           icon='arrow-right'
           onClick={onNext}
         >

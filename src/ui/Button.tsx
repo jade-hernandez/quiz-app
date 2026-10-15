@@ -4,7 +4,7 @@ import { sticker } from "./sticker.ts";
 
 const tones = {
   action: `${sticker} bg-action`,
-  ink: `${sticker} bg-ink text-paper`,
+  topic: `${sticker} bg-accent`,
   white: `${sticker} bg-card`,
   link: "underline underline-offset-4",
 } as const;
