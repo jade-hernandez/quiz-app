@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+import { useLocation } from "react-router";
+
 const revealMargin = 12;
 const startMargin = 16;
 
@@ -16,4 +19,12 @@ export function scrollToReveal(
 
 export function scrollToStartOf(element: HTMLElement): void {
   window.scrollBy(0, element.getBoundingClientRect().top - startMargin);
+}
+
+export function useScrollToTop(): void {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  }, [pathname]);
 }

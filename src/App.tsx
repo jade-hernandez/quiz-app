@@ -16,6 +16,7 @@ import { Home } from "./features/topics/Home.tsx";
 import { ErrorBoundary } from "./ui/ErrorBoundary.tsx";
 import { LoadError } from "./features/status/LoadError.tsx";
 import { Loading } from "./features/status/Loading.tsx";
+import { useScrollToTop } from "./scroll.ts";
 import { NotFound } from "./features/status/NotFound.tsx";
 import { Question } from "./features/quiz/Question.tsx";
 import { Score } from "./features/score/Score.tsx";
@@ -124,6 +125,7 @@ function ScoreRoute() {
 }
 
 export default function App() {
+  useScrollToTop();
   const { pathname } = useLocation();
   const go = useGo();
   const shown = useRef(pathname);
