@@ -19,9 +19,10 @@ export function Sections({ topic, onBack, onSelectSection }: SectionsProps) {
       <header className='hidden lg:mb-9 lg:flex'>
         <Logo />
       </header>
-      <div className='flex items-center gap-3'>
+      <div className='flex'>
         <BackButton
-          label='Retour aux sujets'
+          label="Retour à l'accueil"
+          showLabel
           onClick={onBack}
         />
       </div>
