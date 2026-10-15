@@ -14,6 +14,7 @@ import type {
   Question as QuestionData,
 } from "../../domain/question.ts";
 import type { Section } from "../../domain/sections.ts";
+import { scrollToReveal } from "../../scroll.ts";
 import { topics } from "../../domain/topics.ts";
 
 type QuestionProps = {
@@ -74,13 +75,7 @@ export function Question({
     if (selected === undefined) return;
     const region = status.current;
     const pinned = bar.current;
-    if (!region || !pinned) return;
-    const margin = 12;
-    const { top, bottom } = region.getBoundingClientRect();
-    const covered =
-      getComputedStyle(pinned).position === "fixed" ? pinned.offsetHeight : 0;
-    const hidden = bottom - (window.innerHeight - covered - margin);
-    if (hidden > 0) window.scrollBy(0, Math.max(0, Math.min(hidden, top)));
+    if (region && pinned) scrollToReveal(region, pinned);
   }, [selected]);
 
   function answer(picked: number) {
