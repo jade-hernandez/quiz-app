@@ -6,6 +6,7 @@ import { Logo } from "../../ui/Logo.tsx";
 import { ExplanationCard } from "./ExplanationCard.tsx";
 import { NextBar } from "./NextBar.tsx";
 import { Progress } from "./Progress.tsx";
+import type { SegmentResult } from "./Progress.tsx";
 import { QuestionCard } from "./QuestionCard.tsx";
 import type {
   OptionIndex,
@@ -30,6 +31,18 @@ function statusOf(
   if (index === answerIndex) return "correct";
   if (index === selected) return "incorrect";
   return "flat";
+}
+
+function resultsOf(
+  questions: readonly QuestionData[],
+  answers: readonly number[],
+  position: number,
+): SegmentResult[] {
+  return questions.map((question, index) => {
+    const picked = answers[index];
+    if (picked === undefined) return index === position ? "current" : "todo";
+    return picked === question.answerIndex ? "correct" : "incorrect";
+  });
 }
 
 export function Question({
@@ -93,8 +106,8 @@ export function Question({
       </header>
       {question !== undefined && (
         <Progress
-          current={position + 1}
-          total={questions.length}
+          results={resultsOf(questions, answers, position)}
+          position={position}
         />
       )}
       {question === undefined ? (

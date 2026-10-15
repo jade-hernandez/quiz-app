@@ -1,32 +1,35 @@
+export type SegmentResult = "correct" | "incorrect" | "current" | "todo";
+
 type ProgressProps = {
-  readonly current: number;
-  readonly total: number;
+  readonly results: readonly SegmentResult[];
+  readonly position: number;
 };
 
-function fillOf(position: number, current: number): string {
-  if (position < current) return "scale-x-100 bg-accent";
-  if (position === current) return "scale-x-100 bg-ink";
-  return "scale-x-0 bg-ink";
-}
+const fills = {
+  correct: "scale-x-100 bg-correct",
+  incorrect: "scale-x-100 bg-incorrect",
+  current: "scale-x-100 bg-ink",
+  todo: "scale-x-0 bg-ink",
+} as const;
 
-export function Progress({ current, total }: ProgressProps) {
+export function Progress({ results, position }: ProgressProps) {
   return (
     <div className='flex items-center gap-3'>
       <div
         role='progressbar'
-        aria-valuenow={current}
+        aria-valuenow={position + 1}
         aria-valuemin={1}
-        aria-valuemax={total}
-        aria-label={`Question ${current} sur ${total}`}
+        aria-valuemax={results.length}
+        aria-label={`Question ${position + 1} sur ${results.length}`}
         className='flex flex-1 gap-1'
       >
-        {Array.from({ length: total }, (_, index) => (
+        {results.map((result, index) => (
           <span
             key={index}
             className='h-2 flex-1 overflow-hidden rounded-sm bg-card border-sticker'
           >
             <span
-              className={`block size-full origin-left transition-[scale,background-color] duration-220 ease-out ${fillOf(index + 1, current)}`}
+              className={`block size-full origin-left transition-[scale,background-color] duration-220 ease-out ${fills[result]}`}
             />
           </span>
         ))}
@@ -34,7 +37,7 @@ export function Progress({ current, total }: ProgressProps) {
       <span
         aria-hidden='true'
         className='w-10 text-right font-mono text-xs font-medium'
-      >{`${current}/${total}`}</span>
+      >{`${position + 1}/${results.length}`}</span>
     </div>
   );
 }
