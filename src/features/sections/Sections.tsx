@@ -23,7 +23,6 @@ export function Sections({ topic, onBack, onSelectSection }: SectionsProps) {
         <div className='flex'>
           <BackButton
             label="Retour à l'accueil"
-            showLabel
             onClick={onBack}
           />
         </div>

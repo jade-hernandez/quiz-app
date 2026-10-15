@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { AnswerOption } from "./AnswerOption.tsx";
 import type { AnswerStatus } from "./AnswerOption.tsx";
 import { BackButton } from "../../ui/BackButton.tsx";
+import { Logo } from "../../ui/Logo.tsx";
 import { ExplanationCard } from "./ExplanationCard.tsx";
 import { NextBar } from "./NextBar.tsx";
 import { Progress } from "./Progress.tsx";
@@ -82,18 +83,20 @@ export function Question({
       data-topic={section.topic}
       className='mx-auto flex min-h-dvh w-full max-w-160 flex-col gap-3 p-4 pb-24 md:pb-4 lg:max-w-260 lg:p-10'
     >
-      <div className='flex items-center gap-3'>
+      <header className='flex items-center justify-between gap-3'>
+        <Logo />
         <BackButton
           label='Retour aux sections'
+          shortLabel='Sections'
           onClick={onBack}
         />
-        {question !== undefined && (
-          <Progress
-            current={position + 1}
-            total={questions.length}
-          />
-        )}
-      </div>
+      </header>
+      {question !== undefined && (
+        <Progress
+          current={position + 1}
+          total={questions.length}
+        />
+      )}
       {question === undefined ? (
         <h1
           tabIndex={-1}

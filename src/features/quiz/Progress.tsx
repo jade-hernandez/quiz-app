@@ -11,7 +11,7 @@ function fillOf(position: number, current: number): string {
 
 export function Progress({ current, total }: ProgressProps) {
   return (
-    <div className='flex flex-1 items-center gap-3'>
+    <div className='flex items-center gap-3'>
       <div
         role='progressbar'
         aria-valuenow={current}
