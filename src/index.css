@@ -132,6 +132,10 @@
     outline: 2px solid var(--color-ink);
     outline-offset: 3px;
   }
+
+  [tabindex="-1"]:focus-visible {
+    outline: none;
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
