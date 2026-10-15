@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "../../ui/Button.tsx";
 import { InlineText } from "../../ui/InlineText.tsx";
 import { MistakeCard } from "./MistakeCard.tsx";
@@ -7,6 +7,7 @@ import { TierBadge } from "./TierBadge.tsx";
 import type { Question } from "../../domain/question.ts";
 import type { Section } from "../../domain/sections.ts";
 import { topics } from "../../domain/topics.ts";
+import { scrollToStartOf } from "../../scroll.ts";
 import { verdictFor } from "./verdict.ts";
 
 type ScoreProps = {
@@ -36,6 +37,11 @@ export function Score({
     return picked === question.answerIndex ? [] : [{ question, chosen }];
   });
   const [reviewing, setReviewing] = useState(false);
+  const list = useRef<HTMLUListElement>(null);
+
+  useEffect(() => {
+    if (reviewing && list.current) scrollToStartOf(list.current);
+  }, [reviewing]);
 
   return (
     <main
@@ -83,7 +89,10 @@ export function Score({
         </Button>
       </div>
       {reviewing && (
-        <ul className='flex w-full max-w-160 flex-col gap-3 text-left'>
+        <ul
+          ref={list}
+          className='flex w-full max-w-160 flex-col gap-3 text-left'
+        >
           {mistakes.map(({ question, chosen }) => (
             <li key={question.id}>
               <MistakeCard
