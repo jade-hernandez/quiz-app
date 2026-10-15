@@ -5,6 +5,7 @@ import { BackButton } from "../../ui/BackButton.tsx";
 import { Logo } from "../../ui/Logo.tsx";
 import { ExplanationCard } from "./ExplanationCard.tsx";
 import { NextBar } from "./NextBar.tsx";
+import { clearProgress, readProgress, saveProgress } from "./progress.ts";
 import { Progress } from "./Progress.tsx";
 import type { SegmentResult } from "./Progress.tsx";
 import { QuestionCard } from "./QuestionCard.tsx";
@@ -52,8 +53,12 @@ export function Question({
   onBack,
   onFinish,
 }: QuestionProps) {
-  const [position, setPosition] = useState(0);
-  const [answers, setAnswers] = useState<readonly number[]>([]);
+  const [answers, setAnswers] = useState<readonly number[]>(() =>
+    readProgress(section.id, questions.length),
+  );
+  const [position, setPosition] = useState(() =>
+    Math.max(0, Math.min(answers.length, questions.length - 1)),
+  );
   const question = questions[position];
   const selected = answers[position];
   const isLast = position === questions.length - 1;
@@ -79,9 +84,10 @@ export function Question({
   }, [selected]);
 
   function answer(picked: number) {
-    setAnswers((current) =>
-      current.length > position ? current : [...current, picked],
-    );
+    if (answers.length > position) return;
+    const next = [...answers, picked];
+    setAnswers(next);
+    saveProgress(section.id, next);
   }
 
   function showNext() {
@@ -89,6 +95,7 @@ export function Question({
       setPosition(position + 1);
       return;
     }
+    clearProgress(section.id);
     onFinish(answers);
   }
 
