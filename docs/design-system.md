@@ -120,7 +120,7 @@ The ring is one keyframe, `from { stroke-dashoffset: 315 }` (just above the circ
 ## Components
 
 - **Button** (decided). Variants: default (white), action (pink), ink (dark), large, icon, text link. Min height 44px. Hover (pointer only) lifts 1px; pressed drops 2px. No separate disabled look: after an answer, options use their answered states. An icon-only button is 36px visible with a 44×44 hit area (pseudo-element `inset: -6px`, measured from the padding box). An `overflow: hidden` ancestor would clip that extension.
-- **Chip, logo, highlight** (decided). Chip: pill, outline, 12px bold, neutral lavender or topic accent. Logo: yellow sticker rotated −2° with shadow. Highlight: yellow behind "une question à la fois." with `box-decoration-break: clone`.
+- **Chip, logo, highlight** (decided). Chip: pill, outline, 12px bold, neutral lavender or topic accent. Logo: yellow sticker rotated −2° with shadow, 20px text and 24px from `lg` (decided 2026-10-15, it was 16px). Highlight: yellow behind "une question à la fois." with `box-decoration-break: clone`.
 - **Topic card** (decided). The whole card is the button, topic-coloured. A row with the title and a 32px round arrow badge, then the description, then two stat chips with real counts. Hover lifts the card and nudges the arrow 2px right. There is no separate start button.
 - **Sections screen** (decided 2026-10-15). The header is the back button and the title "Choisis une section", nothing else: no topic chip (the accent colour tells the topic) and no sentence under the title.
 - **Section row** (open). A button row, min height 48: number badge (24px, accent fill), label, "10 questions" (muted), chevron.
