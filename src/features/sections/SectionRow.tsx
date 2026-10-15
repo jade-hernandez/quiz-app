@@ -23,7 +23,7 @@ export function SectionRow({
       <span className='grid size-6 place-items-center rounded-lg bg-accent display text-sm border-sticker md:size-10 md:text-base'>
         {number}
       </span>
-      <span className='flex flex-1 items-center justify-between gap-3 md:flex-col md:items-start md:justify-center md:gap-0'>
+      <span className='flex flex-1 items-center justify-between gap-3 max-[360px]:flex-col max-[360px]:items-start max-[360px]:justify-center max-[360px]:gap-0 md:flex-col md:items-start md:justify-center md:gap-0'>
         <span className='display text-lg leading-display md:text-xl'>
           {label}
         </span>
