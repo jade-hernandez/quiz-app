@@ -36,11 +36,12 @@ function statusOf(
 function resultsOf(
   questions: readonly QuestionData[],
   answers: readonly number[],
-  position: number,
 ): SegmentResult[] {
   return questions.map((question, index) => {
     const picked = answers[index];
-    if (picked === undefined) return index === position ? "current" : "todo";
+    if (picked === undefined) {
+      return index === answers.length ? "current" : "todo";
+    }
     return picked === question.answerIndex ? "correct" : "incorrect";
   });
 }
@@ -106,8 +107,9 @@ export function Question({
       </header>
       {question !== undefined && (
         <Progress
-          results={resultsOf(questions, answers, position)}
+          results={resultsOf(questions, answers)}
           position={position}
+          onSelect={setPosition}
         />
       )}
       {question === undefined ? (
