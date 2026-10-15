@@ -81,7 +81,7 @@ export function Question({
   return (
     <main
       data-topic={section.topic}
-      className='mx-auto flex min-h-dvh w-full max-w-160 flex-col gap-3 p-4 pb-24 md:pb-4 lg:max-w-260 lg:p-10'
+      className='mx-auto flex min-h-dvh w-full max-w-160 flex-col gap-5 p-4 pb-24 md:pb-4 lg:max-w-260 lg:gap-10 lg:p-10'
     >
       <header className='flex items-center justify-between gap-3'>
         <Logo />
@@ -114,7 +114,7 @@ export function Question({
             language={topics[section.topic].codeLanguage}
             question={question}
           />
-          <div className={`mt-3 ${split ? "lg:mt-0" : ""}`}>
+          <div className={`mt-5 ${split ? "lg:mt-0" : "lg:mt-8"}`}>
             <ul className='flex flex-col gap-2'>
               {question.options.map((text, index) => (
                 <li key={`${question.id}-${index}`}>
