@@ -1,10 +1,8 @@
 import { BackButton } from "../../ui/BackButton.tsx";
-import { Chip } from "../../ui/Chip.tsx";
 import { Logo } from "../../ui/Logo.tsx";
 import { SectionRow } from "./SectionRow.tsx";
 import { sectionsOfTopic } from "../../domain/sections.ts";
 import type { Section, TopicId } from "../../domain/sections.ts";
-import { topics } from "../../domain/topics.ts";
 
 type SectionsProps = {
   readonly topic: TopicId;
@@ -26,19 +24,13 @@ export function Sections({ topic, onBack, onSelectSection }: SectionsProps) {
           label='Retour aux sujets'
           onClick={onBack}
         />
-        <Chip tone='topic'>{topics[topic].title}</Chip>
       </div>
-      <div>
-        <h1
-          tabIndex={-1}
-          className='w-fit display text-2xl leading-display lg:text-4xl'
-        >
-          Choisis une section
-        </h1>
-        <p className='mt-1 text-sm text-muted lg:text-base'>
-          Dans l'ordre que tu veux.
-        </p>
-      </div>
+      <h1
+        tabIndex={-1}
+        className='w-fit display text-2xl leading-display lg:text-4xl'
+      >
+        Choisis une section
+      </h1>
       <ul className='flex flex-col gap-2 md:grid md:grid-cols-2 md:gap-3 lg:grid-cols-3'>
         {sectionsOfTopic(topic).map((section, index) => (
           <li key={section.id}>
