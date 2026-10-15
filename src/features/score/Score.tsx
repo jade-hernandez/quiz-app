@@ -59,7 +59,7 @@ export function Score({
       </p>
       <div className='flex w-full flex-col gap-2 md:max-w-80'>
         <Button
-          tone='action'
+          tone='topic'
           onClick={onRetry}
         >
           Réessayer

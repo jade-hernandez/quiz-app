@@ -22,18 +22,18 @@ Source: the design thread's archive, kept locally in `handoff.local/from-design/
 
 ## Colour
 
-| Token       | Hex       | Used for                                          |
-| ----------- | --------- | ------------------------------------------------- |
-| `ink`       | `#1b1726` | text, every outline, hard shadows, the ink button |
-| `paper`     | `#fff8ec` | page background                                   |
-| `card`      | `#ffffff` | cards, answer options, explanation                |
-| `muted`     | `#5a5468` | secondary text                                    |
-| `js`        | `#ffd54f` | JavaScript topic, brand yellow (logo, highlight)  |
-| `react`     | `#7dd3fc` | React topic                                       |
-| `action`    | `#ff8fb1` | primary action ("Réessayer")                      |
-| `correct`   | `#6ee7b7` | correct answer, "Correct !" header                |
-| `incorrect` | `#ff9a8b` | wrong answer, "Pas tout à fait." header           |
-| `chip`      | `#ddd3ff` | neutral chip                                      |
+| Token       | Hex       | Used for                                                                                                                  |
+| ----------- | --------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `ink`       | `#1b1726` | text, every outline, hard shadows, the ink button                                                                         |
+| `paper`     | `#fff8ec` | page background                                                                                                           |
+| `card`      | `#ffffff` | cards, answer options, explanation                                                                                        |
+| `muted`     | `#5a5468` | secondary text                                                                                                            |
+| `js`        | `#ffd54f` | JavaScript topic, brand yellow (logo, highlight)                                                                          |
+| `react`     | `#7dd3fc` | React topic                                                                                                               |
+| `action`    | `#ff8fb1` | primary action on the Not found and error screens (the Score screen's "Réessayer" uses the topic colour since 2026-10-15) |
+| `correct`   | `#6ee7b7` | correct answer, "Correct !" header                                                                                        |
+| `incorrect` | `#ff9a8b` | wrong answer, "Pas tout à fait." header                                                                                   |
+| `chip`      | `#ddd3ff` | neutral chip                                                                                                              |
 
 Code box: background `#1b1726`, header `#2a2438`, text `#fff8ec`, muted (line numbers, comments, "N lignes") `#a39cb8`, keyword `#ff9dbb`, number `#ffd54f`, function `#7dd3fc`, string `#a8e6a1`, JSX tag `#ffb38a`. Inline `backtick` chip background: `rgb(27 23 38 / 0.09)`.
 
@@ -152,7 +152,7 @@ Score tiers (thresholds from the prototype: 100, ≥80, ≥40, else):
 
 Built 2026-10-13 in `src/features/score/verdict.ts`: `verdictFor(percent)` returns the title and the sentence, and the title is the screen's `h1`. The icon is in the table and drawn by `TierBadge` (decorative, `aria-hidden`: the title carries the tier). The percentage comes from the picks: `Math.round(score / questions * 100)`, which is always a multiple of 10 with 10 questions per section. The design has no line with the topic and section name, so the screen does not show one (decided 2026-10-13).
 
-Score buttons, always one column (decided 2026-10-13, over the mockup's row): full width on the phone, 320px wide from `md`. "Réessayer" (pink, restarts the same section), "Revoir mes erreurs (n)" (white, hidden when n = 0), "Retour aux sections" (text link, goes to Sections; the design keeps the prototype's label "Retour aux sujets" although it goes to Sections, and we renamed it to match, decided 2026-10-13).
+Score buttons, always one column (decided 2026-10-13, over the mockup's row): full width on the phone, 320px wide from `md`. "Réessayer" (topic colour, yellow or blue, because the pink read as an error; restarts the same section), "Revoir mes erreurs (n)" (white, hidden when n = 0), "Retour aux sections" (text link, goes to Sections; the design keeps the prototype's label "Retour aux sujets" although it goes to Sections, and we renamed it to match, decided 2026-10-13).
 
 ## Screen behaviour
 
