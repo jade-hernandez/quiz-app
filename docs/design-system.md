@@ -83,7 +83,7 @@ Desktop sizes (open, never reviewed), on the same scale: hero 60 (`text-6xl`), t
 
 Decided 2026-10-16: the desktop question card is an image, not built from components, rendered from the real components (chip, `CodeBox`, `AnswerOption` correct) tilted 2° clockwise on a transparent background. It is decorative (`alt=""`, so no `inert` is needed) and shown from 1024px only.
 
-- File: `src/features/topics/images/question-card.webp`, 800x610 px shown at 400x305 (2x for retina), WebP quality 85, 35.8 KB. Lossless was 44.4 KB and quality 75 was 28.2 KB; quality 85 kept the code text sharp.
+- File: `src/features/home/images/question-card.webp`, 800x610 px shown at 400x305 (2x for retina), WebP quality 85, 35.8 KB. Lossless was 44.4 KB and quality 75 was 28.2 KB; quality 85 kept the code text sharp.
 - Placeholder: a 32x24 WebP of the same image (370 bytes, about 500 characters as base64) inlined in `blur-data.ts`, shown behind the image and cross-faded out when it has loaded. Inline, so it needs no request of its own.
 - Below 1024px the column is `display: none` and the image is `loading="lazy"`, so phones and tablets do not download it (checked at 800px: the image never loads).
 - To regenerate: render the card in a throwaway page with the app's own CSS, screenshot at 2x with a transparent background, then `cwebp -q 85 -alpha_q 100 -m 6`.
