@@ -13,7 +13,7 @@ type HomeProps = { readonly onSelectTopic: (topic: TopicId) => void };
 export function Home({ onSelectTopic }: HomeProps) {
   return (
     <main className='mx-auto flex min-h-dvh w-full max-w-160 flex-col gap-3 p-4 lg:max-w-240 lg:p-10'>
-      <div className='flex flex-col gap-3 md:my-auto'>
+      <div className='flex flex-col gap-3 md:mt-21 md:gap-8'>
         <header className='flex'>
           <Logo />
         </header>
@@ -26,18 +26,20 @@ export function Home({ onSelectTopic }: HomeProps) {
           </Chip>
           <h1
             tabIndex={-1}
-            className='w-fit display text-3xl leading-display lg:text-6xl'
+            className='w-fit display text-3xl leading-display md:text-4xl lg:text-6xl'
           >
             Révise JavaScript et React,{" "}
             <span className='rounded-lg bg-js box-decoration-clone px-1'>
               une question à&nbsp;la&nbsp;fois.
             </span>
           </h1>
-          <p className='text-sm lg:text-base'>
+          <p className='text-sm md:text-base'>
             Des questions corrigées et expliquées pour consolider les bases.
           </p>
         </div>
-        <h2 className='display text-lg leading-display'>Choisis ton sujet</h2>
+        <h2 className='display text-lg leading-display md:text-2xl'>
+          Choisis ton sujet
+        </h2>
         <div className='grid gap-3 lg:grid-cols-2'>
           {Object.values(topics).map((topic) => (
             <TopicCard
@@ -50,7 +52,7 @@ export function Home({ onSelectTopic }: HomeProps) {
           ))}
         </div>
       </div>
-      <p className='mt-auto text-center text-xs text-muted md:mt-0'>
+      <p className='mt-auto text-center text-xs text-muted'>
         Sans compte · tes scores restent sur ton appareil
       </p>
     </main>

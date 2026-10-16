@@ -75,6 +75,8 @@ Display roles are Bricolage 800. The score at 100% needed 34px in the mockup to 
 
 Line-heights (proposal, the mockup had 9 values from 1.0 to 1.65): 1.1 for display text and buttons, 1.4 for running text and captions, 1.65 for code.
 
+Tablet (decided 2026-10-16): on Home from 768px the headline is 36 (`text-4xl`), "Choisis ton sujet" 24 (`text-2xl`) and the description 16 (`text-base`); the phone keeps 30, 18 and 14.
+
 Desktop sizes (open, never reviewed), on the same scale: hero 60 (`text-6xl`), title 36, card title 30, question 24, body and explanation 16, code 14.
 
 ## Shape and spacing
