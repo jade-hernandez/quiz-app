@@ -37,7 +37,7 @@ export function CodeBox({ code, language }: CodeBoxProps) {
           aria-label='Retour à la ligne'
           aria-pressed={wrapped}
           onClick={() => setWrapped(!wrapped)}
-          className={`relative z-10 grid h-5 w-6 place-items-center rounded-lg text-sm after:absolute after:-inset-3 focus-visible:outline-paper ${wrapped ? "bg-paper text-ink" : "text-code-muted"}`}
+          className={`relative grid h-5 w-6 place-items-center rounded-lg text-sm after:absolute after:-inset-3 focus-visible:outline-paper ${wrapped ? "bg-paper text-ink" : "text-code-muted"}`}
         >
           <Icon name='text-wrap' />
         </button>
