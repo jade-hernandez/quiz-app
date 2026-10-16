@@ -1,5 +1,8 @@
 import { Chip } from "../../ui/Chip.tsx";
+import { ImageWithPlaceholder } from "../../ui/ImageWithPlaceholder.tsx";
 import { Logo } from "../../ui/Logo.tsx";
+import { questionCardBlur } from "./images/blur-data.ts";
+import questionCard from "./images/question-card.webp";
 import { TopicCard } from "./TopicCard.tsx";
 import {
   questionCountOfTopic,
@@ -13,7 +16,7 @@ type HomeProps = { readonly onSelectTopic: (topic: TopicId) => void };
 export function Home({ onSelectTopic }: HomeProps) {
   return (
     <main className='mx-auto flex min-h-dvh w-full max-w-160 flex-col gap-3 p-4 lg:max-w-260 lg:p-10'>
-      <div className='flex flex-col gap-3 md:mt-21 md:gap-8 lg:mt-0'>
+      <div className='flex flex-col gap-3 md:mt-21 md:gap-8'>
         <header className='flex'>
           <Logo />
         </header>
@@ -37,6 +40,14 @@ export function Home({ onSelectTopic }: HomeProps) {
             <p className='text-sm md:text-base'>
               Des questions corrigées et expliquées pour consolider les bases.
             </p>
+          </div>
+          <div className='hidden min-w-0 flex-1 lg:block'>
+            <ImageWithPlaceholder
+              src={questionCard}
+              placeholder={questionCardBlur}
+              width={400}
+              height={305}
+            />
           </div>
         </div>
         <h2 className='display text-lg leading-display md:text-2xl'>
