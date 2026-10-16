@@ -26,7 +26,7 @@ export function TopicCard({
     <button
       type='button'
       onClick={onSelect}
-      className={`${sticker} group flex flex-col gap-1 px-4 py-3 text-left ${backgrounds[topic.id]}`}
+      className={`${sticker} group flex flex-col gap-1 px-4 py-3 text-left md:gap-2 md:p-6 ${backgrounds[topic.id]}`}
     >
       <span className='flex items-center justify-between'>
         <span className='display text-2xl leading-display lg:text-3xl'>
@@ -37,7 +37,7 @@ export function TopicCard({
         </span>
       </span>
       <span className='text-sm lg:text-base'>{topic.description}</span>
-      <span className='mt-1 flex gap-2'>
+      <span className='mt-1 flex gap-2 md:mt-2'>
         <Chip tone='stat'>{`${questionCount} questions`}</Chip>
         <Chip tone='stat'>{`${sectionCount} sections`}</Chip>
       </span>
