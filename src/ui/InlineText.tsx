@@ -11,7 +11,7 @@ export function InlineText({ text }: InlineTextProps) {
     ) : (
       <code
         key={index}
-        className='rounded-sm bg-ink/9 px-1 font-mono text-[0.9em] font-medium tracking-normal'
+        className='rounded-sm bg-ink/9 px-1 font-mono text-[0.8em] font-medium tracking-normal'
       >
         {part}
       </code>
