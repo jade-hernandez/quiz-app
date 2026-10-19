@@ -17,9 +17,7 @@ export function QuestionCard({
   question,
 }: QuestionCardProps) {
   const size =
-    question.code === undefined
-      ? "text-2xl lg:text-3xl"
-      : "text-xl lg:text-2xl";
+    question.code === undefined ? "text-xl lg:text-3xl" : "text-xl lg:text-2xl";
 
   return (
     <div

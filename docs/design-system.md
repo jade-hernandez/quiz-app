@@ -63,7 +63,7 @@ Text sizes (decided 2026-10-07): Tailwind's default steps, no custom size tokens
 | result            | 30 (`text-3xl`)  | display      | verdict ("Excellent !")                        | 27     |
 | score             | 36 (`text-4xl`)  | display      | number in the ring                             | 42     |
 | question          | 20 (`text-xl`)   | display      | question text when there is code               | 20     |
-| question, no code | 24 (`text-2xl`)  | display      | question text without code                     | 23     |
+| question, no code | 20 (`text-xl`)   | display      | question text without code (30 from 1024px)    | 23     |
 | section           | 18 (`text-lg`)   | display      | "Choisis ton sujet"                            | 18     |
 | row               | 18 (`text-lg`)   | display      | section label, review question                 | 17     |
 | button            | 16 (`text-base`) | sans 700     | buttons                                        | 16, 15 |
