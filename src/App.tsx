@@ -26,7 +26,7 @@ function topicPath(topic: TopicId): string {
 }
 
 function sectionPath(section: Section): string {
-  return `/${section.topic}/${section.id.slice(section.topic.length + 1)}`;
+  return `/${section.topic}/${section.slug}`;
 }
 
 function isTopicId(value: string | undefined): value is TopicId {
@@ -35,7 +35,9 @@ function isTopicId(value: string | undefined): value is TopicId {
 
 function useSection(): Section | undefined {
   const { topic, section } = useParams();
-  return sections.find((candidate) => candidate.id === `${topic}-${section}`);
+  return sections.find(
+    (candidate) => candidate.topic === topic && candidate.slug === section,
+  );
 }
 
 function readAnswers(state: unknown): readonly number[] | undefined {
