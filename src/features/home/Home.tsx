@@ -65,9 +65,6 @@ export function Home({ onSelectTopic }: HomeProps) {
           ))}
         </div>
       </div>
-      <p className='mt-auto text-center text-xs text-muted'>
-        Sans compte · tes scores restent sur ton appareil
-      </p>
     </main>
   );
 }
