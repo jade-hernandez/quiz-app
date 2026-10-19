@@ -30,7 +30,7 @@ function sectionPath(section: Section): string {
 }
 
 function isTopicId(value: string | undefined): value is TopicId {
-  return value !== undefined && value in topics;
+  return value !== undefined && Object.hasOwn(topics, value);
 }
 
 function useSection(): Section | undefined {
